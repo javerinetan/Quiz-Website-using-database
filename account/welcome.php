@@ -13,7 +13,7 @@ if(isset($_SESSION['User']))
         echo 'Email: '.$row['email'] .'<br/>';
         echo '<a href="logout.php?logout">Logout</a>';
         echo ' <div class="home-button">
-        <a href="../index.php">Go to Homepage <span>&rarr;</span></a>
+        <a href="../user/user_account.php">Go to Homepage <span>&rarr;</span></a>
     </div>';
     }
 else
