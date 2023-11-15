@@ -47,7 +47,7 @@ if(!isset($_SESSION['User']))
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png">
       <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-icon top-bar"></span>
