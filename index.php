@@ -143,6 +143,7 @@ session_start();
         $results=mysqli_query($con,$query);
         $row=$results->fetch_assoc();
         echo 'Welcome '. ucfirst($row['name']) . "!";
+        echo '<a id="sign-up-top-nav" href="./account/welcome.php" class="button-sign-up w-button">Account</a>';
     }
     ?>
     </div>

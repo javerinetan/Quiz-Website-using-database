@@ -15,7 +15,7 @@ require_once('../connection.php');
                 echo 'This email has been registered already<br>Login instead: <a href="login.php">Login Page</a> ';
             }
             else{
-                $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL)";
+                $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL, DEFAULT)";
                 $insertresults = mysqli_query($con,$sql);
                 if (mysqli_query($con,$sql) === TRUE) {
                 echo "New account created! Please go to <a href='login.php'>Login Page</a> ";
