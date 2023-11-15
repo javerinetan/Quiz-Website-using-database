@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
 
+    <link href="../wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
