@@ -6,7 +6,6 @@ if(isset($_SESSION['User']))
 ?>
 
 <?php 
-require_once('../connection.php');
     if(isset($_POST['c_password']))
     {
        if(empty($_POST['Email']) || empty($_POST['Password']))
@@ -90,7 +89,7 @@ require_once('../connection.php');
         <div class="login-form">
             <form method="post" class="row g-2">
                 <div class="col-md-23" >
-                    <input type="text" name="Email" placeholder=" Email" class="form-control mb-3">
+                    <input type="email" name="Email" placeholder=" Email" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">

@@ -6,8 +6,8 @@ if(!isset($_SESSION['User']))
     {header("location:login.php");}
 else{
     $query="select * from account where email='".$_SESSION['User']."'";
-    $results=mysqli_query($con,$query);
-    $row=$results->fetch_assoc();
+    $instance = new DatabaseConnection();
+    $row=$instance->retrieveData($query);
     if(!$row['admin'])
         {  
             header("location:../index.php");

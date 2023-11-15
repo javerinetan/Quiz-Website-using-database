@@ -95,13 +95,13 @@ if(isset($_SESSION['User']))
         <div class="login-form">
             <form method="post" class="row g-2">
                 <div class="col-md-23" >
-                    <input type="text" name="Email" placeholder=" Email" class="form-control mb-3">
+                    <input type="email" name="Email" placeholder=" Email" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" id="prof">
-                    <a href="forgot-password.php">Forgot my Password</a>
+                    <a href="forgot_password.php">Forgot my Password</a>
                     <span class="separator"> | </span>
                     <a href="signup.php">Sign Up</a>
                 </div>

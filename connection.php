@@ -29,7 +29,12 @@ class DatabaseConnection {
         }
     }
     
-
+    function retrieveData($sql){
+        $con=mysqli_connect('localhost','root','','webdb_project');
+        $results=mysqli_query($con,$sql);
+        $row=$results->fetch_assoc();
+        return $row;
+    }
 }
 
 ?>
