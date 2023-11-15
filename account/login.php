@@ -2,7 +2,7 @@
 require_once('../connection.php');
 session_start(); 
 if(isset($_SESSION['User']))
-    {header("location:welcome.php");}
+    {header("location:../user/user_account.php");}
 ?>
 
 <?php 
@@ -25,7 +25,7 @@ if(isset($_SESSION['User']))
                 if(mysqli_fetch_assoc($result))
                 {
                     $_SESSION['User']=strtolower($_POST['Email']);
-                    header("location:../user/user_account.php");
+                    header("location:../user/user_dashboard.php");
                 }
                 else{
                     header("location:login.php?Invalid= Incorrect Password! Try again");
