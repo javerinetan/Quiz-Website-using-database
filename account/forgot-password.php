@@ -1,28 +1,34 @@
 <?php 
 require_once('../connection.php');
-    if(isset($_POST['Signup']))
+session_start(); 
+if(isset($_SESSION['User']))
+    {header("location:welcome.php");}
+?>
+
+<?php 
+require_once('../connection.php');
+    if(isset($_POST['c_password']))
     {
-       if(empty($_POST['Name']) || empty($_POST['Birthdate']) || empty($_POST['Email']) || empty($_POST['Password']))
+       if(empty($_POST['Email']) || empty($_POST['Password']))
        {
-            header("location:signup.php?Empty= Please Fill in the Blanks");
+            header("location:forgot-password.php?Empty= Please Fill in the Blanks");
        }
        else
        {
             $query="select * from account where email='". strtolower($_POST['Email'])."'";
             $result=mysqli_query($con,$query);
             if (mysqli_fetch_assoc($result)){
-                header('location:signup.php?Invalid= This email has been registered already<br>Login instead: <a href="login.php">Login Page</a>');
-
-            }
-            else{
-                $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL, DEFAULT)";
+                $sql = "UPDATE account SET password = '" . $_POST['Password'] . "' WHERE email='". strtolower($_POST['Email'])."'";
                 $insertresults = mysqli_query($con,$sql);
                 if (mysqli_query($con,$sql) === TRUE) {
-                header("location:signup.php?Success= New account created! Please go to <a href='login.php'>Login Page</a> ");
+                header("location:forgot-password.php?Success= Password successfully changed! Please go to <a href='login.php'>Login Page</a> ");
 
                 } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
                 }
+            }
+            else{
+                header("location:forgot-password.php?Invalid= Account not found! Please go create a new account at <a href='signup.php'>Sign Up Page</a> ");
             }
        }
     }
@@ -36,6 +42,7 @@ require_once('../connection.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Login Form in PHP With Session</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -45,16 +52,18 @@ require_once('../connection.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
 
-    <link href="../wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
-    <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
+    <link href="../wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
+    
+
 </head>
 <body>
+    
     <!-- <div class="container">
         <div class="row">
             <div class="col-lg-6 m-auto">
@@ -74,25 +83,24 @@ require_once('../connection.php');
         </div>
     </div> -->
 
-    <main class="container_signup ">
+    <main class="container_login">
         <div class="header">
-            <h1 class="display-4">Sign Up</h1>
+            <h1 class="display-4">Forgot Password</h1>
         </div>
-        <div class="signup-form">
+        <div class="login-form">
             <form method="post" class="row g-2">
                 <div class="col-md-23" >
-                    <input type="text" name="Name" placeholder=" Name" class="form-control mb-3">
-                </div>
-                <div class="col-md-23" >
-                    <input type="date" name="Birthdate" placeholder=" Birthdate" class="form-control mb-3">
-                </div>
-                <div class="col-md-23" >
-                    <input type="email" name="Email" placeholder=" Email" class="form-control mb-3">
+                    <input type="text" name="Email" placeholder=" Email" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
-                <button class="btn btn-success mt-3" name="Signup">Sign up</button>
+                <div class="col-md-23" id="prof">
+                    <a href="login.php">Login</a>
+                    <span class="separator"> | </span>
+                    <a href="signup.php">Sign Up</a>
+                </div>
+                <button class="btn btn-success mt-3" name="c_password">Change Password</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
         </div>
@@ -105,6 +113,7 @@ require_once('../connection.php');
 <footer>
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
+
 </footer>
 </html>
 

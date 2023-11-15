@@ -5,6 +5,40 @@ if(isset($_SESSION['User']))
     {header("location:welcome.php");}
 ?>
 
+<?php 
+    if(isset($_POST['Login']))
+    {
+       if(empty($_POST['Email']) || empty($_POST['Password']))
+       {
+            header("location:login.php?Empty= Please Fill in the Blanks");
+       }
+       else
+       {
+            $query="select * from account where email='". strtolower($_POST['Email']) ."'";
+            $result=mysqli_query($con,$query);
+            // check if email in database
+            if(mysqli_fetch_assoc($result))
+            {   
+                $query="select * from account where password='". $_POST['Password'] ."'";
+                $result=mysqli_query($con,$query);
+                // check if password correct
+                if(mysqli_fetch_assoc($result))
+                {
+                    $_SESSION['User']=strtolower($_POST['Email']);
+                    header("location:../index.php");
+                }
+                else{
+                    header("location:login.php?Invalid= Incorrect Password! Try again");
+                }
+            }
+            else
+            {
+                header("location:login.php?Invalid= Email not registered! Please go to <a href='signup.php'>Sign Up Page</a> instead ");
+            }
+       }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +93,7 @@ if(isset($_SESSION['User']))
             <h1 class="display-4">Login</h1>
         </div>
         <div class="login-form">
-            <form action="process.php" method="post" class="row g-2">
+            <form method="post" class="row g-2">
                 <div class="col-md-23" >
                     <input type="text" name="Email" placeholder=" Email" class="form-control mb-3">
                 </div>
@@ -67,7 +101,7 @@ if(isset($_SESSION['User']))
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" id="prof">
-                    <a href="/forgot-password">Forgot my Password</a>
+                    <a href="forgot-password.php">Forgot my Password</a>
                     <span class="separator"> | </span>
                     <a href="signup.php">Sign Up</a>
                 </div>
