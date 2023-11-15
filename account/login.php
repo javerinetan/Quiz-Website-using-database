@@ -11,8 +11,10 @@ if(isset($_SESSION['User']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="./wf/assets/QuizITLogo.png" property="icon:image" />
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Login Form in PHP With Session</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -27,8 +29,13 @@ if(isset($_SESSION['User']))
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
+    <link href="./wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="/wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
+    
+
 </head>
 <body>
+    
     <!-- <div class="container">
         <div class="row">
             <div class="col-lg-6 m-auto">
