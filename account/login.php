@@ -1,5 +1,5 @@
 <?php 
-require_once('connection.php');
+require_once('../connection.php');
 session_start(); 
 if(isset($_SESSION['User']))
     {header("location:welcome.php");}
@@ -77,7 +77,7 @@ if(isset($_SESSION['User']))
         </div>
     </main>
     <div class="home-button">
-        <a href="/homepage">Go to Homepage <span>&rarr;</span></a>
+        <a href="../index.php">Go to Homepage <span>&rarr;</span></a>
     </div>
 
 </body>

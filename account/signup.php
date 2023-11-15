@@ -68,7 +68,7 @@
         </div>
     </main>
     <div class="home-button">
-        <a href="/homepage">Go to Homepage <span>&rarr;</span></a>
+        <a href="../index.php">Go to Homepage <span>&rarr;</span></a>
     </div>
 
 </body>

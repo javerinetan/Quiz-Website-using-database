@@ -1,5 +1,5 @@
 <?php 
-require_once('connection.php');
+require_once('../connection.php');
     if(isset($_POST['Signup']))
     {
        if(empty($_POST['Name']) || empty($_POST['Birthdate']) || empty($_POST['Email']) || empty($_POST['Password']))
