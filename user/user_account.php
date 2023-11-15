@@ -11,7 +11,7 @@ if(isset($_SESSION['User']))
         // echo 'Name: '. $row['name'] .'<br/>';
         echo 'Birthdate: '. $row['birthdate'] .'<br/>';
         echo 'Email: '.$row['email'] .'<br/>';
-        echo '<a href="logout.php?logout">Logout</a>';
+        echo '<a href="../account/logout.php?logout">Logout</a>';
         echo ' <div class="home-button">
         <a href="../user/user_dashboard.php">Go to Homepage <span>&rarr;</span></a>
     </div>';
