@@ -53,14 +53,19 @@
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
-                <div id="prof">
+                <div class="col-md-23" id="prof">
                     <a href="/forgot-password">Forgot my Password</a>
+                    <span class="separator"> | </span>
+                    <a href="signup.php">Sign Up</a>
                 </div>
                 <button class="btn btn-success mt-3" name="Login">Login</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
         </div>
     </main>
+    <div class="home-button">
+        <a href="/homepage">Go to Homepage <span>&rarr;</span></a>
+    </div>
 
 </body>
 <footer>
