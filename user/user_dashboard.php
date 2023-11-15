@@ -85,7 +85,7 @@ if(!isset($_SESSION['User']))
             <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../wf/assets/dd.jpg" alt="User Image" class="user-image">
             </button>
-            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+            <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">
                 <?php  
                 if(isset($_SESSION['User']))

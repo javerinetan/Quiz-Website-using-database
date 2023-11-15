@@ -126,15 +126,22 @@ nav{
     color: #212529;
     text-align: inherit;
     text-decoration: none;
-    white-space: nowrap;
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word;
     background-color: transparent;
     border: 0;
+
+
 }
 
 .profile {
     color: black !important;
     background-color: white !important;
     border-color: white !important;
+}
+
+.profile_drop {
+    width: 1rem;
 }
 
 .create{
@@ -147,3 +154,11 @@ nav{
     background-color:#9e1c91!important;
     border: 1px solid #5d2057!important;
 }
+
+/* Add a max-width to the dropdown menu */
+.profile_drop.dropdown-menu {
+    width: 12.5rem; 
+}
+
+
+
