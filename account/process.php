@@ -15,7 +15,7 @@ session_start();
 
             if(mysqli_fetch_assoc($result))
             {
-                $_SESSION['User']=$_POST['Email'];
+                $_SESSION['User']=strtolower($_POST['Email']);
                 header("location:welcome.php");
             }
             else

@@ -1,3 +1,10 @@
+<?php 
+require_once('connection.php');
+session_start(); 
+if(isset($_SESSION['User']))
+    {header("location:welcome.php");}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
