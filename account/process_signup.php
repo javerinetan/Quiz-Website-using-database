@@ -9,13 +9,11 @@ require_once('connection.php');
        else
        {
             $query="select * from account where email='".$_POST['Email']."'";
-            // $con = mysqli_connect('localhost','root','','webdb_project');
             $result=mysqli_query($con,$query);
             if (mysqli_fetch_assoc($result)){
                 echo 'This email has been registered already<br>Login instead: <a href="login.php">Login Page</a> ';
             }
             else{
-                $con = mysqli_connect('localhost','root','','php_crud_tutorial');
                 $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".$_POST['Email']."', '".$_POST['Password']."', NULL)";
                 $insertresults = mysqli_query($con,$sql);
                 if (mysqli_query($con,$sql) === TRUE) {
