@@ -9,7 +9,7 @@ session_start();
        }
        else
        {
-            $query="select * from account where email='".$_POST['Email']."' and password='".$_POST['Password']."'";
+            $query="select id from account where email='". strtolower($_POST['Email']) ."' and password='".$_POST['Password']."'";
             // $con = mysqli_connect('localhost','root','','webdb_project');
             $result=mysqli_query($con,$query);
 
