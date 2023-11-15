@@ -1,4 +1,10 @@
 <?php
+$con=mysqli_connect('localhost','root','','webdb_project');
+
+// if(!$con)
+// {
+//     die(' Please Check Your Connection'.mysqli_error($con));
+// }
 class DatabaseConnection {
     protected $db_host;
     protected $db_username;
@@ -12,7 +18,7 @@ class DatabaseConnection {
         $this->db_host = 'localhost';
         $this->db_username = 'root';
         $this->db_password =  '';
-        $this->db_databasename = 'php_crud_tutorial';
+        $this->db_databasename = 'webdb_project';
         $this->db_connect();
     }
 
@@ -26,11 +32,4 @@ class DatabaseConnection {
 
 }
 
-
-// $con=mysqli_connect('localhost','root','','php_crud_tutorial');
-
-// if(!$con)
-// {
-//     die(' Please Check Your Connection'.mysqli_error($con));
-// }
 ?>

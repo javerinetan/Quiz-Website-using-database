@@ -10,7 +10,7 @@ session_start();
        else
        {
             $query="select * from account where email='".$_POST['Email']."' and password='".$_POST['Password']."'";
-            $con = mysqli_connect('localhost','root','','php_crud_tutorial');
+            // $con = mysqli_connect('localhost','root','','webdb_project');
             $result=mysqli_query($con,$query);
 
             if(mysqli_fetch_assoc($result))
