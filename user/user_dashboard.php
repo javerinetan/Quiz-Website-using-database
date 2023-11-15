@@ -1,6 +1,8 @@
 <?php 
 require_once('../connection.php');
-session_start(); 
+session_start();
+if(!isset($_SESSION['User']))
+    {header("location:login.php");} 
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +13,10 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
     <?php
-    if (!isset($_SESSION['User'])) {
-        echo 'Log in | Sign up';
-    } else {
         $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
         $result = mysqli_query($con, $query);
         $row = $result->fetch_assoc();
         echo 'Welcome ' . ucfirst($row['name']);
-    }
     ?>
 
     </title>
