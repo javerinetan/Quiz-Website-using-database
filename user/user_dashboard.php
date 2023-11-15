@@ -79,17 +79,29 @@ if(!isset($_SESSION['User']))
 
         <!-- Profile button and dropdown on the left -->
         <div class="dropdown">
-            <button class="btn btn-outline-success" type="submit">Create a Quiz</button>
+            <button class="btn create " type="submit">Create a Quiz</button>
 
             <!-- Profile dropdown with image -->
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../wf/assets/dd.jpg" alt="User Image" class="user-image">
             </button>
             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                <li>
-                  Username
-                  <br>
-                  user@example.com
+                <li class="details_user">
+                <?php  
+                if(isset($_SESSION['User']))
+                    {
+                        $query="select * from account where email='".$_SESSION['User']."'";
+                        $results=mysqli_query($con,$query);
+                        $row=$results->fetch_assoc();
+                        echo $row['name'];
+                        echo '<br>';
+                        echo $row['email'];
+                    }
+                else
+                    {
+                        header("location:login.php");
+                    }
+                ?>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
