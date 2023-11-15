@@ -41,20 +41,23 @@
 
     <main class="container ">
         <div class="header">
-            <h1 class="display-4">Login</h1>
+            <h1 class="display-4">Sign Up</h1>
         </div>
-        <div class="login-form">
-            <form action="process.php" method="post" class="row g-2">
+        <div class="signup-form">
+            <form action="process_signup.php" method="post" class="row g-2">
                 <div class="col-md-23" >
-                    <input type="text" name="Email" placeholder=" Email" class="form-control mb-3">
+                    <input type="text" name="Name" placeholder=" Name" class="form-control mb-3">
+                </div>
+                <div class="col-md-23" >
+                    <input type="date" name="Birthdate" placeholder=" Birthdate" class="form-control mb-3">
+                </div>
+                <div class="col-md-23" >
+                    <input type="email" name="Email" placeholder=" Email" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
-                <div id="prof">
-                    <a href="/forgot-password">Forgot my Password</a>
-                </div>
-                <button class="btn btn-success mt-3" name="Login">Login</button>
+                <button class="btn btn-success mt-3" name="Signup">Sign up</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
         </div>
