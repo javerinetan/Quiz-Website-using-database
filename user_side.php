@@ -39,6 +39,10 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
+    <link href="../wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
+
+
 </head>
 
 <body>
