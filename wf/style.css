@@ -8,6 +8,22 @@ body {
     margin: 0;
 }
 
+.container_login {
+    text-align: center;
+    margin: 40px;
+    padding-top: 80px;
+}
+
+.btn-success {
+    background-color:#5d2057;
+    border: 1px solid #5d2057;
+}
+
+.btn-success:hover{
+    background-color:#9e1c91;
+    border: 1px solid #5d2057;
+}
+
 article,
 aside,
 details,
@@ -61607,3 +61623,4 @@ figcaption {
     font-style: normal;
     font-display: swap;
 }
+
