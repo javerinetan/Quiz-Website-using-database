@@ -2,6 +2,10 @@ nav{
     background-color: white !important;
 }
 
+body{
+    background-color: #f9f9f9 !important;
+}
+
 /* Remove border from toggler */
 .navbar-toggler {
     border: 0 !important;
@@ -161,4 +165,85 @@ nav{
 }
 
 
+.Settings {
+    text-align: center;
+}
 
+.Settings h1{
+    color: #292a3a;
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 1rem;
+}
+
+.settings_profile,
+.settings_update {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    margin: auto auto 16px;
+    padding: 12px 12px 16px;
+    box-shadow: 0 4px #e5e5e5;
+}
+
+.settings-group-profile-title{
+    color: #9d9da4;
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left !important;
+    display: inline-block;
+}
+
+.details{
+    background-color: #0000;
+    border: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 40px;
+    margin-top: 16px;
+    display: flex;
+    position: relative;
+}
+
+.main{
+    color: #292a3a;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-decoration: none;
+}
+
+.text{
+    text-align: left;
+    color: #9d9da4;
+    font-size: 14px;
+}
+
+.text::after{
+    content: ">";
+    color: rgb(157, 157, 164);
+    font-family: Quizizz-Iconset;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+}
+
+.main2{
+    color: #292a3a;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.main2::after{
+    content: ">";
+    color: rgb(157, 157, 164);
+    font-family: Quizizz-Iconset;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+}
