@@ -13,7 +13,7 @@ if(!isset($_SESSION['User']))
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
     <?php
-        $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
+        $query = "SELECT name FROM account WHERE id=" . $_SESSION['User'] . "";
         $result = mysqli_query($con, $query);
         $row = $result->fetch_assoc();
         echo 'Welcome ' . ucfirst($row['name']);
@@ -90,7 +90,7 @@ if(!isset($_SESSION['User']))
                 <?php  
                 if(isset($_SESSION['User']))
                     {
-                        $query="select * from account where email='".$_SESSION['User']."'";
+                        $query="select * from account where id=".$_SESSION['User']."";
                         $results=mysqli_query($con,$query);
                         $row=$results->fetch_assoc();
                         echo $row['name'];
@@ -105,20 +105,8 @@ if(!isset($_SESSION['User']))
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
-                <li>
-                <?php  
-                if(isset($_SESSION['User']))
-                    {
-                        $query="select * from account where email='".$_SESSION['User']."'";
-                        $results=mysqli_query($con,$query);
-                        $row=$results->fetch_assoc();
-                        echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
-                    }
-                else
-                    {
-                        header("location:login.php");
-                    }
-                ?>
+                <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
+                
                 </li>
             </ul>
         </div>

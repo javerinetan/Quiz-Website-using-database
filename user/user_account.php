@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['User']))
     {header("location:login.php");} 
 
-$query="select * from account where email='".$_SESSION['User']."'";
+$query="select * from account where id=".$_SESSION['User']."";
 $instance = new DatabaseConnection();
 $row=$instance->retrieveData($query);
 
@@ -97,7 +97,7 @@ $row=$instance->retrieveData($query);
             <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">
                 <?php  
-                    $query="select * from account where email='".$_SESSION['User']."'";
+                    $query="select * from account where id=".$_SESSION['User']."";
                     $results=mysqli_query($con,$query);
                     $row=$results->fetch_assoc();
                     echo $row['name'];
@@ -139,7 +139,7 @@ $row=$instance->retrieveData($query);
             <p class="text">
             <?php  
                 
-                $u_query = "SELECT CONCAT(name, id, LPAD(DAY(birthdate), 2, '0')) AS username FROM account WHERE email='" . $_SESSION['User'] . "'";
+                $u_query = "SELECT CONCAT(name, id, LPAD(DAY(birthdate), 2, '0')) AS username FROM account WHERE id=" . $_SESSION['User'] . "";
                 $u_results=mysqli_query($con,$u_query);
                 $u_row=$u_results->fetch_assoc();
                 echo $u_row['username'];

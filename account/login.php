@@ -13,18 +13,17 @@ if(isset($_SESSION['User']))
             header("location:login.php?Empty= Please Fill in the Blanks");
        }
        else
-       {
-            $query="select * from account where email='". strtolower($_POST['Email']) ."'";
-            $result=mysqli_query($con,$query);
+       {    
+            $sql="select * from account where email='". strtolower($_POST['Email']) ."'";
+            $re=mysqli_query($con,$sql);
+            $row=$re->fetch_assoc();
             // check if email in database
-            if(mysqli_fetch_assoc($result))
+            if($row)
             {   
-                $query="select * from account where password='". $_POST['Password'] ."'";
-                $result=mysqli_query($con,$query);
                 // check if password correct
-                if(mysqli_fetch_assoc($result))
+                if($row['password']==$_POST['Password'])
                 {
-                    $_SESSION['User']=strtolower($_POST['Email']);
+                    $_SESSION['User']=intval($row['id']);
                     header("location:../user/home.php");
                 }
                 else{
@@ -35,6 +34,29 @@ if(isset($_SESSION['User']))
             {
                 header("location:login.php?Invalid= Email not registered! Please go to <a href='signup.php'>Sign Up Page</a> instead ");
             }
+
+            // $query="select * from account where email='". strtolower($_POST['Email']) ."'";
+            // $result=mysqli_query($con,$query);
+            // // check if email in database
+            // if(mysqli_fetch_assoc($result))
+            // {   
+            //     $query="select * from account where password='". $_POST['Password'] ."'";
+            //     $result=mysqli_query($con,$query);
+            //     // check if password correct
+            //     if(mysqli_fetch_assoc($result))
+            //     {
+
+            //         $_SESSION['User']=strtolower($_POST['Email']);
+            //         header("location:../user/home.php");
+            //     }
+            //     else{
+            //         header("location:login.php?Invalid= Incorrect Password! Try again");
+            //     }
+            // }
+            // else
+            // {
+            //     header("location:login.php?Invalid= Email not registered! Please go to <a href='signup.php'>Sign Up Page</a> instead ");
+            // }
        }
     }
 ?>
