@@ -212,7 +212,7 @@ $row=$instance->retrieveData($query);
 
         var inputParts = userInput.split('/');
         if (inputParts.length !== 2) {
-            alert("Invalid input format. Please try again." + expectedPassword + expectedUsername);
+            alert("Invalid input format. Please try again.");
             return;
         }
 
