@@ -182,8 +182,8 @@ $row=$instance->retrieveData($query);
         <a href="edit.php?password" class="main"><button class="details has-chevron">
             <p class="main2">Update Password</p>
         </button></a>
-        <a href="delete_user.php" class="main"><button class="details has-chevron">
-            <p class="main2">Delete Account</p>
+        <button class="details has-chevron" onclick="confirmDelete()">
+            <p class="main">Delete Account</p>
         </button></a>
         <a class="main" href="../account/logout.php?logout"><button class="details has-chevron">
             <p class="main2">Log Out</p>
@@ -198,6 +198,63 @@ $row=$instance->retrieveData($query);
 <?php
     }
 ?>
+
+<script>
+    function confirmDelete() {
+        var expectedUsername = "<?php echo $row['name'] . $row['id'] . date('d', strtotime($row['birthdate'])); ?>";
+
+        var userInput = prompt("Please enter your username and password to confirm deletion (e.g., username/password):");
+        if (userInput === null) {
+            // User clicked cancel, do nothing
+            return;
+        }
+
+        var inputParts = userInput.split('/');
+        if (inputParts.length !== 2) {
+            alert("Invalid input format. Please try again.");
+            return;
+        }
+
+        var enteredUsername = inputParts[0].trim();
+        var enteredPassword = inputParts[1].trim();
+
+        if (enteredUsername !== expectedUsername || enteredPassword !== "<?php echo $row['password']; ?>") {
+            alert("Incorrect username or password. Please try again.");
+            return;
+        }
+
+        // Send an AJAX request to the server to delete the account
+        // You need to implement the server-side logic to delete the account securely
+
+        // Example using fetch API
+        fetch('delete_user.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: enteredUsername,
+                password: enteredPassword,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Account deletion successful, you can redirect or perform any other action
+                alert("Account deleted successfully");
+                window.location.href = '../index.php';
+            } else {
+                // Account deletion failed, show an error message
+                alert("Failed to delete account. Please try again later.");
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+
 
 </body>
 
