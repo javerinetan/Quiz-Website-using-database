@@ -15,7 +15,12 @@ if(!isset($_SESSION['User']))
             header("location:create_quiz.php?Empty= Please Fill in the Blanks");
        }
        else
-       {
+       {   
+            $query="select * from quiz where quiz_name=". $_POST['q_name']."";
+            $result=mysqli_query($con,$query);
+            if (!$result){
+                header('location:create_quiz.php?Invalid= This quiz name has been taken choose something else!</a>');
+            }else{
             $query="select id from account where id='".$_SESSION['User']."'";
             $instance = new DatabaseConnection();
             $row=$instance->retrieveData($query);
@@ -39,11 +44,12 @@ if(!isset($_SESSION['User']))
                 //     answer VARCHAR(255) NOT NULL
                 // )";
                 // mysqli_query($con, $table_query);
-                
+
                 header("location:edit_quiz.php?quiz_id=".$row2['quiz_id']);
             } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             }
+        }
             
        }
     }
@@ -98,6 +104,16 @@ if(!isset($_SESSION['User']))
             </form>
         </div>
     </main>
+
+    
+<?php 
+    if(@$_GET['Invalid']==true)
+    {
+?>
+    <div class="alert-light text-danger text-center py-3"><?php echo $_GET['Invalid'] ?></div>                                
+<?php
+    }
+?>
 </body>
 
 <footer>
