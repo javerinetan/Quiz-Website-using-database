@@ -17,10 +17,10 @@ require_once('../connection.php');
             else{
                 $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL, DEFAULT)";
                 $insertresults = mysqli_query($con,$sql);
-                if (mysqli_query($con,$sql) === TRUE) {
+                if ($insertresults) {
                     header("location:login.php");
                 } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                    echo "Error: " . $sql . "<br>" . $conn->error;
                 }
             }
        }
