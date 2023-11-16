@@ -6,7 +6,7 @@
     else{
         $query= "DELETE FROM account WHERE email='".strtolower($_SESSION['User'])."';";
         mysqli_query($con,$table_query);
-        header('location:../index.php')
+        header('location:../index.php');
     }
 
 ?>
