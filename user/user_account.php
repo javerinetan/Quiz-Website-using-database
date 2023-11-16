@@ -147,7 +147,7 @@ $row=$instance->retrieveData($query);
             ?>
             </p>
         </button>
-        <a href="edit.php?name"><button class="details has-chevron">
+        <a class="main" href="edit.php?name"><button class="details has-chevron">
             <p class="main">Name</p>
             <p class="text">
             <?php  
@@ -155,7 +155,7 @@ $row=$instance->retrieveData($query);
             ?>
             </p>
         </button></a>
-        <a href="edit.php?birthdate"><button class="details has-chevron">
+        <a class="main" href="edit.php?birthdate"><button class="details has-chevron">
             <p class="main">Birthdate</p>
             <p class="text">
             <?php  
@@ -163,7 +163,7 @@ $row=$instance->retrieveData($query);
             ?>
             </p>
         </button></a>
-        <a href="edit.php?email"><button class="details has-chevron">
+        <a class="main" href="edit.php?email"><button class="details has-chevron">
             <p class="main">Email</p>
             <p class="text">
             <?php  
