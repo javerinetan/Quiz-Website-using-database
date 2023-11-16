@@ -14,10 +14,15 @@ if(!isset($_SESSION['User']))
     // echo 'Birthdate: '. $row['birthdate'] .'<br/>';
     // echo 'Email: '.$row['email'] .'<br/>';
     // echo '<a href="logout.php?logout">Logout</a>';
-    $query="select * from account where email='".$_SESSION['User']."'";
-    $con = mysqli_connect('localhost','root','','webdb_project');
+    // $query="select * from account where email='".$_SESSION['User']."'";
+    // $con = mysqli_connect('localhost','root','','webdb_project');
 
-    $results=mysqli_query($con,$query);
-    $row=$results->fetch_assoc();
-    echo $row['name'];
+    // $results=mysqli_query($con,$query);
+    // $row=$results->fetch_assoc();
+    // echo $row['name'];
+    $hi='hi'
 ?>
+
+<h2>hello</h2>
+
+<?php echo gettype($_SESSION['User']);?>
