@@ -1,3 +1,8 @@
+<?php 
+require_once('connection.php');
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html data-page="652e5b765bb09ed398f038a5" data-site="60aca2b71ab9a5e4ececf1cf" lang="en">
 
@@ -132,13 +137,11 @@
             ';
         }
     else{
-        $query="select * from account where email='".$_SESSION['User']."'";
-        $con = mysqli_connect('localhost','root','','webdb_project');
-
+        $query="select * from account where id=".$_SESSION['User']."";
         $results=mysqli_query($con,$query);
         $row=$results->fetch_assoc();
         echo 'Welcome '. ucfirst($row['name']) . "!";
-        echo '<a id="sign-up-top-nav" href="./account/welcome.php" class="button-sign-up w-button">Account</a>';
+        echo '<a id="sign-up-top-nav" href="./user/user_account.php" class="button-sign-up w-button">Account</a>';
     }
     ?>
     </div>

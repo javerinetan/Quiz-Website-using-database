@@ -1,9 +1,8 @@
 <?php 
 require_once('../connection.php');
 session_start(); 
-if(isset($_SESSION['User']))
-    {
-    }
+if(!isset($_SESSION['User']))
+    {header("location:account/login.php");}
 ?>
 
 <?php 
@@ -15,28 +14,28 @@ if(isset($_SESSION['User']))
         }elseif(!empty($_POST['c_name'])){
             $sql = "UPDATE account SET name = '" . strtolower($_POST['c_name']) . "' WHERE id=". $_SESSION['User']."";
             $insertresults = mysqli_query($con,$sql);
-            header("location:user_account.php?Success= Password Successfully Changed");
+            header("location:user_account.php?EditSuccess=Name");
         }elseif(!empty($_POST['c_email'])){
             $query="select * from account where id=". $_POST['c_email']."";
             $result=mysqli_query($con,$query);
             if (mysqli_fetch_assoc($result)){
-                header('location:edit.php?email&Invalid= Email has been registered before! Choose another email');
+                header('location:edit.php?email&Invalid=Email has been registered before! Choose another email');
             }else{
                 $sql = "UPDATE account SET email = '" . strtolower($_POST['c_email']) . "' WHERE id=". $_SESSION['User']."";
                 $insertresults = mysqli_query($con,$sql);
                 // session_destroy();
                 // session_start();
                 // $_SESSION['User']=strtolower($_POST['c_email']);
-                header("location:user_account.php?Success= Password Successfully Changed");
+                header("location:user_account.php?EditSuccess=Email");
             }
         }elseif(!empty($_POST['c_bd'])){
             $sql = "UPDATE account SET birthdate = '" . $_POST['c_bd'] . "' WHERE id=". $_SESSION['User']."";
             $insertresults = mysqli_query($con,$sql);
-            header("location:user_account.php?Success= Password Successfully Changed");
+            header("location:user_account.php?EditSuccess=Birthdate");
         }elseif(!empty($_POST['c_password'])){
             $sql = "UPDATE account SET password = '" . $_POST['c_password'] . "' WHERE id=".$_SESSION['User']."";
             $insertresults = mysqli_query($con,$sql);
-            header("location:user_account.php?Success= Password Successfully Changed");
+            header("location:user_account.php?EditSuccess=Password");
         }else{
             header('location:user_account.php');
        }

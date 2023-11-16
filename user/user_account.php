@@ -191,10 +191,10 @@ $row=$instance->retrieveData($query);
     </div>
     
 <?php 
-    if(@$_GET['Success']==true)
+    if(@$_GET['EditSuccess']==true)
     {
+        echo '<script>alert("'.$_GET['EditSuccess'].' successfully changed!")</script>'; 
 ?>
-    <div class="alert-light text-success text-center py-3"><?php echo $_GET['Success'] ?></div>                                
 <?php
     }
 ?>
