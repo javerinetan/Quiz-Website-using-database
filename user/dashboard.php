@@ -2,7 +2,7 @@
 require_once('../connection.php');
 session_start();
 if(!isset($_SESSION['User']))
-    {header("location:../account/login.php");} 
+    {header("location:login.php");} 
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ if(!isset($_SESSION['User']))
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
     <?php
-        $query = "SELECT name FROM account WHERE id=" . $_SESSION['User'] . "";
+        $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
         $result = mysqli_query($con, $query);
         $row = $result->fetch_assoc();
         echo 'Welcome ' . ucfirst($row['name']);
@@ -66,13 +66,13 @@ if(!isset($_SESSION['User']))
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="home.php" tabindex="-1" aria-disabled="true">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Activity</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -90,7 +90,7 @@ if(!isset($_SESSION['User']))
                 <?php  
                 if(isset($_SESSION['User']))
                     {
-                        $query="select * from account where id=".$_SESSION['User']."";
+                        $query="select * from account where email='".$_SESSION['User']."'";
                         $results=mysqli_query($con,$query);
                         $row=$results->fetch_assoc();
                         echo $row['name'];
@@ -105,8 +105,20 @@ if(!isset($_SESSION['User']))
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
-                <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
-                
+                <li>
+                <?php  
+                if(isset($_SESSION['User']))
+                    {
+                        $query="select * from account where email='".$_SESSION['User']."'";
+                        $results=mysqli_query($con,$query);
+                        $row=$results->fetch_assoc();
+                        echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
+                    }
+                else
+                    {
+                        header("location:login.php");
+                    }
+                ?>
                 </li>
             </ul>
         </div>
@@ -115,7 +127,7 @@ if(!isset($_SESSION['User']))
 
 
 <body>
-
+hi
 </body>
 
 <footer>
