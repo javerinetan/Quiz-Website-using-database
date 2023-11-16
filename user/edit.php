@@ -50,7 +50,21 @@ if(isset($_SESSION['User']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <title>Forgot Password</title>
+    <title>Change
+        <?php 
+            if(isset($_GET['name'])){
+                echo 'Name';
+            }elseif(isset($_GET['email'])){
+                echo 'Email';
+            }elseif(isset($_GET['birthdate'])){
+                echo 'Birth Date';
+            }elseif(isset($_GET['password'])){
+                echo 'Password';
+            }else{
+                // header('location:user_account.php');
+            }
+        ?>
+    </title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
