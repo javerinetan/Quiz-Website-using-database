@@ -139,7 +139,7 @@ $row=$instance->retrieveData($query);
             <p class="text">
             <?php  
                 
-                $u_query = "SELECT CONCAT(name, id, DAY(birthdate)) AS username FROM account WHERE email='" . $_SESSION['User'] . "'";
+                $u_query = "SELECT CONCAT(name, id, LPAD(DAY(birthdate), 2, '0')) AS username FROM account WHERE email='" . $_SESSION['User'] . "'";
                 $u_results=mysqli_query($con,$u_query);
                 $u_row=$u_results->fetch_assoc();
                 echo $u_row['username'];
@@ -202,6 +202,7 @@ $row=$instance->retrieveData($query);
 <script>
     function confirmDelete() {
         var expectedUsername = "<?php echo $row['name'] . $row['id'] . date('d', strtotime($row['birthdate'])); ?>";
+        var expectedPassword = "<?php echo $row['password'] ?>";
 
         var userInput = prompt("Please enter your username and password to confirm deletion (e.g., username/password):");
         if (userInput === null) {
@@ -211,7 +212,7 @@ $row=$instance->retrieveData($query);
 
         var inputParts = userInput.split('/');
         if (inputParts.length !== 2) {
-            alert("Invalid input format. Please try again.");
+            alert("Invalid input format. Please try again." + expectedPassword + expectedUsername);
             return;
         }
 
@@ -219,7 +220,7 @@ $row=$instance->retrieveData($query);
         var enteredPassword = inputParts[1].trim();
 
         if (enteredUsername !== expectedUsername || enteredPassword !== "<?php echo $row['password']; ?>") {
-            alert("Incorrect username or password. Please try again.");
+            alert("Incorrect username or password. Please try again." );
             return;
         }
 
