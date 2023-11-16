@@ -198,9 +198,9 @@ if(!isset($_SESSION['User']))
         <i class="fa-regular fa-user" style="color: blue;"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Reset</h2>
         </div>
-        <button class="details has-chevron">
+        <a href="change_password.php"><button class="details has-chevron">
             <p class="main2">Update Password</p>
-        </button>
+        </button></a>
         <button class="details has-chevron">
             <p class="main2">Delete Account</p>
         </button>
@@ -220,7 +220,14 @@ if(!isset($_SESSION['User']))
         ?>
         </button>
     </div>
-
+<?php 
+    if(@$_GET['Success']==true)
+    {
+?>
+    <div class="alert-light text-success text-center py-3"><?php echo $_GET['Success'] ?></div>                                
+<?php
+    }
+?>
 
 </body>
 

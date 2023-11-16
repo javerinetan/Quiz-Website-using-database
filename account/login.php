@@ -25,7 +25,7 @@ if(isset($_SESSION['User']))
                 if(mysqli_fetch_assoc($result))
                 {
                     $_SESSION['User']=strtolower($_POST['Email']);
-                    header("location:../user/user_dashboard.php");
+                    header("location:../user/home.php");
                 }
                 else{
                     header("location:login.php?Invalid= Incorrect Password! Try again");

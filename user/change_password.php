@@ -8,27 +8,19 @@ if(isset($_SESSION['User']))
 <?php 
     if(isset($_POST['c_password']))
     {
-       if(empty($_POST['Email']) || empty($_POST['Password']))
+       if(empty($_POST['Password']))
        {
-            header("location:forgot_password.php?Empty= Please Fill in the Blanks");
+            header("location:change_password.php?Empty= Please Fill in the Blanks");
        }
        else
        {
-            $query="select * from account where email='". strtolower($_POST['Email'])."'";
-            $result=mysqli_query($con,$query);
-            if (mysqli_fetch_assoc($result)){
-                $sql = "UPDATE account SET password = '" . $_POST['Password'] . "' WHERE email='". strtolower($_POST['Email'])."'";
-                $insertresults = mysqli_query($con,$sql);
-                if (mysqli_query($con,$sql) === TRUE) {
-                header("location:forgot_password.php?Success= Password successfully changed! Please go to <a href='login.php'>Login Page</a> ");
+            $query="select * from account where email='". strtolower($_SESSION['User'])."'";
+            $instance = new DatabaseConnection();
+            $row=$instance->retrieveData($query);
+            $sql = "UPDATE account SET password = '" . $_POST['Password'] . "' WHERE email='". strtolower($_SESSION['User'])."'";
+            $insertresults = mysqli_query($con,$sql);
+            header("location:user_account.php?Success= Password Successfully Changed");
 
-                } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            else{
-                header("location:forgot_password.php?Invalid= Account not found! Please go create a new account at <a href='signup.php'>Sign Up Page</a> ");
-            }
        }
     }
 ?>
