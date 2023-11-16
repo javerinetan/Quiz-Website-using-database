@@ -222,36 +222,38 @@ $row=$instance->retrieveData($query);
         if (enteredUsername !== expectedUsername || enteredPassword !== "<?php echo $row['password']; ?>") {
             alert("Incorrect username or password. Please try again." );
             return;
+        }else{
+            window.location.replace('delete_user.php');
         }
 
-        // Send an AJAX request to the server to delete the account
-        // You need to implement the server-side logic to delete the account securely
+        // // Send an AJAX request to the server to delete the account
+        // // You need to implement the server-side logic to delete the account securely
 
-        // Example using fetch API
-        fetch('delete_user.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: enteredUsername,
-                password: enteredPassword,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Account deletion successful, you can redirect or perform any other action
-                alert("Account deleted successfully");
-                window.location.href = '../index.php';
-            } else {
-                // Account deletion failed, show an error message
-                alert("Failed to delete account. Please try again later.");
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+        // // Example using fetch API
+        // fetch('delete_user.php', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         username: enteredUsername,
+        //         password: enteredPassword,
+        //     }),
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.success) {
+        //         // Account deletion successful, you can redirect or perform any other action
+        //         alert("Account deleted successfully");
+        //         window.location.href = '../index.php';
+        //     } else {
+        //         // Account deletion failed, show an error message
+        //         alert("Failed to delete account. Please try again later.");
+        //     }
+        // })
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        // });
     }
 </script>
 

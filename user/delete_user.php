@@ -2,10 +2,10 @@
 require_once('../connection.php');
 session_start();
 
-if (!isset($_SESSION['User'])) {
-    header("location:../account/login.php");
-    exit;
-} else {
+// if (!isset($_SESSION['User'])) {
+//     header("location:../account/login.php");
+//     exit;
+// } else {
     // Use prepared statement to prevent SQL injection
     $query = "DELETE FROM account WHERE id=?";
     $stmt = $con->prepare($query);
@@ -28,5 +28,5 @@ if (!isset($_SESSION['User'])) {
 
     $stmt->close();
     $con->close();
-}
+// }
 ?>
