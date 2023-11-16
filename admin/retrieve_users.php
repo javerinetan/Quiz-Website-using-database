@@ -3,7 +3,7 @@
 require_once('../connection.php');
 session_start(); 
 if(!isset($_SESSION['User']))
-    {header("location:login.php");}
+    {header("location:../account/login.php");} 
 else{
     $query="select * from account where id=".$_SESSION['User']."";
     $instance = new DatabaseConnection();

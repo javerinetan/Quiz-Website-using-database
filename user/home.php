@@ -2,7 +2,7 @@
 require_once('../connection.php');
 session_start();
 if(!isset($_SESSION['User']))
-    {header("location:login.php");} 
+    {header("location:../account/login.php");} 
 ?>
 
 <!DOCTYPE html>
