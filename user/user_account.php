@@ -3,6 +3,15 @@ require_once('../connection.php');
 session_start();
 if(!isset($_SESSION['User']))
     {header("location:login.php");} 
+
+$query="select * from account where email='".$_SESSION['User']."'";
+$instance = new DatabaseConnection();
+$row=$instance->retrieveData($query);
+
+// $query = "select * from account where email='".$_SESSION['User']."'";
+// $results=mysqli_query($con,$query);
+// $row=$results->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +22,9 @@ if(!isset($_SESSION['User']))
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
     <?php
-        $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
-        $result = mysqli_query($con, $query);
-        $row = $result->fetch_assoc();
+        // $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
+        // $result = mysqli_query($con, $query);
+        // $row = $result->fetch_assoc();
         echo 'Welcome ' . ucfirst($row['name']);
     ?>
 
@@ -66,7 +75,7 @@ if(!isset($_SESSION['User']))
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./user_dashboard.php">Home</a>
+                    <a class="nav-link" aria-current="page" href="./home.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Activity</a>
@@ -88,36 +97,22 @@ if(!isset($_SESSION['User']))
             <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">
                 <?php  
-                if(isset($_SESSION['User']))
-                    {
-                        $query="select * from account where email='".$_SESSION['User']."'";
-                        $results=mysqli_query($con,$query);
-                        $row=$results->fetch_assoc();
-                        echo $row['name'];
-                        echo '<br>';
-                        echo $row['email'];
-                    }
-                else
-                    {
-                        header("location:login.php");
-                    }
+                    $query="select * from account where email='".$_SESSION['User']."'";
+                    $results=mysqli_query($con,$query);
+                    $row=$results->fetch_assoc();
+                    echo $row['name'];
+                    echo '<br>';
+                    echo $row['email'];
                 ?>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
-                <li>
-                <?php  
-                if(isset($_SESSION['User']))
-                    {
-                        $query="select * from account where email='".$_SESSION['User']."'";
-                        $results=mysqli_query($con,$query);
-                        $row=$results->fetch_assoc();
-                        echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
-                    }
-                else
-                    {
-                        header("location:login.php");
-                    }
+                <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
+                <?php 
+                    // $query="select * from account where email='".$_SESSION['User']."'";
+                    // $results=mysqli_query($con,$query);
+                    // $row=$results->fetch_assoc();
+                    // echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
                 ?>
                 </li>
             </ul>
@@ -143,12 +138,12 @@ if(!isset($_SESSION['User']))
             <p class="main">Username</p>
             <p class="text">
             <?php  
-                if(isset($_SESSION['User'])) {
-                    $query = "SELECT CONCAT(name, id, DAY(birthdate)) AS username FROM account WHERE email='" . $_SESSION['User'] . "'";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['username'];
-                }
+                
+                $u_query = "SELECT CONCAT(name, id, DAY(birthdate)) AS username FROM account WHERE email='" . $_SESSION['User'] . "'";
+                $u_results=mysqli_query($con,$u_query);
+                $u_row=$u_results->fetch_assoc();
+                echo $u_row['username'];
+                
             ?>
             </p>
         </button>
@@ -156,12 +151,7 @@ if(!isset($_SESSION['User']))
             <p class="main">Name</p>
             <p class="text">
             <?php  
-                if(isset($_SESSION['User'])) {
-                    $query = "select * from account where email='".$_SESSION['User']."'";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['name'];
-                }
+                echo $row['name'];
             ?>
             </p>
         </button>
@@ -169,12 +159,7 @@ if(!isset($_SESSION['User']))
             <p class="main">Birthdate</p>
             <p class="text">
             <?php  
-                if(isset($_SESSION['User'])) {
-                    $query = "select * from account where email='".$_SESSION['User']."'";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['birthdate'];
-                }
+                echo $row['birthdate'];
             ?>
             </p>
         </button>
@@ -182,12 +167,7 @@ if(!isset($_SESSION['User']))
             <p class="main">Email</p>
             <p class="text">
             <?php  
-                if(isset($_SESSION['User'])) {
-                    $query = "select * from account where email='".$_SESSION['User']."'";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['email'];
-                }
+                echo $row['email'];
             ?>
             </p>
         </button>
@@ -198,28 +178,17 @@ if(!isset($_SESSION['User']))
         <i class="fa-regular fa-user" style="color: blue;"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Reset</h2>
         </div>
-        <a href="change_password.php"><button class="details has-chevron">
+        <a href="change_password.php" class="main"><button class="details has-chevron">
             <p class="main2">Update Password</p>
         </button></a>
-        <a href="delete_user.php"><button class="details has-chevron">
-            <p class="main2">Delete Account</p></a>
-        </button>
-        <button class="details has-chevron">
-        <?php  
-        if(isset($_SESSION['User']))
-            {
-                $query="select * from account where email='".$_SESSION['User']."'";
-                $results=mysqli_query($con,$query);
-                $row=$results->fetch_assoc();
-                echo '<a class="main" href="../account/logout.php?logout">Log Out</a>';
-            }
-        else
-            {
-                header("location:login.php");
-            }
-        ?>
-        </button>
+        <a href="delete_user.php" class="main"><button class="details has-chevron">
+            <p class="main2">Delete Account</p>
+        </button></a>
+        <a class="main" href="../account/logout.php?logout"><button class="details has-chevron">
+            <p class="main2">Log Out</p>
+        </button></a>
     </div>
+    
 <?php 
     if(@$_GET['Success']==true)
     {
