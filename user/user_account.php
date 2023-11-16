@@ -135,7 +135,7 @@ $row=$instance->retrieveData($query);
             <p class="text">Change your avatar</p>
         </button>
         <button class="details has-chevron">
-            <p class="main">Username</p>
+            <p class="main2">Username</p>
             <p class="text">
             <?php  
                 
@@ -147,30 +147,30 @@ $row=$instance->retrieveData($query);
             ?>
             </p>
         </button>
-        <button class="details has-chevron">
+        <a href="edit.php?name"><button class="details has-chevron">
             <p class="main">Name</p>
             <p class="text">
             <?php  
                 echo $row['name'];
             ?>
             </p>
-        </button>
-        <button class="details has-chevron">
+        </button></a>
+        <a href="edit.php?birthdate"><button class="details has-chevron">
             <p class="main">Birthdate</p>
             <p class="text">
             <?php  
                 echo $row['birthdate'];
             ?>
             </p>
-        </button>
-        <button class="details has-chevron">
+        </button></a>
+        <a href="edit.php?email"><button class="details has-chevron">
             <p class="main">Email</p>
             <p class="text">
             <?php  
                 echo $row['email'];
             ?>
             </p>
-        </button>
+        </button></a>
     </div>
 
     <div class="settings_update">
@@ -178,7 +178,8 @@ $row=$instance->retrieveData($query);
         <i class="fa-regular fa-user" style="color: blue;"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Reset</h2>
         </div>
-        <a href="change_password.php" class="main"><button class="details has-chevron">
+        <!-- <a href="change_password.php" class="main"><button class="details has-chevron"> -->
+        <a href="edit.php?password" class="main"><button class="details has-chevron">
             <p class="main2">Update Password</p>
         </button></a>
         <a href="delete_user.php" class="main"><button class="details has-chevron">

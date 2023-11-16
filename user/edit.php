@@ -2,25 +2,43 @@
 require_once('../connection.php');
 session_start(); 
 if(isset($_SESSION['User']))
-    {header("location:welcome.php");}
+    {
+    }
 ?>
 
 <?php 
-    if(isset($_POST['c_password']))
-    {
-       if(empty($_POST['Password']))
-       {
-            header("location:change_password.php?Empty= Please Fill in the Blanks");
-       }
-       else
-       {
-            $query="select * from account where email='". strtolower($_SESSION['User'])."'";
-            $instance = new DatabaseConnection();
-            $row=$instance->retrieveData($query);
-            $sql = "UPDATE account SET password = '" . $_POST['Password'] . "' WHERE email='". strtolower($_SESSION['User'])."'";
+    if(isset($_POST['change']))
+    {  
+        if(empty($_POST['c_name']) && empty($_POST['c_email']) && empty($_POST['c_bd']) && empty($_POST['c_password']))
+        {
+            header("location:edit.php?Empty= Please Fill in the Blanks");
+        }elseif(!empty($_POST['c_name'])){
+            $sql = "UPDATE account SET name = '" . strtolower($_POST['c_name']) . "' WHERE email='". strtolower($_SESSION['User'])."'";
             $insertresults = mysqli_query($con,$sql);
             header("location:user_account.php?Success= Password Successfully Changed");
-
+        }elseif(!empty($_POST['c_email'])){
+            $query="select * from account where email='". strtolower($_POST['c_email'])."'";
+            $result=mysqli_query($con,$query);
+            if (mysqli_fetch_assoc($result)){
+                header('location:edit.php?email&Invalid= Email has been registered before! Choose another email');
+            }else{
+                $sql = "UPDATE account SET email = '" . strtolower($_POST['c_email']) . "' WHERE email='". strtolower($_SESSION['User'])."'";
+                $insertresults = mysqli_query($con,$sql);
+                session_destroy();
+                session_start();
+                $_SESSION['User']=strtolower($_POST['c_email']);
+                header("location:user_account.php?Success= Password Successfully Changed");
+            }
+        }elseif(!empty($_POST['c_bd'])){
+            $sql = "UPDATE account SET birthdate = '" . $_POST['c_bd'] . "' WHERE email='". strtolower($_SESSION['User'])."'";
+            $insertresults = mysqli_query($con,$sql);
+            header("location:user_account.php?Success= Password Successfully Changed");
+        }elseif(!empty($_POST['c_password'])){
+            $sql = "UPDATE account SET password = '" . $_POST['c_password'] . "' WHERE email='". strtolower($_SESSION['User'])."'";
+            $insertresults = mysqli_query($con,$sql);
+            header("location:user_account.php?Success= Password Successfully Changed");
+        }else{
+            header('location:user_account.php');
        }
     }
 ?>
@@ -76,22 +94,52 @@ if(isset($_SESSION['User']))
 
     <main class="container_login">
         <div class="header">
-            <h1 class="display-4">Forgot Password</h1>
+            <h1 class="display-4">Change 
+                <?php 
+                    if(isset($_GET['name'])){
+                        echo 'Name';
+                    }elseif(isset($_GET['email'])){
+                        echo 'Email';
+                    }elseif(isset($_GET['birthdate'])){
+                        echo 'Birth Date';
+                    }elseif(isset($_GET['password'])){
+                        echo 'Password';
+                    }else{
+                        // header('location:user_account.php');
+                    }
+                ?>
+            </h1>
         </div>
         <div class="login-form">
             <form method="post" class="row g-2">
-                <div class="col-md-23" >
-                    <input type="email" name="Email" placeholder=" Email" class="form-control mb-3">
-                </div>
-                <div class="col-md-23" >
-                    <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
-                </div>
-                <div class="col-md-23" id="prof">
-                    <a href="login.php">Login</a>
-                    <span class="separator"> | </span>
-                    <a href="signup.php">Sign Up</a>
-                </div>
-                <button class="btn btn-success mt-3" name="c_password">Change Password</button>
+                <?php 
+                    if(isset($_GET['name'])){
+                        echo 
+                        '<div class="col-md-23" >
+                            <input type="text" name="c_name" placeholder=" Change Name" class="form-control mb-3" required>
+                        </div> ';
+                    }elseif(isset($_GET['email'])){
+                        echo 
+                        '<div class="col-md-23" >
+                            <input type="email" name="c_email" placeholder=" Change Email" class="form-control mb-3" required>
+                        </div> ';
+                    }elseif(isset($_GET['birthdate'])){
+                        echo 
+                        '<div class="col-md-23" >
+                            <input type="date" name="c_bd" placeholder=" Change Birth Date" class="form-control mb-3" required>
+                        </div> ';
+                    }elseif(isset($_GET['password'])){
+                        echo 
+                        '<div class="col-md-23" >
+                            <input type="password" name="c_password" placeholder=" Change Password" class="form-control mb-3" required>
+                        </div> ';
+                    }else{
+                        header('location:user_account.php');
+                    }
+                ?>
+            
+
+                <button class="btn btn-success mt-3" name="change">Change</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
         </div>
