@@ -201,8 +201,8 @@ if(!isset($_SESSION['User']))
         <a href="change_password.php"><button class="details has-chevron">
             <p class="main2">Update Password</p>
         </button></a>
-        <button class="details has-chevron">
-            <p class="main2">Delete Account</p>
+        <a href="delete_user.php"><button class="details has-chevron">
+            <p class="main2">Delete Account</p></a>
         </button>
         <button class="details has-chevron">
         <?php  
