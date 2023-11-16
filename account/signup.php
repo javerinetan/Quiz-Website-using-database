@@ -18,8 +18,7 @@ require_once('../connection.php');
                 $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL, DEFAULT)";
                 $insertresults = mysqli_query($con,$sql);
                 if (mysqli_query($con,$sql) === TRUE) {
-                header("location:signup.php?Success= New account created! Please go to <a href='login.php'>Login Page</a> ");
-
+                    header("location:login.php");
                 } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -79,7 +78,7 @@ require_once('../connection.php');
             <h1 class="display-4">Sign Up</h1>
         </div>
         <div class="signup-form">
-            <form method="post" class="row g-2" action="login.php">
+            <form method="post" class="row g-2">
                 <div class="col-md-23" >
                     <input type="text" name="Name" placeholder=" Name" class="form-control mb-3">
                 </div>
