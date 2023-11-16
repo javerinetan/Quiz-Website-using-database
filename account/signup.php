@@ -79,7 +79,7 @@ require_once('../connection.php');
             <h1 class="display-4">Sign Up</h1>
         </div>
         <div class="signup-form">
-            <form method="post" class="row g-2">
+            <form method="post" class="row g-2" action="login.php">
                 <div class="col-md-23" >
                     <input type="text" name="Name" placeholder=" Name" class="form-control mb-3">
                 </div>
