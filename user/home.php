@@ -8,6 +8,20 @@ $query="select * from account where id=".$_SESSION['User']."";
 $instance = new DatabaseConnection();
 $row=$instance->retrieveData($query);
 
+$quizQuery = "SELECT * FROM quiz";
+$quizResults = $instance->retrieveData($quizQuery);
+
+function getRandomImagePath() {
+    $imagePool = [
+        'images/image1.jpg',
+        'images/image2.jpeg',
+        'images/image3.jpeg',
+        // Add more image paths as needed
+    ];
+
+    $randomIndex = array_rand($imagePool);
+    return $imagePool[$randomIndex];
+}
 ?>
 
 <!DOCTYPE html>
@@ -159,6 +173,59 @@ $row=$instance->retrieveData($query);
     </div>
 </div>
 
+
+<div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h4 id="quizName"></h4>
+            <p id="numQuestions"></p>
+            <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
+            <a class="btn btn-secondary">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="container-central" onclick="openQuizDetailsModal">
+    <h2>Your Quizzes</h2>
+    <?php 
+    // Fetch quizzes from the quiz table
+    $quizQuery = "SELECT * FROM quiz WHERE creator_id=" . $_SESSION['User'];
+    $quizResult = $con->query($quizQuery);
+
+    // Check if there are quizzes
+    if ($quizResult && $quizResult->num_rows > 0) {
+        echo '<div class="quizzes-container">';
+        while ($quizRow = $quizResult->fetch_assoc()) {
+            // Display each quiz
+            echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
+
+            $randomImagePath = getRandomImagePath();
+            echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
+            echo '<p>' . $quizRow['quiz_name'] . '</p>';
+            echo '</div>';
+        }
+        echo '</div>';
+    } else {
+        echo '<p>No quizzes found.</p>';
+    }
+    ?>
+
+    
+</div>
+
 </body>
 
 <footer>
@@ -166,6 +233,31 @@ $row=$instance->retrieveData($query);
 
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
+
+<script>
+  function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath) {
+    // Set the modal content dynamically
+    var quizImage = document.getElementById('quizImage');
+    var quizNameElement = document.getElementById('quizName');
+    var numQuestionsElement = document.getElementById('numQuestions');
+    var startQuizBtn = document.getElementById('startQuizBtn');
+
+    // Update the image source
+    quizImage.src = imagePath;
+
+    // Update other modal content
+    quizNameElement.innerText = quizName;
+    numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+
+    // Set the href attribute for the "Start Quiz" button
+    startQuizBtn.href = '../quiz/quiz.php?quiz_id=' + quizId;
+
+    // Show the modal
+    $('#quizDetailsModal').modal('show');
+  }
+</script>
+
+
 </footer>
 
 </html>

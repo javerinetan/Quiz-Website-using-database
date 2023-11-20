@@ -4,7 +4,10 @@ nav{
 
 body{
     background-color: #f9f9f9 !important;
+    
 }
+
+
 
 /* Remove border from toggler */
 .navbar-toggler {
@@ -243,4 +246,42 @@ body{
 .main:hover{
     text-decoration: none;
     color: black
+}
+
+#container-central {
+    width: 70%;
+    height: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quiz-container {
+    display: inline-block;
+    width: 200px;
+    margin: 14px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.quiz-container img {
+    width: 150px;
+    height: 150px;
+}
+
+.btn-more {
+    display: none;
+}
+
+/* Media query to show the "More" button on smaller screens */
+@media (max-width: 767px) {
+    .quiz-container {
+        width: 100%;
+    }
+
+    .btn-more {
+        display: block;
+        margin-top: 10px;
+    }
 }
