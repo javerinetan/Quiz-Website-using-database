@@ -708,20 +708,20 @@ session_start();
                 getFeatureFlags,
             };
             // minified
-            async function getFeatureFlags() {
-                try {
-                    let x = await fetch("https://quizizz.com/features").then((x) => x.json()),
-                        e = {};
-                    return (
-                        Object.keys(x.data.features).forEach((t) => {
-                            e[t] = x.data.features[t] ? .defaultValue;
-                        }),
-                        e
-                    );
-                } catch (t) {
-                    return null;
-                }
-            }
+            // async function getFeatureFlags() {
+            //     try {
+            //         let x = await fetch("https://quizizz.com/features").then((x) => x.json()),
+            //             e = {};
+            //         return (
+            //             Object.keys(x.data.features).forEach((t) => {
+            //                 e[t] = x.data.features[t] ? .defaultValue;
+            //             }),
+            //             e
+            //         );
+            //     } catch (t) {
+            //         return null;
+            //     }
+            // }
 
             function create_UUID() {
                 var x = new Date().getTime();
@@ -1080,92 +1080,6 @@ session_start();
                 );
             //# sourceMappingURL=crowdin-plugin.min.js.map
         </script>
-        <script id="banner-script">
-            async function getLocation() {
-                const response = await fetch("https://quizizz.com/_geo/location");
-                const data = await response.json();
-                const {
-                    region,
-                    country
-                } = data.data;
-                return {
-                    region,
-                    country,
-                };
-            }
-
-            function inUSA({
-                country
-            }) {
-                return country ? .includes("US") || false;
-            }
-
-            function inNY({
-                country,
-                region
-            }) {
-                return inUSA({
-                    country
-                }) && region ? .includes("NY");
-            }
-
-            function notInUSA({
-                country
-            }) {
-                return !country ? .includes("US");
-            }
-            async function renderBanner(id, checkL) {
-                const l = await getLocation();
-                const b = document.getElementById(id);
-                if (b) {
-                    if (checkL(l)) {
-                        b.style.display = "flex";
-                    } else {
-                        b.style.display = "none";
-                    }
-                }
-            }
-            (async function handleBanners() {
-                const BANNERS = [{
-                        id: "super-trainer-row",
-                        checkL: notInUSA
-                    },
-                    {
-                        id: "BOCES-banner",
-                        checkL: inNY
-                    },
-                    //      { id: 'certified-educators-us', checkL: inUSA }
-                ];
-                try {
-                    await Promise.allSettled(BANNERS.map(async (b) => await renderBanner(b.id, b.checkL)));
-                } catch (err) {
-                    console.error("error", err);
-                }
-            })();
-        </script>
-        <script>
-            const schoolPlanQuote = document.querySelector("#school-plan-quote");
-            schoolPlanQuote.addEventListener("click", async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const {
-                    country
-                } = await getLocation();
-                if (country === "AU") {
-                    window.location.href = "https://quizizz.typeform.com/to/iKFByhuz?typeform-source=quizizz.com&source=nav_button_v2&source_cat=marketing";
-                } else if (country === "US") {
-                    window.location.href = "https://quizizz.com/home/schools-districts-new-form-v1?source_detail=nav_button_paperformv2&source_cat=marketing";
-                    if (window.location.pathname.includes("home-v1") || window.location.pathname.includes("homepage-experiment-v1")) {
-                        window.location.href = "https://quizizz.com/home/schools-districts-new-form-v1?source_detail=nav_button_paperform_v3&source_cat=marketing&lng=en";
-                    }
-                } else {
-                    window.location.href = "https://quizizz.typeform.com/to/vZxFA4SC?typeform-source=quizizz.com&source=nav_button&source_cat=marketing";
-                    if (window.location.pathname.includes("home-v1") || window.location.pathname.includes("homepage-experiment-v1")) {
-                        window.location.href = "https://quizizz.typeform.com/to/vZxFA4SC?typeform-source=quizizz.com&source=nav_button_v2&source_cat=marketing";
-                    }
-                }
-            });
-        </script>
         <script>
             (function() {
                 function handlePageViewEvent() {
@@ -1193,9 +1107,6 @@ session_start();
                 direction: unset !important;
             }
         </style>
-
-        
-
         <script>
             $(document).ready(function() {
                 let progressBar1 = $(".progress-bar._1")[0];
