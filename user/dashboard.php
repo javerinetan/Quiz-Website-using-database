@@ -2,7 +2,43 @@
 require_once('../connection.php');
 session_start();
 if(!isset($_SESSION['User']))
-    {header("location:login.php");} 
+    {header("location:login.php");
+} 
+
+$userid = $_SESSION['User'];
+$query="select * from account where id=".$_SESSION['User']."";
+$instance = new DatabaseConnection();
+$row=$instance->retrieveData($query);
+
+// Count quizzes created by the user
+$queryCreated = "SELECT COUNT(*) as quizzes_created FROM quiz WHERE creator_id = $userid";
+$resultCreated = mysqli_query($con, $queryCreated);
+if ($resultCreated == TRUE) {
+    $rowCreated = mysqli_fetch_assoc($resultCreated);
+    $quizzesCreated = $rowCreated['quizzes_created'];
+    // $quizzesCreated = mysqli_num_rows($resultCreated);
+
+} else {
+    // created = 0 
+    // echo "Error: " . $queryCreated . "<br>" . $con->error;
+
+}
+
+// Count quizzes taken by the user
+$queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz_attempts WHERE user_id = $userid";
+$resultTaken = mysqli_query($con, $queryTaken);
+// $rowTaken = mysqli_fetch_assoc($resultTaken);
+// $quizzesTaken = $rowTaken['quizzes_taken'];
+
+if ($resultTaken == TRUE) {
+    $rowTaken = mysqli_fetch_assoc($resultTaken);
+    $quizzesTaken = $rowTaken['quizzes_taken'];
+} else {
+    // taken = 0
+    // echo "Error: " . $queryCreated . "<br>" . $con->error;
+}
+// $quizzesTaken = $instance->retrieveData($queryTaken)
+
 ?>
 
 <!DOCTYPE html>
@@ -11,15 +47,7 @@ if(!isset($_SESSION['User']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-    <?php
-        $query = "SELECT name FROM account WHERE email='" . $_SESSION['User'] . "'";
-        $result = mysqli_query($con, $query);
-        $row = $result->fetch_assoc();
-        echo 'Welcome ' . ucfirst($row['name']);
-    ?>
-
-    </title>
+    <title>Dashboard</title>
 
     <!-- bootstraps -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -66,20 +94,20 @@ if(!isset($_SESSION['User']))
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.php" tabindex="-1" aria-disabled="true">Home</a>
+                    <a class="nav-link" aria-current="page" href="./home.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Activity</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
             </ul>
         </div>
 
         <!-- Profile button and dropdown on the left -->
         <div class="dropdown">
-            <button class="btn create " type="submit">Create a Quiz</button>
+        <a href="../quiz/create_quiz.php"><button class="btn create " type="submit">Create a Quiz</button></a>
 
             <!-- Profile dropdown with image -->
             <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,36 +116,22 @@ if(!isset($_SESSION['User']))
             <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">
                 <?php  
-                if(isset($_SESSION['User']))
-                    {
-                        $query="select * from account where email='".$_SESSION['User']."'";
-                        $results=mysqli_query($con,$query);
-                        $row=$results->fetch_assoc();
-                        echo $row['name'];
-                        echo '<br>';
-                        echo $row['email'];
-                    }
-                else
-                    {
-                        header("location:login.php");
-                    }
+                    $query="select * from account where id=".$_SESSION['User']."";
+                    $results=mysqli_query($con,$query);
+                    $row=$results->fetch_assoc();
+                    echo $row['name'];
+                    echo '<br>';
+                    echo $row['email'];
                 ?>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
-                <li>
-                <?php  
-                if(isset($_SESSION['User']))
-                    {
-                        $query="select * from account where email='".$_SESSION['User']."'";
-                        $results=mysqli_query($con,$query);
-                        $row=$results->fetch_assoc();
-                        echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
-                    }
-                else
-                    {
-                        header("location:login.php");
-                    }
+                <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
+                <?php 
+                    // $query="select * from account where email='".$_SESSION['User']."'";
+                    // $results=mysqli_query($con,$query);
+                    // $row=$results->fetch_assoc();
+                    // echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
                 ?>
                 </li>
             </ul>
@@ -127,7 +141,28 @@ if(!isset($_SESSION['User']))
 
 
 <body>
-hi
+
+<!-- Dashboard for no. of quiz created & Quiz taken over a session -->
+
+<div class="dashboard">
+    <h2>Welcome, <?php echo $row['name'] ; ?>!</h2>
+
+    <p>Number of quizzes created: <?php 
+    if($resultCreated==True){
+        echo $quizzesCreated;
+    }else{
+        echo "0";
+    }; 
+    ?></p>
+    <p>Number of quizzes taken: <?php 
+    if($resultTaken==TRUE){
+        echo $quizzesTaken;
+    }else{
+        echo "0";
+    }; 
+    ?></p>
+</div>
+
 </body>
 
 <footer>
