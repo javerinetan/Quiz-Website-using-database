@@ -51,6 +51,15 @@ if(!isset($_SESSION['User']))
         $op3 = $_POST["q{$question_no}_op3"];
         $op4 = $_POST["q{$question_no}_op4"];
         $correct = $_POST["q{$question_no}_answer"];
+        if($correct=="option_1"){
+            $correct=$op1;
+        }elseif($correct=="option_2"){
+            $correct=$op2;
+        }elseif($correct=="option_3"){
+            $correct=$op3;
+        }elseif($correct=="option_4"){
+            $correct=$op4;
+        }
         $qn_query = "insert into ".$table_name." values (NULL, '".$qn."', '".$op1."', '".$op2."', '".$op3."', '".$op4."', '".$correct."')";
         $results=mysqli_query($con,$qn_query);
         // if (mysqli_query($con,$qn_query) === TRUE) {
