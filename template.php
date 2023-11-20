@@ -45,7 +45,7 @@ if(!isset($_SESSION['User']))
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <!-- Logo and Search Bar on the left -->
-        <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="user_dashboard.php">
+        <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="../user/home.php">
 
         <!-- Toggler Button for small screens -->
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,13 +61,13 @@ if(!isset($_SESSION['User']))
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./home.php">Home</a>
+                    <a class="nav-link" aria-current="page" href="../user/home.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Activity</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Dashboard</a>
+                    <a class="nav-link" href="../user/dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -92,7 +92,7 @@ if(!isset($_SESSION['User']))
                 ?>
                 </li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
+                <li><a class="dropdown-item" href="../user/user_account.php">Settings</a></li>
                 <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
                 <?php 
                     // $query="select * from account where email='".$_SESSION['User']."'";

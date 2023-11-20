@@ -55,7 +55,7 @@ $row=$instance->retrieveData($query);
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <!-- Logo and Search Bar on the left -->
-        <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="user_dashboard.php">
+        <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="home.php">
 
         <!-- Toggler Button for small screens -->
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

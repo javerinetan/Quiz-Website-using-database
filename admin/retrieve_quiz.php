@@ -114,7 +114,6 @@ else{
 
         <!-- Profile button and dropdown on the left -->
         <div class="dropdown">
-            <button class="btn create " type="submit">Create a Quiz</button>
 
             <!-- Profile dropdown with image -->
             <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
