@@ -97,7 +97,7 @@ if(!isset($_SESSION['User']))
                     <input type="text" name="q_name" placeholder=" Quiz Name" class="form-control mb-3">
                 </div>
                 <div class="col-md-23" >
-                    <input type="number" name="q_no" placeholder=" Number of Questions" class="form-control mb-3">
+                    <input type="number" name="q_no" placeholder=" Number of Questions" min=1 class="form-control mb-3">
                 </div>
 
                 <button class="btn btn-success mt-3" name="c_quiz">Create Quiz</button>
