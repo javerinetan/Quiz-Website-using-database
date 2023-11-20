@@ -43,7 +43,7 @@ if(!isset($_SESSION['User']))
             <h1 class="display-4">Create Quiz</h1>
         </div>
         <div class="form">
-            <form method="post" class="row g-2" action='edit_quiz.php'>
+            <form method="post" class="row g-2" action='create_questions.php'>
                 <div class="col-md-23" >
                     <input type="text" name="q_name" placeholder=" Quiz Name" class="form-control mb-3">
                 </div>

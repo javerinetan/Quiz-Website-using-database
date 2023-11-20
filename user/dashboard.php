@@ -28,17 +28,17 @@ if ($resultCreated == TRUE) {
 
 // Count quizzes taken by the user
 $queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz WHERE user_id = $userid";
+$resultTaken = FALSE; // temporary until the table for it has been set
 // $resultTaken = mysqli_query($con, $queryTaken);
 // $rowTaken = mysqli_fetch_assoc($resultTaken);
 // $quizzesTaken = $rowTaken['quizzes_taken'];
-$resultTaken = FALSE;
-if ($resultTaken == TRUE) {
-    $rowTaken = mysqli_fetch_assoc($resultTaken);
-    $quizzesTaken = $rowTaken['quizzes_taken'];
-} else {
-    // taken = 0
-    // echo "Error: " . $queryCreated . "<br>" . $con->error;
-}
+// if ($resultTaken == TRUE) {
+//     $rowTaken = mysqli_fetch_assoc($resultTaken);
+//     $quizzesTaken = $rowTaken['quizzes_taken'];
+// } else {
+//     // taken = 0
+//     // echo "Error: " . $queryCreated . "<br>" . $con->error;
+// }
 // $quizzesTaken = $instance->retrieveData($queryTaken)
 
 ?>

@@ -8,10 +8,6 @@ $query="select * from account where id=".$_SESSION['User']."";
 $instance = new DatabaseConnection();
 $row=$instance->retrieveData($query);
 
-// $query = "select * from account where email='".$_SESSION['User']."'";
-// $results=mysqli_query($con,$query);
-// $row=$results->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>

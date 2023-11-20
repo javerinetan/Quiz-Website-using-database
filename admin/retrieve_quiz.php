@@ -21,7 +21,7 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin | Retrieve Users</title>
+    <title>Admin | Retrieve Quiz</title>
 
     <!-- bootstraps -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -147,20 +147,20 @@ else{
 </nav>
 
 <?php
-$query = " SELECT * FROM account WHERE admin = FALSE ;";
+$query = " SELECT * FROM quiz ;";
 $result = $con->query($query);
 ?>
 
 <body>
     <section>
-        <h1>User table</h1>
+        <h1>Quiz table</h1>
         <table>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Joined for (days)</th>
+                <th>Quiz ID</th>
+                <th>Creator ID</th>
+                <th>Quiz Name</th>
+                <th>No. of Questions</th>
+                <th>Created On</th>
             </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php 
@@ -171,26 +171,13 @@ $result = $con->query($query);
             <tr>
                 <!-- FETCHING DATA FROM EACH
                     ROW OF EVERY COLUMN -->
-                <td><?php echo $rows['id'];?></td>
-                <td><?php echo $rows['name'];?></td>
+                <td><?php echo $rows['quiz_id'];?></td>
+                <td><?php echo $rows['creator_id'];?></td>
                 <td>
-                    <?php 
-                        $date = new DateTime($rows['birthdate']);
-                        $currentDate = new DateTime();
-                        // Calculate the interval between the two dates
-                        $interval = $date->diff($currentDate);
-                        $age = $interval->y;
-                        echo $age;?>
+                    <?php echo $rows['quiz_name'];?>
                 </td>
-                <td><?php echo $rows['email'];?></td>
-                <td><?php 
-                $date = new DateTime($rows['joined_on']);
-                $currentDate = new DateTime();
-                // Calculate the interval between the two dates
-                $interval = $date->diff($currentDate);
-                $days = $interval->d;
-                echo $days;?></td>
-                <!-- <td><?php echo $rows['joined_on'];?></td> -->
+                <td><?php echo $rows['questions'];?></td>
+                <td><?php echo $rows['created_on'];?></td>
 
             </tr>
             <?php

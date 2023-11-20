@@ -31,10 +31,7 @@ if(!isset($_SESSION['User']))
         if (isset($_POST['c_qn'])){
             $q_name=$_POST['q_name'];
             $q_no=intval($_POST['q_no']);
-            $query="select id from account where id='".$_SESSION['User']."'";
-            $instance = new DatabaseConnection();
-            $row=$instance->retrieveData($query);
-            $creator_id = $row['id'];
+            $creator_id = $_SESSION['User'];
 
             //create row in quiz table
             $sql = "INSERT INTO quiz VALUES (NULL,'".$creator_id."', '".strtolower($q_name)."', '".$q_no."', NULL)";
@@ -43,6 +40,7 @@ if(!isset($_SESSION['User']))
             
             // create specific quiz question table
             $query2="select quiz_id from quiz where quiz_name='".strtolower($q_name)."'";
+            $instance = new DatabaseConnection();
             $row2=$instance->retrieveData($query2);
             $quiz_no=$row2['quiz_id'];
             $instance->createQuizTable($row2['quiz_id']);
@@ -80,7 +78,7 @@ if(!isset($_SESSION['User']))
                 // }
                 $question_no ++;
             }
-            header("location:retrieve_quiz.php?quiz_id=".$quiz_no);
+            header("location:view_quiz.php?quiz_id=".$quiz_no);
         }
     }else{
         header("location:create_quiz.php");
@@ -94,7 +92,7 @@ if(!isset($_SESSION['User']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>Create Quiz Questions</title>
 
     <!-- bootstraps -->
     <link rel="stylesheet" href="css/bootstrap.css">

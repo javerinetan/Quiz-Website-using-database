@@ -3,6 +3,11 @@ require_once('../connection.php');
 session_start();
 if(!isset($_SESSION['User']))
     {header("location:../account/login.php");} 
+
+$query="select * from account where id=".$_SESSION['User']."";
+$instance = new DatabaseConnection();
+$row=$instance->retrieveData($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +18,9 @@ if(!isset($_SESSION['User']))
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
     <?php
-        $query = "SELECT name FROM account WHERE id=" . $_SESSION['User'] . "";
-        $result = mysqli_query($con, $query);
-        $row = $result->fetch_assoc();
+        // $query = "SELECT name FROM account WHERE id=" . $_SESSION['User'] . "";
+        // $result = mysqli_query($con, $query);
+        // $row = $result->fetch_assoc();
         echo 'Welcome ' . ucfirst($row['name']);
     ?>
 
