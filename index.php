@@ -669,12 +669,12 @@ session_start();
         </div>
         <div class="footer-right-wrapper">
         <div class="footer-column">
-            <a href="" target="_blank" class="footer-links">The Quizit Blog</a>
-            <a href="" target="_blank" class="footer-links">Teacher Resources</a>
+            <a href="" class="footer-links">The Quizit Blog</a>
+            <a href="" class="footer-links">Teacher Resources</a>
             <a href="https://quizizz.com/quizizzforwork?source=home_footer" target="_blank" class="footer-links">Quizit for Work</a></div>
                         <div class="footer-column"><a href="" target="_blank" class="footer-links">Worksheets</a>
-                            <a href="" target="_blank" class="footer-links">Reseller program</a>
-                            <a href="" target="_blank" class="footer-links">Privacy Policy</a></div>
+                            <a href="" class="footer-links">Reseller program</a>
+                            <a href="" class="footer-links">Privacy Policy</a></div>
                         <div></div>
                     </div>
                 </div>
