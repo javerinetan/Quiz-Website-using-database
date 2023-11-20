@@ -1,6 +1,8 @@
 <?php 
 require_once('../connection.php');
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(!isset($_SESSION['User']))
     {header("location:login.php");
 } 
@@ -25,11 +27,11 @@ if ($resultCreated == TRUE) {
 }
 
 // Count quizzes taken by the user
-$queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz_attempts WHERE user_id = $userid";
-$resultTaken = mysqli_query($con, $queryTaken);
+$queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz WHERE user_id = $userid";
+// $resultTaken = mysqli_query($con, $queryTaken);
 // $rowTaken = mysqli_fetch_assoc($resultTaken);
 // $quizzesTaken = $rowTaken['quizzes_taken'];
-
+$resultTaken = FALSE;
 if ($resultTaken == TRUE) {
     $rowTaken = mysqli_fetch_assoc($resultTaken);
     $quizzesTaken = $rowTaken['quizzes_taken'];
