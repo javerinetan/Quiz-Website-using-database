@@ -153,17 +153,17 @@ if(!isset($_SESSION['User']))
                     <div class="col-md-23" >
                         
                         <p>What is the correct option</p>
-                        <input type="radio" name="q'.$question_no.'_answer" id="option_1" value="option_1" required>
-                        <label for="option_1">Option 1</label>
+                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_1" value="option_1" required>
+                        <label for="q'.$question_no.'_option_1">Option 1</label>
                         <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="option_2" value="option_2" required>
-                        <label for="option_2">Option 2</label>
+                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_2" value="option_2" required>
+                        <label for="q'.$question_no.'_option_2">Option 2</label>
                         <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="option_3" value="option_3" required>
-                        <label for="option_3">Option 3</label>
+                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_3" value="option_3" required>
+                        <label for="q'.$question_no.'_option_3">Option 3</label>
                         <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="option_4" value="option_4" required>
-                        <label for="option_4">Option 4</label>
+                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_4" value="option_4" required>
+                        <label for="q'.$question_no.'_option_4">Option 4</label>
 
 
                         
