@@ -1,0 +1,48 @@
+.containers {
+    padding: 50px;
+}
+
+/* Style for the sidebar */
+
+.sidebar {
+    float: left;
+    width: 20%;
+    padding: 20px;
+    height: 100%;
+}
+
+/* Style for the main content */
+.main-content {
+    float: left;
+    width: 80%;
+    padding: 20px;
+}
+
+/* Style for the question links in the sidebar */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #0066cc;
+}
+
+/* Style for question containers */
+.question-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Add additional styling as needed for input fields and buttons */

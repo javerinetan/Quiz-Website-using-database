@@ -102,8 +102,10 @@ if(!isset($_SESSION['User']))
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
+    <link href="quiz_style.css" rel="stylesheet" type ="text/css" />
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -117,83 +119,83 @@ if(!isset($_SESSION['User']))
 </head>
 
 <body>
-    <main class="container">
-        <div class="header">
-            <h1 class="display-4">Edit 
+    <main class="containers">
+        <div class="header text-center">
+            <h1 class="display-4 Quiz_name">Edit 
             <?php 
             echo $q_name;
             ?> 
             Quiz</h1>
         </div>
-        
-        <div class="form">
-            <form method="post" class="row g-2">
-            <?php 
+
+        <div class="sidebar">
+            <h2>Questions</h2>
+            <ul>
+                <?php
+                    for ($question_no = 1; $question_no <= $q_no; $question_no++) {
+                        echo '<li><a href="#question'.$question_no.'">Question '.$question_no.'</a></li>';
+                    }
+                ?>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <form method="post" class="row g-2" id="quiz-form">
+                <?php
                 $question_no = 1;
-                // $query="SELECT * FROM quiz WHERE quiz_id='".$_GET['quiz_id']."'";
-                // $instance = new DatabaseConnection();
-                // $row=$instance->retrieveData($query);
                 $limit = $q_no;
-                // LOOP TILL END OF DATA
-                while($question_no <= $limit)
-                {
+                while ($question_no <= $limit) {
                     echo '
-                    <div style="border-style: solid;">
-                    <div class="col-md-23" >
-                        <label for="q'.$question_no.'_qn">Question</label>
-                        <input type="text" name="q'.$question_no.'_qn" placeholder=" Question '.$question_no.'" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23" >
-                        <label for="q'.$question_no.'_op1">Option 1</label>
-                        <input type="text" name="q'.$question_no.'_op1" placeholder=" Option 1" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q'.$question_no.'_op2">Option 2</label>
-                        <input type="text" name="q'.$question_no.'_op2" placeholder=" Option 2" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23" >
-                        <label for="q'.$question_no.'_op3">Option 3</label>
-                        <input type="text" name="q'.$question_no.'_op3" placeholder=" Option 3" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23" >
-                        <label for="q'.$question_no.'_op4">Option 4</label>
-                        <input type="text" name="q'.$question_no.'_op4" placeholder=" Option 4" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23" >
-                        
-                        <p>What is the correct option</p>
-                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_1" value="option_1" required>
-                        <label for="q'.$question_no.'_option_1">Option 1</label>
-                        <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_2" value="option_2" required>
-                        <label for="q'.$question_no.'_option_2">Option 2</label>
-                        <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_3" value="option_3" required>
-                        <label for="q'.$question_no.'_option_3">Option 3</label>
-                        <br>
-                        <input type="radio" name="q'.$question_no.'_answer" id="q'.$question_no.'_option_4" value="option_4" required>
-                        <label for="q'.$question_no.'_option_4">Option 4</label>
-
-
-                        
-                    </div>
-                    </div>
-                ';
-                $question_no++;  
-            
+                    <div class="question-container" id="question'.$question_no.'">
+                        <h3>Question '.$question_no.'</h3>
+                        <div class="col-md-23" >
+                            <label for="q'.$question_no.'_qn">Question</label>
+                            <input type="text" name="q'.$question_no.'_qn" placeholder=" Question '.$question_no.'" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23" >
+                            <label for="q'.$question_no.'_op1">Option 1</label>
+                            <input type="text" name="q'.$question_no.'_op1" placeholder=" Option 1" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q'.$question_no.'_op2">Option 2</label>
+                            <input type="text" name="q'.$question_no.'_op2" placeholder=" Option 2" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23" >
+                            <label for="q'.$question_no.'_op3">Option 3</label>
+                            <input type="text" name="q'.$question_no.'_op3" placeholder=" Option 3" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23" >
+                            <label for="q'.$question_no.'_op4">Option 4</label>
+                            <input type="text" name="q'.$question_no.'_op4" placeholder=" Option 4" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q'.$question_no.'_answer">Correct Answer</label>
+                            <select name="q'.$question_no.'_answer" class="form-control" required>
+                                <option value="option_1">Option 1</option>
+                                <option value="option_2">Option 2</option>
+                                <option value="option_3">Option 3</option>
+                                <option value="option_4">Option 4</option>
+                            </select>
+                        </div>
+                    </div>';
+                    $question_no++;
                 }
-            ?>
-            <?php
-                echo '
-                <input type="hidden" id="q_name" name="q_name" value="'.$q_name.'">
-                <input type="hidden" id="q_no" name="q_no" value="'.$q_no.'">
-                ';
-            ?>
-                
-                <button class="btn btn-success mt-3" name="c_qn">Create Quiz</button>
-                <!-- class="btn btn-primary text-center mb-4" -->
+                ?>
+
+                <?php
+                    echo '
+                    <input type="hidden" id="q_name" name="q_name" value="'.$q_name.'">
+                    <input type="hidden" id="q_no" name="q_no" value="'.$q_no.'">
+                    ';
+                ?>
+
+                <!-- Display the "Submit" button for the last question -->
+                <?php if ($question_no > $limit): ?>
+                    <button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Submit</button>
+                <?php endif; ?>
             </form>
         </div>
+
     </main>
 
 </body>
@@ -203,6 +205,61 @@ if(!isset($_SESSION['User']))
 
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
+
+<script>
+
+    $(document).ready(function () {
+                $("#quiz-form").submit(function () {
+                    var inputs = $("input[type='text']", this);
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (inputs[i].value.trim() === '') {
+                            alert('Please fill in all the input fields.');
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+            });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var questionContainers = document.querySelectorAll('.question-container');
+
+        function showQuestion(questionNumber) {
+            questionContainers.forEach(function (container, index) {
+                if (index + 1 === questionNumber) {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+        }
+
+        var questionLinks = document.querySelectorAll('.sidebar ul li a');
+        questionLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var questionNumber = parseInt(this.textContent.match(/\d+/)[0], 10);
+                showQuestion(questionNumber);
+            });
+        });
+
+        // Show the first question by default
+        showQuestion(1);
+    });
+
+    function submitForm() {
+            // Check if the form is valid before submitting
+            if (document.getElementById('quizForm').checkValidity()) {
+                // Add your code to submit the form
+                console.log('Form submitted!');
+            } else {
+                alert('Please fill in all the required fields.');
+            }
+        }
+
+
+</script>
+
 </footer>
 
 </html>
