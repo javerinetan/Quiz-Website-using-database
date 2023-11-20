@@ -81,7 +81,7 @@ $row=$instance->retrieveData($query);
                     <a class="nav-link" href="#">Activity</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Dashboard</a>
+                    <a class="nav-link" href="dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
             </ul>
         </div>
