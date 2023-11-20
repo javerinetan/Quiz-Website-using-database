@@ -148,7 +148,6 @@ $resultTaken = FALSE; // temporary until the table for it has been set
 
 <div class="dashboard">
     <h2>Welcome, <?php echo $row['name'] ; ?>!</h2>
-
     <p>Number of quizzes created: <?php 
     if($resultCreated==True){
         echo $quizzesCreated;
@@ -164,6 +163,60 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     }; 
     ?></p>
 </div>
+
+<?php 
+    $queryforgraph1 = "SELECT YEAR(created_on) AS year, MONTH(created_on) AS month, COUNT(*) AS quizzes_created
+                       FROM quiz
+                       WHERE creator_id = $userid
+                       GROUP BY year, month";
+
+    // Fetch data for graph1
+    $resultGraph1 = mysqli_query($con, $queryforgraph1);
+    $dataGraph1 = [];
+
+    while ($rowGraph1 = mysqli_fetch_assoc($resultGraph1)) {
+        $dataGraph1[] = [
+            'year' => $rowGraph1['year'],
+            'month' => $rowGraph1['month'],
+            'quizzes_created' => $rowGraph1['quizzes_created'],
+        ];
+    }
+?>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <?php 
+            echo json_encode(array_map(function($entry) {
+                return date("M Y", mktime(0, 0, 0, $entry['month'], 1, $entry['year']));
+            }, $dataGraph1)); 
+        ?>,
+        datasets: [{
+            label: '# of Quiz Created per Month',
+            data: <?php echo json_encode(array_column($dataGraph1, 'quizzes_created')); ?>,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                stepSize: 1,
+                precision: 0
+            }
+        }
+    }
+});
+</script>
 
 </body>
 
