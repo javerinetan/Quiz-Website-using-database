@@ -120,7 +120,7 @@ session_start();
             <a href="" target="_blank" class="nav-link hide w-nav-link">Schools and Districts</a>
             <a href="" class="nav-link w-nav-link">Plans</a>
                                     
-            <a href="" class="nav-link w-nav-link">Quizizz for Work</a>
+            <a href="" class="nav-link w-nav-link">Quizit for Work</a>
             <div class="navigation-buttons-container in-menu">
                 <a href="#" target="_blank" class="code-button w-button">Enter code  ••••</a>
                 <a href="#" target="_blank" class="button-sign-up w-button">Sign up</a>
@@ -169,8 +169,8 @@ session_start();
         </p>
     </div>
     <div class="buttons-container home-hero">
-        <a id="sign-up-hero-home" href="" class="purple-button">
-            <div class="button-subtext">teachers</div>
+        <a id="sign-up-hero-home" href="./account/signup.php" class="purple-button">
+            <div class="button-subtext">Users</div>
             <div class="button-bottom-contain">
                 <div class="button-text">Sign up for free</div>
                 <img src="./wf/assets/62fa641a161d3a38c7681d0e_Right_Arrow_Button.svg" loading="lazy" alt="Arrow pointing right" class="button-arrow" />
@@ -635,8 +635,8 @@ session_start();
         <div class="cta-subtext">The best way to ask questions, explore ideas, and let students show what they know.</div>
         <h2 class="cta-heading">Start motivating students.<span class="cta-span">In minutes.</span></h2>
         <div class="buttons-container footer-buttons">
-            <a href="" target="_blank" class="uk_yellow-button w-inline-block">
-                <div class="button-subtext">Teachers</div>
+            <a href="./account/signup.php" target="_blank" class="uk_yellow-button w-inline-block">
+                <div class="button-subtext">Users</div>
                 <div class="button-bottom-contain">
                     <div class="button-text">Sign up for free</div>
                     <img src="https://quizizz.com/wf/assets/62fa641a161d3a38c7681d0e_Right_Arrow_Button.svg" loading="lazy" alt="Arrow pointing right" class="button-arrow" />
@@ -664,14 +664,14 @@ session_start();
             <div class="footer-wrapper">
                 <div class="footer-top-wrapper">
                     <div class="footer-left-wrapper">
-                        <a href="" aria-current="page" class="footer-logo w-nav-brand w--current"><img src="https://quizizz.com/wf/assets/62fa6419161d3a641f681ceb_Logo.svg" loading="lazy" alt="Quizizz Logo" class="logo-image" /></a>
+                        <a href="" aria-current="page" class="footer-logo w-nav-brand w--current"><img src="./wf/assets/QuizITLogoname.png" loading="lazy" alt="Quizizz Logo" class="logo-image" /></a>
                         
         </div>
         <div class="footer-right-wrapper">
         <div class="footer-column">
-            <a href="" target="_blank" class="footer-links">The Quizizz Blog</a>
+            <a href="" target="_blank" class="footer-links">The Quizit Blog</a>
             <a href="" target="_blank" class="footer-links">Teacher Resources</a>
-            <a href="https://quizizz.com/quizizzforwork?source=home_footer" target="_blank" class="footer-links">Quizizz for Work</a></div>
+            <a href="https://quizizz.com/quizizzforwork?source=home_footer" target="_blank" class="footer-links">Quizit for Work</a></div>
                         <div class="footer-column"><a href="" target="_blank" class="footer-links">Worksheets</a>
                             <a href="" target="_blank" class="footer-links">Reseller program</a>
                             <a href="" target="_blank" class="footer-links">Privacy Policy</a></div>
@@ -681,7 +681,7 @@ session_start();
                 <div id="footnote" class="footer-bottom-wrapper">
                     <div></div>
                     <div class="footnote-right-contain">
-                        <div class="copyright-text">2023 Quizizz Inc.</div>
+                        <div class="copyright-text">2023 Quizit Inc.</div>
                     </div>
                 </div>
             </div>
