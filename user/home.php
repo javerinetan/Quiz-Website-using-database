@@ -45,6 +45,14 @@ if(!isset($_SESSION['User']))
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
+    <style>
+        #container-central{
+         width: 70%;
+         height: 30%;   
+         margin-left: auto;
+         margin-right: auto;
+        }
+    </style>
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -79,7 +87,7 @@ if(!isset($_SESSION['User']))
 
         <!-- Profile button and dropdown on the left -->
         <div class="dropdown">
-            <button class="btn create " type="submit">Create a Quiz</button>
+        <a href="../quiz/create_quiz.php"><button class="btn create " type="submit" href="create_quiz.php">Create a Quiz</button></a>
 
             <!-- Profile dropdown with image -->
             <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -115,6 +123,36 @@ if(!isset($_SESSION['User']))
 
 
 <body>
+    
+<!-- Create a carousel to show quiz -->
+<div id="container-central">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 3">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+</div>
 
 </body>
 
