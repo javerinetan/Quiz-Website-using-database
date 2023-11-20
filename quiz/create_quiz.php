@@ -7,55 +7,6 @@ if(!isset($_SESSION['User']))
 
 ?>
 
-<?php 
-    if(isset($_POST['c_quiz']))
-    {
-       if(empty($_POST['q_name']) || empty($_POST['q_no']))
-       {
-            header("location:create_quiz.php?Empty= Please Fill in the Blanks");
-       }
-       else
-       {   
-            $query="select * from quiz where quiz_name='". $_POST['q_name']."'";
-            $result=mysqli_query($con,$query);
-            $rowCount = mysqli_num_rows($result);
-            if($rowCount>0){
-                header('location:create_quiz.php?Invalid= This quiz name has been taken choose something else!</a>');
-            }else{
-            $query="select id from account where id='".$_SESSION['User']."'";
-            $instance = new DatabaseConnection();
-            $row=$instance->retrieveData($query);
-            $creator_id = $row['id'];
-
-            $sql = "INSERT INTO quiz VALUES (NULL,'".$creator_id."', '".strtolower($_POST['q_name'])."', '".$_POST['q_no']."', NULL)";
-            // $insertresults = mysqli_query($con,$sql);
-            if (mysqli_query($con,$sql)) {
-                // header("location:signup.php?Success= New account created! Please go to <a href='login.php'>Login Page</a> ");
-                $query2="select quiz_id from quiz where quiz_name='".strtolower($_POST['q_name'])."'";
-                $row2=$instance->retrieveData($query2);
-                
-                $instance->createQuizTable($row2['quiz_id']);
-                // $table_query="CREATE TABLE quiz_".$row2['quiz_id']."(
-                //     quiz_no INT PRIMARY KEY AUTO_INCREMENT, 
-                //     question VARCHAR(255) NOT NULL, 
-                //     option_1 VARCHAR(255) NOT NULL, 
-                //     option_2 VARCHAR(255) NOT NULL, 
-                //     option_3 VARCHAR(255) NOT NULL, 
-                //     option_4 VARCHAR(255) NOT NULL, 
-                //     answer VARCHAR(255) NOT NULL
-                // )";
-                // mysqli_query($con, $table_query);
-
-                header("location:edit_quiz.php?quiz_id=".$row2['quiz_id']);
-            } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }
-            
-       }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +43,7 @@ if(!isset($_SESSION['User']))
             <h1 class="display-4">Create Quiz</h1>
         </div>
         <div class="form">
-            <form method="post" class="row g-2">
+            <form method="post" class="row g-2" action='edit_quiz.php'>
                 <div class="col-md-23" >
                     <input type="text" name="q_name" placeholder=" Quiz Name" class="form-control mb-3">
                 </div>

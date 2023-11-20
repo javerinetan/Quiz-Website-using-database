@@ -8,70 +8,84 @@ if(!isset($_SESSION['User']))
 ?>
 
 <?php 
-    if(isset($_POST['c_quiz']))
-    {
-    //    if(empty($_POST['q_name']) || empty($_POST['q_no']))
-    //    {
-    //         header("location:forgot-password.php?Empty= Please Fill in the Blanks");
-    //    }
-    //    else
-    //    {
-    //         $query="select id from account where email='".$_SESSION['User']."'";
-    //         $instance = new DatabaseConnection();
-    //         $row=$instance->retrieveData($query);
-    //         $creator_id = $row['id'];
-
-    //         $sql = "INSERT INTO quiz VALUES (NULL,'".$creator_id."', '".strtolower($_POST['q_name'])."', '".$_POST['q_no']."', NULL)";
-    //         $insertresults = mysqli_query($con,$sql);
-    //         if (mysqli_query($con,$sql) === TRUE) {
-    //             // header("location:signup.php?Success= New account created! Please go to <a href='login.php'>Login Page</a> ");
-    //             $query="select quiz_id where quiz_name='".strtolower($_POST['q_name'])."'";
-    //             $insertresults = mysqli_query($con,$sql);
-
-    //             header("location:edit_quiz.php?quiz_id=".$insertresults);
-    //         } else {
-    //         echo "Error: " . $sql . "<br>" . $conn->error;
-    //         }
-            
-    //    }
-    $quiz_no=$_GET['quiz_id'];
-
-    $table_name = "quiz_". $quiz_no ;
-    $question_no = 1;
-    $query="select * from quiz where quiz_id='".$_GET['quiz_id']."'";
-    $instance = new DatabaseConnection();
-    $row=$instance->retrieveData($query);
-    $limit = $row['questions'];
-    // LOOP TILL END OF DATA
-    while($question_no <= $limit)
-    {
-        $qn = $_POST["q{$question_no}_qn"];
-        $op1 = $_POST["q{$question_no}_op1"];
-        $op2 = $_POST["q{$question_no}_op2"];
-        $op3 = $_POST["q{$question_no}_op3"];
-        $op4 = $_POST["q{$question_no}_op4"];
-        $correct = $_POST["q{$question_no}_answer"];
-        if($correct=="option_1"){
-            $correct=$op1;
-        }elseif($correct=="option_2"){
-            $correct=$op2;
-        }elseif($correct=="option_3"){
-            $correct=$op3;
-        }elseif($correct=="option_4"){
-            $correct=$op4;
+    if(isset($_POST['c_quiz']) || isset($_POST['c_qn'])){
+        if(isset($_POST['c_quiz'])){
+            if(empty($_POST['q_name']) || empty($_POST['q_no']))
+            {
+                header("location:create_quiz.php?Empty= Please Fill in the Blanks");
+            }
+            else
+            {   
+                $query="select * from quiz where quiz_name='". $_POST['q_name']."'";
+                $result=mysqli_query($con,$query);
+                $rowCount = mysqli_num_rows($result);
+                if($rowCount>0){
+                    header('location:create_quiz.php?Invalid= This quiz name has been taken choose something else!</a>');
+                }else{
+                    $q_name=$_POST['q_name'];
+                    $q_no=$_POST['q_no'];
+                }       
+            }
         }
-        $qn_query = "insert into ".$table_name." values (NULL, '".$qn."', '".$op1."', '".$op2."', '".$op3."', '".$op4."', '".$correct."')";
-        $results=mysqli_query($con,$qn_query);
-        // if (mysqli_query($con,$qn_query) === TRUE) {
-        //     echo '1';
-        // } else {
-        //     echo "Error: " . $qn_query . "<br>" . $con->error;
-        // }
-        $question_no ++;
-    }
-    header("location:retrieve_quiz.php?quiz_id=".$_GET['quiz_id']);
 
+        if (isset($_POST['c_qn'])){
+            $q_name=$_POST['q_name'];
+            $q_no=intval($_POST['q_no']);
+            $query="select id from account where id='".$_SESSION['User']."'";
+            $instance = new DatabaseConnection();
+            $row=$instance->retrieveData($query);
+            $creator_id = $row['id'];
+
+            //create row in quiz table
+            $sql = "INSERT INTO quiz VALUES (NULL,'".$creator_id."', '".strtolower($q_name)."', '".$q_no."', NULL)";
+            $insertresults = mysqli_query($con,$sql);
+            // if (mysqli_query($con,$sql)) {
+            
+            // create specific quiz question table
+            $query2="select quiz_id from quiz where quiz_name='".strtolower($q_name)."'";
+            $row2=$instance->retrieveData($query2);
+            $quiz_no=$row2['quiz_id'];
+            $instance->createQuizTable($row2['quiz_id']);
+            // }
+            
+            // start adding questions into the specific quiz question table
+            $table_name = "quiz_". $quiz_no ;
+            $question_no = 1;
+            $limit = $q_no;
+            // LOOP TILL END OF DATA
+            while($question_no <= $limit)
+            {
+                $qn = $_POST["q{$question_no}_qn"];
+                $op1 = $_POST["q{$question_no}_op1"];
+                $op2 = $_POST["q{$question_no}_op2"];
+                $op3 = $_POST["q{$question_no}_op3"];
+                $op4 = $_POST["q{$question_no}_op4"];
+                $correct = $_POST["q{$question_no}_answer"];
+                if($correct=="option_1"){
+                    $correct=$op1;
+                }elseif($correct=="option_2"){
+                    $correct=$op2;
+                }elseif($correct=="option_3"){
+                    $correct=$op3;
+                }elseif($correct=="option_4"){
+                    $correct=$op4;
+                }
+                $qn_query = "insert into ".$table_name." values (NULL, '".$qn."', '".$op1."', '".$op2."', '".$op3."', '".$op4."', '".$correct."')";
+                $results=mysqli_query($con,$qn_query);
+                // checking
+                // if (mysqli_query($con,$qn_query) === TRUE) {
+                //     echo '1';
+                // } else {
+                //     echo "Error: " . $qn_query . "<br>" . $con->error;
+                // }
+                $question_no ++;
+            }
+            header("location:retrieve_quiz.php?quiz_id=".$quiz_no);
+        }
+    }else{
+        header("location:create_quiz.php");
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -109,10 +123,7 @@ if(!isset($_SESSION['User']))
         <div class="header">
             <h1 class="display-4">Edit 
             <?php 
-            $query="select * from quiz where quiz_id='".$_GET['quiz_id']."'";
-            $instance = new DatabaseConnection();
-            $row=$instance->retrieveData($query);
-            echo "".$row['quiz_name']."";
+            echo $q_name;
             ?> 
             Quiz</h1>
         </div>
@@ -124,7 +135,7 @@ if(!isset($_SESSION['User']))
                 // $query="SELECT * FROM quiz WHERE quiz_id='".$_GET['quiz_id']."'";
                 // $instance = new DatabaseConnection();
                 // $row=$instance->retrieveData($query);
-                $limit = $row['questions'];
+                $limit = $q_no;
                 // LOOP TILL END OF DATA
                 while($question_no <= $limit)
                 {
@@ -174,8 +185,14 @@ if(!isset($_SESSION['User']))
             
                 }
             ?>
+            <?php
+                echo '
+                <input type="hidden" id="q_name" name="q_name" value="'.$q_name.'">
+                <input type="hidden" id="q_no" name="q_no" value="'.$q_no.'">
+                ';
+            ?>
                 
-                <button class="btn btn-success mt-3" name="c_quiz">Create Quiz</button>
+                <button class="btn btn-success mt-3" name="c_qn">Create Quiz</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
         </div>
