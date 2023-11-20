@@ -18,7 +18,7 @@ if(!isset($_SESSION['User']))
        {   
             $query="select * from quiz where quiz_name=". $_POST['q_name']."";
             $result=mysqli_query($con,$query);
-            if (!$result){
+            if ($result){
                 header('location:create_quiz.php?Invalid= This quiz name has been taken choose something else!</a>');
             }else{
             $query="select id from account where id='".$_SESSION['User']."'";
