@@ -136,6 +136,8 @@ body{
     word-wrap: break-word;
     background-color: transparent;
     border: 0;
+
+
 }
 
 .profile {
@@ -249,12 +251,12 @@ body{
 /* ----- Welcome message ----- */
 .welcome-box{
     position: absolute; 
-    height: 60%; 
+    height: 50%; 
     width: 100%; 
     background-image: url("https://www.shutterstock.com/image-vector/horizontal-banner-hands-people-solving-260nw-1049759054.jpg"); 
     background-size: cover; 
     background-position: center; 
-    filter: blur(3.5px); 
+    filter: blur(3.7px); 
     z-index: -1; 
     
 }
@@ -263,7 +265,7 @@ body{
 display: flex;
 align-items: center;
 justify-content: center;
-height: 60vh; /* 100% of the viewport height */
+height: 50vh; /* 100% of the viewport height */
 }
 
 .welcome {
