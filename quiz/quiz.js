@@ -33,12 +33,22 @@ document.addEventListener('DOMContentLoaded', function () {
             showQuestion(questionNumber);
         });
     });
+
     var nextQuestion = document.querySelectorAll('.quiz-question a');
     nextQuestion.forEach(function (link) {
         link.addEventListener('click', function (event) {
             event.preventDefault();
-            var questionNumber = parseInt(this.id);
-            showQuestion(questionNumber);
+            var questionNumber2 = parseInt(this.textContent.match(/\d+/)[0], 10);
+            showQuestion(questionNumber2);
+        });
+    });
+
+    var attemptNextQn = document.querySelectorAll('.quiz-question .attempt_btn');
+    attemptNextQn.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var questionNumber3 = parseInt(this.textContent.match(/\d+/)[0], 10);
+            showQuestion(questionNumber3);
         });
     });
     // Show the first question by default

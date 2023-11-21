@@ -16,6 +16,7 @@ if (isset($_GET['quiz_id'])) {
 
     if ($quiz_row) {
         $quiz_name = $quiz_row['quiz_name'];
+        $limit = $quiz_row['questions'];
 
         // Fetch quiz questions
         $questions_query = "SELECT * FROM quiz_$quiz_id";
@@ -50,6 +51,7 @@ if (isset($_GET['quiz_id'])) {
     crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -79,8 +81,14 @@ if (isset($_GET['quiz_id'])) {
         <h2>Questions</h2>
         <div class="question-boxes">
             <?php
+                $question_no1 = 1;
+
                 foreach ($questions as &$question) {
-                    echo '<div class="question-box"><a href="#question' . $question['question'] . '">' . $question['quiz_no'] . '</a></div>';
+                    // echo '<div class="question-box"><a href="#question' . $question['question'] . '">' . $question['quiz_no'] . '</a></div>';
+                    echo '<div class="question-box"><a href="#q' . $question_no1 . '">' . $question['quiz_no'] . '</a></div>';
+                
+                    $question_no1++;
+
                 }
             ?>
         </div>
@@ -119,10 +127,12 @@ if (isset($_GET['quiz_id'])) {
         ?>
     </div>  -->
     <div class="main-content">
-        <?php foreach ($questions as &$question): ?>
+        <?php 
+        $question_no = 1;
+        foreach ($questions as &$question): ?>
             <div class="quiz-question">
-                <div class="question-container" id="question<?php echo $question['question']; ?>">
-                    <h3>Question <?php echo $question['quiz_no']; ?></h3>
+                <div class="question-container" id="question<?php echo $question['question']; ?> q<?php echo $question_no;?>">
+                    <h3>Question <?php echo $question_no; ?></h3>
                     <p><?php echo $question['question']; ?></p>
                     <form method="post" action="process_quiz.php">
                         <input type="hidden" name="question_id" value="<?php echo $question['question']; ?>">
@@ -135,32 +145,38 @@ if (isset($_GET['quiz_id'])) {
                                         <?php echo $option; ?>
                                     </label>
                                 </li>
+                                
                             <?php endforeach; ?>
                         </ul>
                     </form>
                 </div>
-            </div>
+            
+            <?php
+            $next = $question_no + 1;
+            $back = $question_no - 1;
+            // $instance = new DatabaseConnection();
+            // $query_next="select * from quiz where id=".$_SESSION['User']."";
+            // $query_back="select * from account where id=".$_SESSION['User']."";
+            if ($question_no < $limit) {
+                if ($back >= 1) {
+                    // $row=$instance->retrieveData($query);
+                    echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" href="#q' . $back . '">Back</a>';
+                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" href="#q' . $next . '">Next</a></div>';
+                } else {
+                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" href="#q' . $next . '">Next</a></div>';
+                }
+            } else {
+                echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" href="#q' . $back . '">Back</a>';
+                echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button></div>';
+            }
+            // $question_no['quiz_no']++;
+            $question_no++;
+            ?>
         <?php endforeach; ?>
 
         <!-- Navigation buttons -->
         <div class="">
-        <?php
-        $next = $question_no['quiz_no'] + 1;
-        $back = $question_no['quiz_no'] - 1;
-
-        if ($question_no < $limit) {
-            if ($back >= 1) {
-                echo '<a class="btn btn-success mt-3 mr-2 text-white" href="#question' . $back . '">Back</a>';
-                echo '<a class="btn btn-success mt-3 text-white" href="#question' . $next . '">Next</a>';
-            } else {
-                echo '<a class="btn btn-success mt-3 text-white" href="#question' . $next . '">Next</a>';
-            }
-        } else {
-            echo '<a class="btn btn-success mt-3 mr-2 text-white" href="#question' . $back . '">Back</a>';
-            echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button>';
-        }
-        $question_no['quiz_no']++;
-        ?>
+        
 
         </div>
     </div>
