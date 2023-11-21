@@ -81,13 +81,13 @@ if (isset($_GET['quiz_id'])) {
             <!-- Add Question Button -->
             <form method="post" action="" id="addQuestionForm">
                 <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
-                <button type="submit" name="addQuestion">Add Question</button>
+                <button type="button" onclick="addQuestion()">Add Question</button>
             </form>
 
             <!-- Remove Question Button -->
             <form method="post" action="" id="removeQuestionForm">
                 <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
-                <button type="submit" name="removeQuestion">Remove Last Question</button>
+                <button type="button" onclick="confirmDelete()">Remove Question</button>
             </form>
         </div>
 
@@ -97,8 +97,11 @@ if (isset($_GET['quiz_id'])) {
                 $question_no = 1;
                 foreach ($questions as &$question) {
                     echo '
-                    <div class="quiz-question" id="question' . $quiz_row['questions'] . '">
-                        <div class="question-container">
+                    <div class="quiz-question" id="question' . $question_no . '">
+                    
+                        <div class="question-container">';
+                        echo "question" . $question_no;
+                        echo'
                             <h3>Question ' . $question_no . '</h3>
                             <div class="col-md-23" >
                                 <label for="q' . $question['quiz_no'] . '_qn">Question</label>
@@ -198,3 +201,118 @@ if (isset($_POST['removeQuestion'])) {
     echo '<script>removeQuestion(' . $newQuestionNo . ');</script>';
 }
 ?>
+
+<script>
+    var questionCount = <?php echo $quiz_row['questions']; ?>;
+
+    function addQuestion() {
+        // Increment the question count
+        questionCount++;
+
+        // Create a new question container
+        var newQuestionContainer = `
+            <div class="quiz-question" id="question${questionCount}">
+                <div class="question-container">
+                    <h3>Question ${questionCount}</h3>
+                    <div class="col-md-23">
+                        <label for="q${questionCount}_qn">Question</label>
+                        <input type="text" name="q${questionCount}_qn" placeholder=" Question ${questionCount}" class="form-control mb-3" required>
+                    </div>
+                    <!-- Add similar HTML for other input fields -->
+                </div>
+            </div>
+        `;
+
+        // Append the new question container to the main content
+        document.getElementById('quiz-form').insertAdjacentHTML('beforeend', newQuestionContainer);
+
+        // Increment the question count in the sidebar
+        var questionList = document.getElementById('questionList');
+        var newQuestionListItem = document.createElement('li');
+        newQuestionListItem.innerHTML = `<a href="#question${questionCount}" onclick="showQuestion(${questionCount})">Question ${questionCount}</a>`;
+        questionList.appendChild(newQuestionListItem);
+
+        // Show the newly added question
+        showQuestion(questionCount);
+    }
+
+    function showQuestion(questionNo) {
+        // Hide all question containers
+        var questionContainers = document.querySelectorAll('.quiz-question');
+        questionContainers.forEach(function (container) {
+            container.style.display = 'none';
+        });
+
+        // Show the selected question container
+        var selectedContainer = document.getElementById(`question${questionNo}`);
+        if (selectedContainer) {
+            selectedContainer.style.display = 'block';
+        }
+    }
+
+    function confirmDelete() {
+        // Prompt user to enter the question number to delete
+        var questionNoToDelete = prompt("Enter the question number to delete:");
+
+        // Validate input and delete question
+        if (questionNoToDelete !== null && !isNaN(questionNoToDelete)) {
+            questionNoToDelete = parseInt(questionNoToDelete);
+            deleteQuestion(questionNoToDelete);
+        }
+    }
+
+
+
+    function deleteQuestion(questionNo) {
+        // Ensure questionNo is valid
+        if (questionNo < 1 || questionNo > questionCount) {
+            alert("Invalid question number. No question deleted.");
+            return;
+        }
+        alert(`question${questionNo}`)
+        // Remove the question container from the main content
+        var questionContainerToRemove = document.getElementById(`question${questionNo}`);
+        questionContainerToRemove.parentNode.removeChild(questionContainerToRemove);
+        alert('2')
+
+        // Update quiz_no for remaining questions
+        var questionContainers = document.querySelectorAll('.quiz-question');
+        questionContainers.forEach(function (container, index) {
+            var currentQuestionNo = index + 1;
+            container.id = `question${currentQuestionNo}`;
+            container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
+            alert('3')
+
+            // Update quiz_no for input fields
+            container.querySelectorAll('input, select').forEach(function (input) {
+                var oldName = input.name;
+                input.name = oldName.replace(/\d+/, currentQuestionNo);
+                input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
+            });
+            alert('4')
+
+        });
+
+        // Update the question count
+        questionCount--;
+
+        // Update the question list in the sidebar
+        updateQuestionList();
+
+        // Show the previous question (if any)
+        if (questionCount > 0) {
+            showQuestion(Math.min(questionNo, questionCount));
+        }
+    }
+
+    function updateQuestionList() {
+        var questionList = document.getElementById('questionList');
+        questionList.innerHTML = '';
+
+        for (var i = 1; i <= questionCount; i++) {
+            var listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="#question${i}" onclick="showQuestion(${i})">Question ${i}</a>`;
+            questionList.appendChild(listItem);
+        }
+    }
+</script>
