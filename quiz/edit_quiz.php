@@ -72,6 +72,7 @@ if (isset($_GET['quiz_id'])) {
             <h2>Questions</h2>
             <div class="question-boxes">
                 <?php
+                
                 // Loop through existing questions and generate list items
                 for ($i = 1; $i <= $quiz_row['questions']; $i++) {
                     echo '<div class="question-box" id="box'.$i.'"><a href="#question'  . $i . '" id="sideqn'.$i.'">' . $i . '</a></div>';
