@@ -202,10 +202,10 @@ function getRandomImagePath() {
             while ($quizRow = $quizResult->fetch_assoc()) {
                 // Display each quiz
                 $randomImagePath = getRandomImagePath();
-                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\')">'; 
                 echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
                 echo '<p>' . $quizRow['quiz_name'] . '</p>';
-                echo '</div>';
+                echo '</div>';            
             }
             echo '</div>';
         } else {
@@ -256,9 +256,9 @@ function getRandomImagePath() {
             echo '<div class="quizzes-container">';
             while ($quizRow = $quizResult->fetch_assoc()) {
                 // Display each quiz
-                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
-
                 $randomImagePath = getRandomImagePath();
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\')">'; 
+                echo '<div class="quiz-container" onclick="'.$modal.'")">';
                 echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
                 echo '<p>' . $quizRow['quiz_name'] . '</p>';
                 echo '</div>';
