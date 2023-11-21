@@ -73,7 +73,7 @@ if (isset($_GET['quiz_id'])) {
                 <?php
                 // Loop through existing questions and generate list items
                 for ($i = 1; $i <= $quiz_row['questions']; $i++) {
-                    echo '<div class="question-box"><a href="#question'  . $i . '">' . $i . '</a></div>';
+                    echo '<div class="question-box" id="box'.$i.'"><a href="#question'  . $i . '" id="sideqn'.$i.'">' . $i . '</a></div>';
                 }
                 ?>
 
@@ -271,34 +271,32 @@ if (isset($_POST['removeQuestion'])) {
             alert("Invalid question number. No question deleted.");
             return;
         }
-        alert(`question${questionNo}`)
+        // alert(`question${questionNo}`)
         // Remove the question container from the main content
         var questionContainerToRemove = document.getElementById(`question${questionNo}`);
         questionContainerToRemove.parentNode.removeChild(questionContainerToRemove);
 
         // Update quiz_no for remaining questions
-        var questionContainers = document.querySelectorAll('.quiz-question');
-        questionContainers.forEach(function (container, index) {
-            var currentQuestionNo = index + 1;
-            container.id = `question${currentQuestionNo}`;
-            container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
+        // var questionContainers = document.querySelectorAll('.quiz-question');
+        // questionContainers.forEach(function (container, index) {
+        //     var currentQuestionNo = index + 1;
+        //     container.id = `question${currentQuestionNo}`;
+        //     container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
 
-            // Update quiz_no for input fields
-            container.querySelectorAll('input, select').forEach(function (input) {
-                var oldName = input.name;
-                input.name = oldName.replace(/\d+/, currentQuestionNo);
-                input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
-            });
+        //     // Update quiz_no for input fields
+        //     container.querySelectorAll('input, select').forEach(function (input) {
+        //         var oldName = input.name;
+        //         input.name = oldName.replace(/\d+/, currentQuestionNo);
+        //         input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
+        //     });
 
-        });
+        // });
 
         // Update the question count
         questionCount--;
-
-        // Update the question list in the sidebar
-        var questionbar = document.getElementById('');
+        var questionbar = document.getElementById(`box${questionNo}`);
         questionbar.remove();
-        updateQuestionList();
+        // updateQuestionList();
 
         // Show the previous question (if any)
         if (questionCount > 0) {
