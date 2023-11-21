@@ -27,13 +27,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function showQuestion(questionNumber) {
         questionContainers.forEach(function (container, index) {
             var currentQuestionNo = index + 1;
-            if (currentQuestionNo === questionNumber) {
-                container.style.display = 'block';
-
-            } else {
+            if (currentQuestionNo !== questionNumber) {
                 container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
             }
         });
+
+        // manually remove the last quiz-question container
+        var lastthing=document.querySelector('.quiz-question:last-child');
+        var lastthingNo = parseInt(lastthing.id.match(/\d+/)[0], 10);
+        if(lastthingNo!==questionNumber){
+            lastthing.style.display='none'
+        }
     }
 
     var questionLinks = document.querySelectorAll('.sidebar div div a');

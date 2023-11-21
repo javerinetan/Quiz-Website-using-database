@@ -17,7 +17,7 @@ if (isset($_GET['quiz_id'])) {
     if ($quiz_row) {
         $quiz_name = $quiz_row['quiz_name'];
         $quiz_limit = $quiz_row['questions'];
-        echo $quiz_limit;
+
         // Fetch quiz questions
         $questions_query = "SELECT * FROM quiz_$quiz_id";
         $questions_result = mysqli_query($con, $questions_query);
