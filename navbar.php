@@ -46,9 +46,6 @@
                     <a class="nav-link" aria-current="page" href="../user/home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Activity</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="../user/dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
             </ul>
