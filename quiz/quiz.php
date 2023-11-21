@@ -90,13 +90,14 @@ if (isset($_GET['quiz_id'])) {
         <?php
         foreach ($questions as &$question) {
             echo '
-            <div class="question-container" id="question' . $question['question'] . '">
-                <h3>Question ' . $question['quiz_no'] . '</h3>
-                <p>' . $question['question'] . '</p>
-                <form method="post" action="process_quiz.php">
-                    <input type="hidden" name="question_id" value="' . $question['question'] . '">
-                    <input type="hidden" name="quiz_id" value="' . $quiz_id . '">
-                    <ul style="list-style-type: none; padding: 0;">';
+            <div class="quiz-question">
+                <div class="question-container" id="question' . $question['question'] . '">
+                    <h3>Question ' . $question['quiz_no'] . '</h3>
+                    <p>' . $question['question'] . '</p>
+                    <form method="post" action="process_quiz.php">
+                        <input type="hidden" name="question_id" value="' . $question['question'] . '">
+                        <input type="hidden" name="quiz_id" value="' . $quiz_id . '">
+                        <ul style="list-style-type: none; padding: 0;">';
             foreach ($question['options'] as $option) {
                 echo '
                         <li>
@@ -107,7 +108,9 @@ if (isset($_GET['quiz_id'])) {
                         </li>';
             }
             echo '
-                    </ul>
+                        </ul>
+                        
+                    </div>
                 </form>
             </div>';
         }
