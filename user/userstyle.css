@@ -263,7 +263,7 @@ body{
 display: flex;
 align-items: center;
 justify-content: center;
-height: 70vh; /* 100% of the viewport height */
+height: 60vh; /* 100% of the viewport height */
 }
 
 .welcome {

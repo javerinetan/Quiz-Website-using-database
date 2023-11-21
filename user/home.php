@@ -141,7 +141,7 @@ function getRandomImagePath() {
 </nav>
 
 <body>
-    <!-- Welcome the user -->
+    <!---------- Welcome the user ---------->
     <div class="welcome-box"></div>
     <div id="container-msg">
         <div class="welcome">
@@ -157,11 +157,13 @@ function getRandomImagePath() {
             </button>
         </div>
     </div>
+
     <br>
     <br>
     <br>
-    <br>
-    <br>
+
+
+    <!---------- Your own quiz ---------->
     <div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -208,7 +210,63 @@ function getRandomImagePath() {
             }
             echo '</div>';
         } else {
-            echo '<p>No quizzes found.</p>';
+            echo '<h6 class="welcome">No quizzes found.</h6>';
+        }
+        ?>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!---------- Community quiz ---------->
+    <div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h4 id="quizName"></h4>
+                        <p id="numQuestions"></p>
+                        <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
+                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="container-central" onclick="openQuizDetailsModal">
+        <h2 class="welcome">Community Quizzes</h2>
+        <?php 
+        // Fetch quizzes from the quiz table
+        $quizQuery = "SELECT * FROM quiz WHERE creator_id !=" . $_SESSION['User'];
+        $quizResult = $con->query($quizQuery);
+
+        // Check if there are quizzes
+        if ($quizResult && $quizResult->num_rows > 0) {
+            echo '<div class="quizzes-container">';
+            while ($quizRow = $quizResult->fetch_assoc()) {
+                // Display each quiz
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
+
+                $randomImagePath = getRandomImagePath();
+                echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
+                echo '<p>' . $quizRow['quiz_name'] . '</p>';
+                echo '</div>';
+            }
+            echo '</div>';
+        } else {
+            echo '<h6 class="welcome">No quizzes found.</h6>';
         }
         ?>
 
