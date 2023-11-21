@@ -51,7 +51,15 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
 
-    <!-- bootstraps -->
+    <style>
+        .dashboard{
+            text-align:center;
+        }
+
+        .chart1{
+            
+        }
+    </style>
     
 
 

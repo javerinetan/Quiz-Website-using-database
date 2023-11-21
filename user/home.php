@@ -64,7 +64,7 @@ function getRandomImagePath() {
                 Ready to quiz? Let the fun begin!
             </h4>
             <br>
-            <button class="btn create btn-welcome">
+            <button class="btn create btn-welcome" id="createQuizBtn" onclick="getQuiz()">
                 Quizit Now
             </button>
         </div>
@@ -100,6 +100,8 @@ function getRandomImagePath() {
         </div>
     </div>
     
+
+
 
     <div id="container-central" onclick="openQuizDetailsModal">
         <h2 class="welcome">Your Quizzes</h2>
@@ -192,30 +194,76 @@ function getRandomImagePath() {
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
 
-<script>
-  function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath) {
-    // Set the modal content dynamically
-    var quizImage = document.getElementById('quizImage');
-    var quizNameElement = document.getElementById('quizName');
-    var numQuestionsElement = document.getElementById('numQuestions');
-    var startQuizBtn = document.getElementById('startQuizBtn');
-    var editQuizBtn = document.getElementById('editQuizBtn');
 
-    // Update the image source
-    quizImage.src = imagePath;
+    <!-- I need to call all the quizzes using a query, then append it into a list, then randomise and call 1 of the query lines -->
 
-    // Update other modal content
-    quizNameElement.innerText = quizName;
-    numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+    <script>
+    
+    function getQuiz() {
+    // Assuming list is an array of quiz IDs, fetch it from PHP
+    var list = [<?php
+        $query = "SELECT quiz_id FROM quiz";
+        $instance = new DatabaseConnection();
+        $result = $instance->retrieveData($query);
+        $quizIds = [];
 
-    // Set the href attribute for the "Start Quiz" button
-    startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
-    editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+        while ($row = $result->fetch_assoc()) {
+            $quizIds[] = $row['quiz_id'];
+        }
 
-    // Show the modal
-    $('#quizDetailsModal').modal('show');
-  }
+        echo implode(',', $quizIds);
+    ?>];
+
+    // Get a random quiz ID
+    var randomIndex = Math.floor(Math.random() * list.length);
+    var randomQuizId = list[randomIndex];
+
+    // Redirect to attempt_quiz.php with the random quiz ID
+    window.location.href = '../quiz/attempt_quiz.php?quiz_id=' + randomQuizId;
+}
+
+    function getRandomQuiz() {
+        // Using AJAX to fetch a random quiz
+        $.ajax({
+            type: "GET",
+            url: "getRandomquiz.php", // Create a separate PHP file to handle this request
+            success: function(response) {
+                if (response.success) {
+                    var quizData = response.quizData;
+                    openQuizDetailsModal(quizData.quiz_id, quizData.quiz_name, quizData.questions);
+                } else {
+                    alert('No quizzes found.'); 
+                }
+            },
+            error: function() {
+                alert('Error fetching quiz.');
+            }
+        });
+    }
 </script>
+
+<script>
+    function openQuizDetailsModal(quizId, quizName, numQuestions) {
+        // Set the modal content dynamically
+        var quizNameElement = document.getElementById('quizName');
+        var numQuestionsElement = document.getElementById('numQuestions');
+        var startQuizBtn = document.getElementById('startQuizBtn');
+        var editQuizBtn = document.getElementById('editQuizBtn');
+
+        // Update other modal content
+        quizNameElement.innerText = quizName;
+        numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+
+        // Set the href attribute for the "Start Quiz" button
+        startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
+        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+
+        // Show the modal
+        $('#quizDetailsModal').modal('show');
+    }
+</script>
+
+
 
 
 </footer>
