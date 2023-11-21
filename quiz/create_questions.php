@@ -106,6 +106,7 @@ if(!isset($_SESSION['User']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
     <link href="quiz_style.css" rel="stylesheet" type ="text/css" />
+    <link rel="stylesheet" href="quiz_style.css" />
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -121,7 +122,7 @@ if(!isset($_SESSION['User']))
 <body>
     <main class="containers">
         <div class="header text-center">
-            <h1 class="display-4 Quiz_name">Edit 
+            <h1 class="display-4 Quiz_name">Add Questions to  
             <?php 
             echo $q_name;
             ?> 
@@ -130,13 +131,13 @@ if(!isset($_SESSION['User']))
 
         <div class="sidebar">
             <h2>Questions</h2>
-            <ul>
+            <div class="question-boxes">
                 <?php
                     for ($question_no = 1; $question_no <= $q_no; $question_no++) {
-                        echo '<li><a href="#question'.$question_no.'">Question '.$question_no.'</a></li>';
+                        echo '<div class="question-box"><a href="#question'.$question_no.'">'.$question_no.'</a></div>';
                     }
                 ?>
-            </ul>
+            </div>
         </div>
 
         <div class="main-content">
@@ -190,14 +191,14 @@ if(!isset($_SESSION['User']))
                     $back=$question_no - 1;
                     if($question_no < $limit){
                         if($back >= 1){
-                            echo '<a class="btn btn-success mt-3 text-white" name="c_back" id="'.$back.'">Back</a>';
+                            echo '<a class="btn btn-success mt-3 mr-2 text-white" name="c_back" id="'.$back.'">Back</a>';
                             echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$next.'">Next</a> </div>';
                         }else{
                             echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$next.'">Next</a> </div>';
                         }
                     }else{
-                        echo '<a class="btn btn-success mt-3 text-white" name="c_back" id="'.$back.'">Back</a>';
-                        echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Submit</button> </div>';
+                        echo '<a class="btn btn-success mt-3 mr-2 text-white" name="c_back" id="'.$back.'">Back</a>';
+                        echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button> </div>';
                     }
                     $question_no++;
                 }

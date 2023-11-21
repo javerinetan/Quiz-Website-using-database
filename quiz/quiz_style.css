@@ -19,22 +19,34 @@
 }
 
 /* Style for the question links in the sidebar */
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
+.sidebar .question-boxes {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.sidebar ul li {
+.sidebar .question-box:hover {
+    background-color: #f0f0f0; /* Add a background color on hover */
+}
+
+.sidebar .question-box {
+    flex: 0 0 calc(25% - 10px) !important; /* Three boxes per row with some spacing */
+    margin-right: 10px;
     margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.sidebar ul li a {
+.sidebar .question-box a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    display: block; /* Make the link fill the entire box */
+    height: 100%; /* Ensure the link takes up the full height of the box */
 }
 
-.sidebar ul li a:hover {
+.sidebar .question-box a:hover {
     color: #0066cc;
 }
 
@@ -44,6 +56,7 @@
     padding: 15px;
     margin-bottom: 20px;
 }
+
 
 /* Add additional styling as needed for input fields and buttons */
 

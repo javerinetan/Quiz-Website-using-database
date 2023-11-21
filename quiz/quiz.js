@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var questionLinks = document.querySelectorAll('.sidebar ul li a');
+    var questionLinks = document.querySelectorAll('.sidebar div div a');
     questionLinks.forEach(function (link) {
         link.addEventListener('click', function (event) {
             event.preventDefault();
