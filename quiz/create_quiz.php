@@ -73,6 +73,15 @@ require '../navbar.php'
 <?php
     }
 ?>
+
+<?php 
+    if(@$_GET['Empty']==true)
+    {
+?>
+    <div class="alert-light text-danger text-center py-3"><?php echo $_GET['Empty'] ?></div>                                
+<?php
+    }
+?>
 </body>
 
 <footer>
