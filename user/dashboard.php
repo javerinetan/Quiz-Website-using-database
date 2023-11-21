@@ -56,8 +56,11 @@ $resultTaken = FALSE; // temporary until the table for it has been set
             text-align:center;
         }
 
-        .chart1{
-            
+        #Chart1 {
+            width: 80%; 
+            margin: 20px auto; 
+            border: 1px solid #ddd; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
         }
     </style>
     
@@ -106,29 +109,13 @@ $resultTaken = FALSE; // temporary until the table for it has been set
             'quizzes_created' => $rowGraph1['quizzes_created'],
         ];
     }
-
-    $queryforgraph2 = "SELECT YEAR(created_on) AS year, MONTH(created_on) AS month, COUNT(*) AS quizzes_created
-                       FROM quiz
-                       WHERE creator_id = $userid
-                       GROUP BY year, month";
-
-    // Fetch data for graph1
-    $resultGraph2 = mysqli_query($con, $queryforgraph2);
-    $dataGraph2 = [];
-
-    while ($rowGraph2 = mysqli_fetch_assoc($resultGraph2)) {
-        $dataGraph2[] = [
-            'year2' => $rowGraph2['year2'],
-            'month2' => $rowGraph2['month2']
-        ];
-    }
 ?>
 
 <!-- When i click on the quiz start, append +1 into a list so i have a counter -->
 
 <div>
   <canvas id="Chart1"></canvas>
-  <canvas id="Chart2"></canvas>
+  <!-- <canvas id="Chart2"></canvas> -->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -177,7 +164,7 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     }
 });
 </script>
-
+<!-- 
 <script>
   const ctx1 = document.getElementById('Chart2');
 
@@ -215,7 +202,7 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     }
 });
 </script>
-
+-->
 </body>
 
 <footer>
