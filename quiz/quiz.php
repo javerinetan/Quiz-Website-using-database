@@ -79,7 +79,7 @@ if (isset($_GET['quiz_id'])) {
         <h2>Questions</h2>
         <ul>
             <?php
-                foreach ($questions as $question) {
+                foreach ($questions as &$question) {
                     echo '<li><a href="#question' . $question['question'] . '">Question ' . $question['quiz_no'] . '</a></li>';
                 }
             ?>
@@ -88,7 +88,7 @@ if (isset($_GET['quiz_id'])) {
 
     <div class="main-content">
         <?php
-        foreach ($questions as $question) {
+        foreach ($questions as &$question) {
             echo '
             <div class="question-container" id="question' . $question['question'] . '">
                 <h3>Question ' . $question['quiz_no'] . '</h3>
