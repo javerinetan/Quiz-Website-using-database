@@ -13,7 +13,7 @@ $(document).ready(function () {
         });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var questionContainers = document.querySelectorAll('.question-container');
+    var questionContainers = document.querySelectorAll('.quiz-question');
 
     function showQuestion(questionNumber) {
         questionContainers.forEach(function (container, index) {
@@ -33,6 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
             showQuestion(questionNumber);
         });
     });
+    var nextQuestion = document.querySelectorAll('.quiz-question a');
+    nextQuestion.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var questionNumber = parseInt(this.id);
+            showQuestion(questionNumber);
+        });
+    });
+
+
 
     // Show the first question by default
     showQuestion(1);

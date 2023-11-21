@@ -142,57 +142,59 @@ if(!isset($_SESSION['User']))
         <div class="main-content">
             <form method="post" class="row g-2" id="quiz-form">
                 <?php
-                $question_no = 1;
-                $limit = $q_no;
-                while ($question_no <= $limit) {
-                    echo '
-                    <div class="question-container" id="question'.$question_no.'">
-                        <h3>Question '.$question_no.'</h3>
-                        <div class="col-md-23" >
-                            <label for="q'.$question_no.'_qn">Question</label>
-                            <input type="text" name="q'.$question_no.'_qn" placeholder=" Question '.$question_no.'" class="form-control mb-3" required>
-                        </div>
-                        <div class="col-md-23" >
-                            <label for="q'.$question_no.'_op1">Option 1</label>
-                            <input type="text" name="q'.$question_no.'_op1" placeholder=" Option 1" class="form-control mb-3" required>
-                        </div>
-                        <div class="col-md-23">
-                            <label for="q'.$question_no.'_op2">Option 2</label>
-                            <input type="text" name="q'.$question_no.'_op2" placeholder=" Option 2" class="form-control mb-3" required>
-                        </div>
-                        <div class="col-md-23" >
-                            <label for="q'.$question_no.'_op3">Option 3</label>
-                            <input type="text" name="q'.$question_no.'_op3" placeholder=" Option 3" class="form-control mb-3" required>
-                        </div>
-                        <div class="col-md-23" >
-                            <label for="q'.$question_no.'_op4">Option 4</label>
-                            <input type="text" name="q'.$question_no.'_op4" placeholder=" Option 4" class="form-control mb-3" required>
-                        </div>
-                        <div class="col-md-23">
-                            <label for="q'.$question_no.'_answer">Correct Answer</label>
-                            <select name="q'.$question_no.'_answer" class="form-control" required>
-                                <option value="option_1">Option 1</option>
-                                <option value="option_2">Option 2</option>
-                                <option value="option_3">Option 3</option>
-                                <option value="option_4">Option 4</option>
-                            </select>
-                        </div>
-                    </div>';
-                    $question_no++;
-                }
-                ?>
-
-                <?php
                     echo '
                     <input type="hidden" id="q_name" name="q_name" value="'.$q_name.'">
                     <input type="hidden" id="q_no" name="q_no" value="'.$q_no.'">
                     ';
                 ?>
+                <?php
+                $question_no = 1;
+                $limit = $q_no;
+                while ($question_no <= $limit) {
+                    echo '
+                    <div class="quiz-question" id="question'.$question_no.'">
+                        <div class="question-container">
+                            <h3>Question '.$question_no.'</h3>
+                            <div class="col-md-23" >
+                                <label for="q'.$question_no.'_qn">Question</label>
+                                <input type="text" name="q'.$question_no.'_qn" placeholder=" Question '.$question_no.'" class="form-control mb-3" required>
+                            </div>
+                            <div class="col-md-23" >
+                                <label for="q'.$question_no.'_op1">Option 1</label>
+                                <input type="text" name="q'.$question_no.'_op1" placeholder=" Option 1" class="form-control mb-3" required>
+                            </div>
+                            <div class="col-md-23">
+                                <label for="q'.$question_no.'_op2">Option 2</label>
+                                <input type="text" name="q'.$question_no.'_op2" placeholder=" Option 2" class="form-control mb-3" required>
+                            </div>
+                            <div class="col-md-23" >
+                                <label for="q'.$question_no.'_op3">Option 3</label>
+                                <input type="text" name="q'.$question_no.'_op3" placeholder=" Option 3" class="form-control mb-3" required>
+                            </div>
+                            <div class="col-md-23" >
+                                <label for="q'.$question_no.'_op4">Option 4</label>
+                                <input type="text" name="q'.$question_no.'_op4" placeholder=" Option 4" class="form-control mb-3" required>
+                            </div>
+                            <div class="col-md-23">
+                                <label for="q'.$question_no.'_answer">Correct Answer</label>
+                                <select name="q'.$question_no.'_answer" class="form-control" required>
+                                    <option value="option_1">Option 1</option>
+                                    <option value="option_2">Option 2</option>
+                                    <option value="option_3">Option 3</option>
+                                    <option value="option_4">Option 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    ';
+                    if($question_no < $limit){
+                        echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$question_no.'">Next</a> </div>';
+                    }else{
+                        echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Submit</button> </div>';
+                    }
+                    $question_no++;
+                }
+                ?>
 
-                <!-- Display the "Submit" button for the last question -->
-                <?php if ($question_no > $limit): ?>
-                    <button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Submit</button>
-                <?php endif; ?>
             </form>
         </div>
 
