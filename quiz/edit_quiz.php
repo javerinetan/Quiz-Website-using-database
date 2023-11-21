@@ -220,7 +220,27 @@ if (isset($_POST['removeQuestion'])) {
                         <label for="q${questionCount}_qn">Question</label>
                         <input type="text" name="q${questionCount}_qn" placeholder=" Question ${questionCount}" class="form-control mb-3" required>
                     </div>
-                    <!-- Add similar HTML for other input fields -->
+                    <div class="col-md-23">
+                        <label for="q' . $newQuestionNo . '_op2">Option 2</label>
+                        <input type="text" name="q' . $newQuestionNo . '_op2" placeholder=" Option 2" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="q' . $newQuestionNo . '_op3">Option 3</label>
+                        <input type="text" name="q' . $newQuestionNo . '_op3" placeholder=" Option 3" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="q' . $newQuestionNo . '_op4">Option 4</label>
+                        <input type="text" name="q' . $newQuestionNo . '_op4" placeholder=" Option 4" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="q' . $newQuestionNo . '_answer">Correct Answer</label>
+                        <select name="q' . $newQuestionNo . '_answer" class="form-control" required>
+                            <option value="option_1">Option 1</option>
+                            <option value="option_2">Option 2</option>
+                            <option value="option_3">Option 3</option>
+                            <option value="option_4">Option 4</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         `;
