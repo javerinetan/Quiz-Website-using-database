@@ -99,7 +99,7 @@ if (isset($_GET['quiz_id'])) {
                     echo '
                     <div class="quiz-question" id="question' . $quiz_row['questions'] . '">
                         <div class="question-container">
-                            <h3>Question ' . $quiz_row['questions'] . '</h3>
+                            <h3>Question ' . $question_no . '</h3>
                             <div class="col-md-23" >
                                 <label for="q' . $question['quiz_no'] . '_qn">Question</label>
                                 <input type="text" name="q' . $question['quiz_no'] . '_qn" value="' . htmlspecialchars($question['question']) . '" class="form-control mb-3" required>
