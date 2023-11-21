@@ -160,13 +160,13 @@ if (isset($_GET['quiz_id'])) {
             if ($question_no < $limit) {
                 if ($back >= 1) {
                     // $row=$instance->retrieveData($query);
-                    echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" href="#q' . $back . '">Back</a>';
-                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" href="#q' . $next . '">Next</a></div>';
+                    echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" id="' . $back . '" href="#q' . $back . '">Back</a>';
+                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
                 } else {
-                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" href="#q' . $next . '">Next</a></div>';
+                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
                 }
             } else {
-                echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" href="#q' . $back . '">Back</a>';
+                echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" id="' . $back . '" href="#q' . $back . '">Back</a>';
                 echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button></div>';
             }
             // $question_no['quiz_no']++;
@@ -202,7 +202,7 @@ if (isset($_GET['quiz_id'])) {
 
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
-<script src="quiz.js"></script>
+<script src='quiz.js'></script>
 </footer>
 
 </html>
