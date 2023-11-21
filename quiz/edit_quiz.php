@@ -49,7 +49,7 @@ if (isset($_GET['quiz_id'])) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
-    <link href="quiz_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="quiz_style.css" />
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -69,14 +69,15 @@ if (isset($_GET['quiz_id'])) {
 
         <div class="sidebar">
             <h2>Questions</h2>
-            <ul id="questionList">
+            <div class="question-boxes">
                 <?php
                 // Loop through existing questions and generate list items
                 for ($i = 1; $i <= $quiz_row['questions']; $i++) {
-                    echo '<li><a href="#question' . $i . '">Question ' . $i . '</a></li>';
+                    echo '<div class="question-box"><a href="#question' . $i . '">' . $i . '</a></div>';
                 }
                 ?>
-            </ul>
+
+            </div>
 
             <!-- Add Question Button -->
             <form method="post" action="" id="addQuestionForm">
