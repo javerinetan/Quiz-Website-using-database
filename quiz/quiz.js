@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             var questionNumber = parseInt(this.id);
+            alert('1');
             showQuestion(questionNumber);
         });
     });
