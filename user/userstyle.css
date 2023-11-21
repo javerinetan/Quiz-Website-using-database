@@ -309,6 +309,11 @@ height: 50vh; /* 100% of the viewport height */
     height: 150px;
 }
 
+#quizImage{
+    width: 150px;
+    height: 150px;
+}
+
 .btn-more {
     display: none;
 }

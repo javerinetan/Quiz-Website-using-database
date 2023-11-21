@@ -171,9 +171,9 @@ $resultTaken = FALSE; // temporary until the table for it has been set
 </script>
 
 <script>
-  const ctx = document.getElementById('Chart2');
+  const ctx1 = document.getElementById('Chart2');
 
-  new Chart(ctx, {
+  new Chart(ctx1, {
     type: 'line',
     data: {
         labels: <?php
