@@ -240,6 +240,7 @@ function getRandomImagePath() {
 
     // Set the href attribute for the "Start Quiz" button
     startQuizBtn.href = '../quiz/quiz.php?quiz_id=' + quizId;
+    editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
 
     // Show the modal
     $('#quizDetailsModal').modal('show');
