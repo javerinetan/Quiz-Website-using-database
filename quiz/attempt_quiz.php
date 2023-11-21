@@ -77,16 +77,16 @@ if (isset($_GET['quiz_id'])) {
 
     <div class="sidebar">
         <h2>Questions</h2>
-        <ul>
+        <div class="question-boxes">
             <?php
                 foreach ($questions as &$question) {
-                    echo '<li><a href="#question' . $question['question'] . '">Question ' . $question['quiz_no'] . '</a></li>';
+                    echo '<div class="question-box"><a href="#question' . $question['question'] . '">' . $question['quiz_no'] . '</a></div>';
                 }
             ?>
-        </ul>
+        </div>
     </div>
 
-    <div class="main-content">
+    <!-- <div class="main-content">
         <?php
         foreach ($questions as &$question) {
             echo '
@@ -112,10 +112,58 @@ if (isset($_GET['quiz_id'])) {
                         
                     </div>
                 </form>
+
             </div>';
+        
         }
         ?>
-</div> 
+    </div>  -->
+    <div class="main-content">
+        <?php foreach ($questions as &$question): ?>
+            <div class="quiz-question">
+                <div class="question-container" id="question<?php echo $question['question']; ?>">
+                    <h3>Question <?php echo $question['quiz_no']; ?></h3>
+                    <p><?php echo $question['question']; ?></p>
+                    <form method="post" action="process_quiz.php">
+                        <input type="hidden" name="question_id" value="<?php echo $question['question']; ?>">
+                        <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
+                        <ul style="list-style-type: none; padding: 0;">
+                            <?php foreach ($question['options'] as $option): ?>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="answer" value="<?php echo $option; ?>" required>
+                                        <?php echo $option; ?>
+                                    </label>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+        <!-- Navigation buttons -->
+        <div class="">
+        <?php
+        $next = $question_no['quiz_no'] + 1;
+        $back = $question_no['quiz_no'] - 1;
+
+        if ($question_no < $limit) {
+            if ($back >= 1) {
+                echo '<a class="btn btn-success mt-3 mr-2 text-white" href="#question' . $back . '">Back</a>';
+                echo '<a class="btn btn-success mt-3 text-white" href="#question' . $next . '">Next</a>';
+            } else {
+                echo '<a class="btn btn-success mt-3 text-white" href="#question' . $next . '">Next</a>';
+            }
+        } else {
+            echo '<a class="btn btn-success mt-3 mr-2 text-white" href="#question' . $back . '">Back</a>';
+            echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button>';
+        }
+        $question_no['quiz_no']++;
+        ?>
+
+        </div>
+    </div>
 
 </main>
 
