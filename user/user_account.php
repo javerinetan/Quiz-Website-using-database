@@ -52,70 +52,7 @@ $row=$instance->retrieveData($query);
 
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-        <!-- Logo and Search Bar on the left -->
-        <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="home.php">
-
-        <!-- Toggler Button for small screens -->
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="toggler-icon top-bar"></span>
-            <span class="toggler-icon middle-bar"></span>
-            <span class="toggler-icon bottom-bar"></span>
-        </button>
-        <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        </form>
-
-        <!-- Navbar items at the center -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./home.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Activity</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Profile button and dropdown on the left -->
-        <div class="dropdown">
-        <a href="../quiz/create_quiz.php"><button class="btn create " type="submit">Create a Quiz</button></a>
-
-            <!-- Profile dropdown with image -->
-            <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../wf/assets/dd.jpg" alt="User Image" class="user-image">
-            </button>
-            <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
-                <li class="details_user">
-                <?php  
-                    $query="select * from account where id=".$_SESSION['User']."";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['name'];
-                    echo '<br>';
-                    echo $row['email'];
-                ?>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="user_account.php">Settings</a></li>
-                <li><a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>
-                <?php 
-                    // $query="select * from account where email='".$_SESSION['User']."'";
-                    // $results=mysqli_query($con,$query);
-                    // $row=$results->fetch_assoc();
-                    // echo '<a class="dropdown-item" href="../account/logout.php?logout">Log Out</a>';
-                ?>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<?php require '../navbar.php'; ?>
 
 <body class="account">
     <div class="Settings">
@@ -259,7 +196,6 @@ $row=$instance->retrieveData($query);
 
 <footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
 </footer>
