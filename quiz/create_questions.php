@@ -186,9 +186,17 @@ if(!isset($_SESSION['User']))
                             </div>
                         </div>
                     ';
+                    $next=$question_no + 1;
+                    $back=$question_no - 1;
                     if($question_no < $limit){
-                        echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$question_no.'">Next</a> </div>';
+                        if($back >= 1){
+                            echo '<a class="btn btn-success mt-3 text-white" name="c_back" id="'.$back.'">Back</a>';
+                            echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$next.'">Next</a> </div>';
+                        }else{
+                            echo '<a class="btn btn-success mt-3 text-white" name="c_next" id="'.$next.'">Next</a> </div>';
+                        }
                     }else{
+                        echo '<a class="btn btn-success mt-3 text-white" name="c_back" id="'.$back.'">Back</a>';
                         echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Submit</button> </div>';
                     }
                     $question_no++;
