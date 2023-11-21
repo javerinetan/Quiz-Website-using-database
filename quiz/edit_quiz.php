@@ -49,7 +49,7 @@ if (isset($_GET['quiz_id'])) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../wf/style.css" rel="stylesheet" type="text/css" />
-    <link href="quiz_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="quiz_style.css" />
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -69,14 +69,15 @@ if (isset($_GET['quiz_id'])) {
 
         <div class="sidebar">
             <h2>Questions</h2>
-            <ul id="questionList">
+            <div class="question-boxes">
                 <?php
                 // Loop through existing questions and generate list items
                 for ($i = 1; $i <= $quiz_row['questions']; $i++) {
-                    echo '<li><a href="#question' . $i . '">Question ' . $i . '</a></li>';
+                    echo '<div class="question-box" id="box'.$i.'"><a href="#question'  . $i . '" id="sideqn'.$i.'">' . $i . '</a></div>';
                 }
                 ?>
-            </ul>
+
+            </div>
 
             <!-- Add Question Button -->
             <form method="post" action="" id="addQuestionForm">
@@ -227,10 +228,11 @@ if (isset($_POST['removeQuestion'])) {
         document.getElementById('quiz-form').insertAdjacentHTML('beforeend', newQuestionContainer);
 
         // Increment the question count in the sidebar
-        var questionList = document.getElementById('questionList');
-        var newQuestionListItem = document.createElement('li');
-        newQuestionListItem.innerHTML = `<a href="#question${questionCount}" onclick="showQuestion(${questionCount})">Question ${questionCount}</a>`;
-        questionList.appendChild(newQuestionListItem);
+        var questionBoxes = document.querySelector('.question-boxes');
+        var newQuestionBox = document.createElement('div');
+        newQuestionBox.className = 'question-box';
+        newQuestionBox.innerHTML = `<a href="#question${questionCount}" id="questionbar" onclick="showQuestion(${questionCount})"> ${questionCount}</a>`;
+        questionBoxes.appendChild(newQuestionBox);
 
         // Show the newly added question
         showQuestion(questionCount);
@@ -269,35 +271,32 @@ if (isset($_POST['removeQuestion'])) {
             alert("Invalid question number. No question deleted.");
             return;
         }
-        alert(`question${questionNo}`)
+        // alert(`question${questionNo}`)
         // Remove the question container from the main content
         var questionContainerToRemove = document.getElementById(`question${questionNo}`);
         questionContainerToRemove.parentNode.removeChild(questionContainerToRemove);
-        alert('2')
 
         // Update quiz_no for remaining questions
-        var questionContainers = document.querySelectorAll('.quiz-question');
-        questionContainers.forEach(function (container, index) {
-            var currentQuestionNo = index + 1;
-            container.id = `question${currentQuestionNo}`;
-            container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
-            alert('3')
+        // var questionContainers = document.querySelectorAll('.quiz-question');
+        // questionContainers.forEach(function (container, index) {
+        //     var currentQuestionNo = index + 1;
+        //     container.id = `question${currentQuestionNo}`;
+        //     container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
 
-            // Update quiz_no for input fields
-            container.querySelectorAll('input, select').forEach(function (input) {
-                var oldName = input.name;
-                input.name = oldName.replace(/\d+/, currentQuestionNo);
-                input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
-            });
-            alert('4')
+        //     // Update quiz_no for input fields
+        //     container.querySelectorAll('input, select').forEach(function (input) {
+        //         var oldName = input.name;
+        //         input.name = oldName.replace(/\d+/, currentQuestionNo);
+        //         input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
+        //     });
 
-        });
+        // });
 
         // Update the question count
         questionCount--;
-
-        // Update the question list in the sidebar
-        updateQuestionList();
+        var questionbar = document.getElementById(`box${questionNo}`);
+        questionbar.remove();
+        // updateQuestionList();
 
         // Show the previous question (if any)
         if (questionCount > 0) {
