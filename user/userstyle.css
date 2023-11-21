@@ -247,6 +247,46 @@ body{
     color: black
 }
 
+/* ----------- home.php ----------- */
+/* ----- Welcome message ----- */
+.welcome-box{
+    position: absolute; 
+    height: 50%; 
+    width: 100%; 
+    background-image: url("https://www.shutterstock.com/image-vector/horizontal-banner-hands-people-solving-260nw-1049759054.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+    filter: blur(3.7px); 
+    z-index: -1; 
+    
+}
+
+#container-msg {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 50vh; /* 100% of the viewport height */
+}
+
+.welcome {
+    text-align: center;
+    color: #5d2057;
+}
+
+/* Additional styling for better readability */
+.welcome-msg {
+    margin-bottom: 10px;
+    font-size: 3.5em;
+    font-weight: 550;
+    color: #5d2057;
+}
+
+.welcome-msg-2 {
+    font-size: 1.5em;
+    color: #5d2057;
+}
+
+/* ----- our own quiz -----*/
 #container-central {
     width: 70%;
     height: 30%;
@@ -284,3 +324,4 @@ body{
         margin-top: 10px;
     }
 }
+

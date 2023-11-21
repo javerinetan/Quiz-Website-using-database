@@ -140,91 +140,80 @@ function getRandomImagePath() {
     </div>
 </nav>
 
-
 <body>
+    <!-- Welcome the user -->
+    <div class="welcome-box"></div>
+    <div id="container-msg">
+        <div class="welcome">
+            <h1 class="welcome-msg"> 
+                Welcome back, <?php echo ucfirst($row['name']) ;?>!
+            </h1>
+            <h4 class="welcome-msg-2">
+                Ready to quiz? Let the fun begin!
+            </h4>
+            <br>
+            <button class="btn create btn-welcome">
+                Quizit Now
+            </button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h4 id="quizName"></h4>
+                        <p id="numQuestions"></p>
+                        <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
+                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-<!-- Create a carousel to show quiz -->
-<div id="container-central">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 1">
-        </div>
-        <div class="carousel-item">
-        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 2">
-        </div>
-        <div class="carousel-item">
-        <img src="https://via.placeholder.com/800x400.png" class="d-block w-100" alt="Slide 3">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-</div>
 
+    <div id="container-central" onclick="openQuizDetailsModal">
+        <h2 class="welcome">Your Quizzes</h2>
+        <?php 
+        // Fetch quizzes from the quiz table
+        $quizQuery = "SELECT * FROM quiz WHERE creator_id=" . $_SESSION['User'];
+        $quizResult = $con->query($quizQuery);
 
-<div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
-            <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <h4 id="quizName"></h4>
-            <p id="numQuestions"></p>
-            <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
-            <a class="btn btn-secondary">Edit</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        // Check if there are quizzes
+        if ($quizResult && $quizResult->num_rows > 0) {
+            echo '<div class="quizzes-container">';
+            while ($quizRow = $quizResult->fetch_assoc()) {
+                // Display each quiz
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
 
-<div id="container-central" onclick="openQuizDetailsModal">
-    <h2>Your Quizzes</h2>
-    <?php 
-    // Fetch quizzes from the quiz table
-    $quizQuery = "SELECT * FROM quiz WHERE creator_id=" . $_SESSION['User'];
-    $quizResult = $con->query($quizQuery);
-
-    // Check if there are quizzes
-    if ($quizResult && $quizResult->num_rows > 0) {
-        echo '<div class="quizzes-container">';
-        while ($quizRow = $quizResult->fetch_assoc()) {
-            // Display each quiz
-            echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
-
-            $randomImagePath = getRandomImagePath();
-            echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
-            echo '<p>' . $quizRow['quiz_name'] . '</p>';
+                $randomImagePath = getRandomImagePath();
+                echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
+                echo '<p>' . $quizRow['quiz_name'] . '</p>';
+                echo '</div>';
+            }
             echo '</div>';
+        } else {
+            echo '<p>No quizzes found.</p>';
         }
-        echo '</div>';
-    } else {
-        echo '<p>No quizzes found.</p>';
-    }
-    ?>
+        ?>
 
-    
-</div>
+        
+    </div>
 
 </body>
 
