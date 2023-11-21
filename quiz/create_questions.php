@@ -68,7 +68,7 @@ if(!isset($_SESSION['User']))
                 }elseif($correct=="option_4"){
                     $correct=$op4;
                 }
-                $qn_query = "insert into ".$table_name." values ('".$qn."', '".$op1."', '".$op2."', '".$op3."', '".$op4."', '".$correct."')";
+                $qn_query = "insert into ".$table_name." values (NULL,'".$qn."', '".$op1."', '".$op2."', '".$op3."', '".$op4."', '".$correct."')";
                 $results=mysqli_query($con,$qn_query);
                 // checking
                 // if (mysqli_query($con,$qn_query) === TRUE) {

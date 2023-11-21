@@ -72,14 +72,16 @@ function getRandomImagePath() {
                 while ($row = $quizResult2->fetch_assoc()) {
                     $IDPool[] = $row['quiz_id'];
                 }
+                $randomID = $IDPool[array_rand($IDPool)];
+                // // print_r($IDPool);
+                // echo $randomID;
+                echo '<a class="btn create btn-welcome" id="createQuizBtn" href="../quiz/attempt_quiz.php?quiz_id='.$randomID.'">
+                    Quizit Now </a>';
+            }else{
+                echo '<a href="../quiz/create_quiz.php"><button class="btn create " type="submit">Create a Quiz</button></a>
+                ';
             }
             
-            $randomID = $IDPool[array_rand($IDPool)];
-            // // print_r($IDPool);
-            // echo $randomID;
-            echo '<a class="btn create btn-welcome" id="createQuizBtn" href="../quiz/attempt_quiz.php?quiz_id='.$randomID.'">
-                Quizit Now
-    </a>'
     ?>
         </div>
     </div>
@@ -212,24 +214,28 @@ function getRandomImagePath() {
     <!-- I need to call all the quizzes using a query, then append it into a list, then randomise and call 1 of the query lines -->
 
 <script>
-    function openQuizDetailsModal(quizId, quizName, numQuestions) {
-        // Set the modal content dynamically
-        var quizNameElement = document.getElementById('quizName');
-        var numQuestionsElement = document.getElementById('numQuestions');
-        var startQuizBtn = document.getElementById('startQuizBtn');
-        var editQuizBtn = document.getElementById('editQuizBtn');
+      function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath) {
+    // Set the modal content dynamically
+    var quizImage = document.getElementById('quizImage');
+    var quizNameElement = document.getElementById('quizName');
+    var numQuestionsElement = document.getElementById('numQuestions');
+    var startQuizBtn = document.getElementById('startQuizBtn');
+    var editQuizBtn = document.getElementById('editQuizBtn');
 
-        // Update other modal content
-        quizNameElement.innerText = quizName;
-        numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+    // Update the image source
+    quizImage.src = imagePath;
 
-        // Set the href attribute for the "Start Quiz" button
-        startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
-        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+    // Update other modal content
+    quizNameElement.innerText = quizName;
+    numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
 
-        // Show the modal
-        $('#quizDetailsModal').modal('show');
-    }
+    // Set the href attribute for the "Start Quiz" button
+    startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
+    editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+    // Show the modal
+
+    $('#quizDetailsModal').modal('show');
+  }
 </script>
 
 <script>
@@ -237,12 +243,12 @@ function getRandomImagePath() {
     function getQuiz() {
     // Assuming list is an array of quiz IDs, fetch it from PHP
     var list = [<?php
-    $query = "SELECT quiz_id FROM quiz";
+    $query2 = "SELECT quiz_id FROM quiz";
     $instance = new DatabaseConnection();
-    $result = $instance->retrieveData($query);
+    $result2 = $instance->retrieveData($query2);
     $quizIds = [];
 
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $result2->fetch_assoc()) {
         $quizIds[] = $row['quiz_id'];
     }
 
