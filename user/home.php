@@ -67,15 +67,9 @@ function getRandomImagePath() {
             <?php 
             $query_quiz = "SELECT quiz_id FROM quiz";
             $quizResult2 = $con->query($query_quiz);
-            $IDPool = [];
+
             if ($quizResult2 && $quizResult2->num_rows > 0) {
-                while ($row = $quizResult2->fetch_assoc()) {
-                    $IDPool[] = $row['quiz_id'];
-                }
-                $randomID = $IDPool[array_rand($IDPool)];
-                // // print_r($IDPool);
-                // echo $randomID;
-                echo '<a class="btn create btn-welcome" id="createQuizBtn" href="../quiz/attempt_quiz.php?quiz_id='.$randomID.'">
+                echo '<a class="btn create btn-welcome" id="createQuizBtn" onclick="quizConfirmation()">
                     Quizit Now </a>';
             }else{
                 echo '<a href="../quiz/create_quiz.php"><button class="btn create " type="submit">Create a Quiz</button></a>
@@ -85,6 +79,30 @@ function getRandomImagePath() {
     ?>
         </div>
     </div>
+
+    <script>
+    function quizConfirmation() {
+        var choice = confirm('Do you want to take a random quiz?');
+        if (choice == true) {
+            <?php 
+                $query_quiz = "SELECT quiz_id FROM quiz";
+                $quizResult2 = $con->query($query_quiz);
+                $IDPool = [];
+                if ($quizResult2 && $quizResult2->num_rows > 0) {
+                    while ($row = $quizResult2->fetch_assoc()) {
+                        $IDPool[] = $row['quiz_id'];
+                    }
+                    $randomID = $IDPool[array_rand($IDPool)];
+                    echo 'window.location.href = "../quiz/attempt_quiz.php?quiz_id='.$randomID.'";';
+                } else {
+                    echo 'alert("No quizzes available");';
+                }
+            ?>
+        } else {
+            alert('Okay, maybe next time!');
+        }
+    }
+    </script>
 
     <br>
     <br>
@@ -115,9 +133,6 @@ function getRandomImagePath() {
             </div>
         </div>
     </div>
-    
-
-
 
     <div id="container-central" onclick="openQuizDetailsModal">
         <h2 class="welcome">Your Quizzes</h2>
@@ -238,6 +253,7 @@ function getRandomImagePath() {
   }
 </script>
 
+<!-- this does not work -->
 <script>
     // fuck you
     function getQuiz() {
