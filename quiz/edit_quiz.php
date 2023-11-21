@@ -139,8 +139,15 @@ if (isset($_GET['quiz_id'])) {
                     ';
                     $question_no++;
                 }
+
+                
                 ?>
             </form>
+            <div class="col-md-12 text-center mt-3">
+                <button type="button" class="btn btn-success mr-auto" id="backButton" onclick="navigateQuestion('back')" style="display: none;">Back</button>
+                <button type="button" class="btn btn-success ml-auto" id="nextButton" onclick="navigateQuestion('next')" >Next</button>
+                <button type="submit" class="btn btn-successn ml-auto" name="c_qn" id="submitButton" style="display: none;">Submit</button>
+            </div>
         </div>
     </main>
 </body>
@@ -337,4 +344,43 @@ if (isset($_POST['removeQuestion'])) {
             questionList.appendChild(listItem);
         }
     }
+
+    function updateButtonVisibility(currentQuestion) {
+        var backButton = document.getElementById('backButton');
+        var nextButton = document.getElementById('nextButton');
+        var submitButton = document.getElementById('submitButton');
+
+        backButton.style.display = currentQuestion > 1 ? 'block' : 'none';
+
+        if (currentQuestion < questionCount) {
+            nextButton.style.display = 'block';
+            submitButton.style.display = 'none';
+        } else {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'block';
+        }
+    }
+
+    function navigateQuestion(direction) {
+        var currentQuestion = getCurrentQuestion();
+        var newQuestionNo;
+
+        if (direction === 'next') {
+            newQuestionNo = Math.min(currentQuestion + 1, questionCount);
+        } else if (direction === 'back') {
+            newQuestionNo = Math.max(currentQuestion - 1, 1);
+        }
+
+        showQuestion(newQuestionNo);
+        updateButtonVisibility(newQuestionNo);
+    }
+
+    function getCurrentQuestion() {
+        var visibleQuestion = document.querySelector('.quiz-question[style="display: block;"]');
+        var questionNo = parseInt(visibleQuestion.id.replace('question', ''));
+        return isNaN(questionNo) ? 1 : questionNo;
+    }
+
+    // Initial visibility update
+    updateButtonVisibility(1);
 </script>
