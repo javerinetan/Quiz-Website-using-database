@@ -104,12 +104,11 @@ function getRandomImagePath() {
                     <div class="col-md-6">
                         <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" id='quiz-info'>
                         <h4 id="quizName"></h4>
                         <p id="numQuestions"></p>
                         <p id="creatorName"></p>
                         <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
-                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
                     </div>
                     </div>
                 </div>
@@ -195,29 +194,44 @@ function getRandomImagePath() {
     <!-- I need to call all the quizzes using a query, then append it into a list, then randomise and call 1 of the query lines -->
 
 <script>
-      function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath, community) {
+    function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath, community) {
     // Set the modal content dynamically
+    var quizInfo = document.getElementById('quiz-info');
     var quizImage = document.getElementById('quizImage');
     var quizNameElement = document.getElementById('quizName');
     var numQuestionsElement = document.getElementById('numQuestions');
     var startQuizBtn = document.getElementById('startQuizBtn');
-    var editQuizBtn = document.getElementById('editQuizBtn');
 
     // Update the image source
     quizImage.src = imagePath;
 
+    // reset the edit button
+    var editBtn = document.getElementById('editQuizBtn');
+    if (editBtn) {
+    editBtn.remove();
+    }
     // Update other modal content
     quizNameElement.innerText = quizName;
     numQuestionsElement.innerText = "Number of Questions: " + numQuestions ;
+    var editQuizBtn = document.createElement('a'); // Use document.createElement
+
     if(community !== 'undefined'){
         var creatorNameElement = document.getElementById('creatorName');
         creatorNameElement.innerText = "Creator: " + community;
         numQuestionsElement.style.marginBottom = "0px";
+    }else{
+        var editQuizBtn = document.createElement('a'); // Use document.createElement
+        editQuizBtn.id = 'editQuizBtn';
+        editQuizBtn.className = 'btn btn-secondary';
+        editQuizBtn.textContent = 'Edit';
+        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+
+        // Append the element to the quizInfo element
+        quizInfo.appendChild(editQuizBtn);
     }
 
     // Set the href attribute for the "Start Quiz" button
     startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
-    editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
     // Show the modal
 
     $('#quizDetailsModal').modal('show');
