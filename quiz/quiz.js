@@ -15,10 +15,21 @@ $(document).ready(function () {
 document.addEventListener('DOMContentLoaded', function () {
     var questionContainers = document.querySelectorAll('.quiz-question');
 
+    // function showQuestion(questionNumber) {
+    //     questionContainers.forEach(function (container, index) {
+    //         if (index + 1 === questionNumber) {
+    //             container.style.display = 'block';
+    //         } else {
+    //             container.style.display = 'none';
+    //         }
+    //     });
+    // }
     function showQuestion(questionNumber) {
         questionContainers.forEach(function (container, index) {
-            if (index + 1 === questionNumber) {
+            var currentQuestionNo = index + 1;
+            if (currentQuestionNo === questionNumber) {
                 container.style.display = 'block';
+
             } else {
                 container.style.display = 'none';
             }
@@ -30,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             var questionNumber = parseInt(this.textContent.match(/\d+/)[0], 10);
+            // alert(questionNumber);
             showQuestion(questionNumber);
         });
     });
