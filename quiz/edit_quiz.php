@@ -16,7 +16,8 @@ if (isset($_GET['quiz_id'])) {
 
     if ($quiz_row) {
         $quiz_name = $quiz_row['quiz_name'];
-
+        $quiz_limit = $quiz_row['questions'];
+        echo $quiz_limit;
         // Fetch quiz questions
         $questions_query = "SELECT * FROM quiz_$quiz_id";
         $questions_result = mysqli_query($con, $questions_query);
@@ -156,7 +157,9 @@ if (isset($_GET['quiz_id'])) {
 // Check if the "Add Question" button is clicked
 if (isset($_POST['addQuestion'])) {
     // Increment the question count
-    $newQuestionNo = $quiz_row['questions'] + 1;
+    $quiz_limit++;
+    $newQuestionNo = $quiz_limit;
+    echo $quiz_limit;
     echo '
         <div class="quiz-question" id="question' . $newQuestionNo . '">
             <div class="question-container">
@@ -204,12 +207,10 @@ if (isset($_POST['removeQuestion'])) {
 ?>
 
 <script>
-    var questionCount = <?php echo $quiz_row['questions']; ?>;
-
+    var questionCount = <?php echo $quiz_row['questions'] ?>;
     function addQuestion() {
         // Increment the question count
         questionCount++;
-
         // Create a new question container
         var newQuestionContainer = `
             <div class="quiz-question" id="question${questionCount}">
@@ -231,9 +232,9 @@ if (isset($_POST['removeQuestion'])) {
         var questionBoxes = document.querySelector('.question-boxes');
         var newQuestionBox = document.createElement('div');
         newQuestionBox.className = 'question-box';
+        newQuestionBox.id = `box${questionCount}`;
         newQuestionBox.innerHTML = `<a href="#question${questionCount}" id="questionbar" onclick="showQuestion(${questionCount})"> ${questionCount}</a>`;
         questionBoxes.appendChild(newQuestionBox);
-
         // Show the newly added question
         showQuestion(questionCount);
     }
@@ -292,8 +293,10 @@ if (isset($_POST['removeQuestion'])) {
 
         // });
 
-        // Update the question count
-        questionCount--;
+        // Update the question count only if the question number is the last one
+        if(questionNo === questionCount){
+            questionCount--;
+        }
         var questionbar = document.getElementById(`box${questionNo}`);
         questionbar.remove();
         // updateQuestionList();
