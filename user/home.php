@@ -287,6 +287,7 @@ function getRandomImagePath() {
     var quizNameElement = document.getElementById('quizName');
     var numQuestionsElement = document.getElementById('numQuestions');
     var startQuizBtn = document.getElementById('startQuizBtn');
+    var editQuizBtn = document.getElementById('editQuizBtn');
 
     // Update the image source
     quizImage.src = imagePath;
