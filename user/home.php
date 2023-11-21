@@ -91,7 +91,7 @@ function getRandomImagePath() {
     <br>
 
 
-    <!---------- Your own quiz ---------->
+    <!---------- quiz details modal ---------->
     <div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -107,6 +107,7 @@ function getRandomImagePath() {
                     <div class="col-md-6">
                         <h4 id="quizName"></h4>
                         <p id="numQuestions"></p>
+                        <p id="creatorName"></p>
                         <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
                         <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
                     </div>
@@ -132,7 +133,8 @@ function getRandomImagePath() {
             while ($quizRow = $quizResult->fetch_assoc()) {
                 // Display each quiz
                 $randomImagePath = getRandomImagePath();
-                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\')">'; 
+                $notCommunity = "undefined";
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\', \'' . $notCommunity . '\')">'; 
                 echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
                 echo '<p>' . $quizRow['quiz_name'] . '</p>';
                 echo '</div>';            
@@ -147,31 +149,6 @@ function getRandomImagePath() {
     <br>
     <br>
     <br>
-
-    <!---------- Community quiz ---------->
-    <div class="modal fade" id="quizDetailsModal" tabindex="-1" aria-labelledby="quizDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                    <div class="col-md-6">
-                        <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
-                    </div>
-                    <div class="col-md-6">
-                        <h4 id="quizName"></h4>
-                        <p id="numQuestions"></p>
-                        <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
-                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     
 
     <div id="container-central" onclick="openQuizDetailsModal">
@@ -185,13 +162,18 @@ function getRandomImagePath() {
         if ($quizResult && $quizResult->num_rows > 0) {
             echo '<div class="quizzes-container">';
             while ($quizRow = $quizResult->fetch_assoc()) {
+                // get creator name
+                $quizQuery1 = "SELECT * FROM account WHERE id =" . $quizRow['creator_id'];
+                $quizResult1 = $con->query($quizQuery1);
+                $quizRow1 = $quizResult1->fetch_assoc();
+                $creator_id = $quizRow1['name'];
+
                 // Display each quiz
                 $randomImagePath = getRandomImagePath();
-                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\')">'; 
-                echo '<div class="quiz-container" onclick="'.$modal.'")">';
+                echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\', \'' . $randomImagePath . '\', \'' . $quizRow1['name'] . '\')">'; 
                 echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
                 echo '<p>' . $quizRow['quiz_name'] . '</p>';
-                echo '</div>';
+                echo '</div>';            
             }
             echo '</div>';
         } else {
@@ -206,7 +188,6 @@ function getRandomImagePath() {
 
 <footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
 <script src="https://proxy-translator.app.crowdin.net/assets/proxy-translator.js"></script>
 <script src='../language.js'></script>
 
@@ -214,7 +195,7 @@ function getRandomImagePath() {
     <!-- I need to call all the quizzes using a query, then append it into a list, then randomise and call 1 of the query lines -->
 
 <script>
-      function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath) {
+      function openQuizDetailsModal(quizId, quizName, numQuestions, imagePath, community) {
     // Set the modal content dynamically
     var quizImage = document.getElementById('quizImage');
     var quizNameElement = document.getElementById('quizName');
@@ -227,7 +208,12 @@ function getRandomImagePath() {
 
     // Update other modal content
     quizNameElement.innerText = quizName;
-    numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+    numQuestionsElement.innerText = "Number of Questions: " + numQuestions ;
+    if(community !== 'undefined'){
+        var creatorNameElement = document.getElementById('creatorName');
+        creatorNameElement.innerText = "Creator: " + community;
+        numQuestionsElement.style.marginBottom = "0px";
+    }
 
     // Set the href attribute for the "Start Quiz" button
     startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
