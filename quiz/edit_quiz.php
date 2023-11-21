@@ -15,7 +15,6 @@ if (isset($_GET['quiz_id'])) {
     $quiz_row = mysqli_fetch_assoc($quiz_result);
 
     if ($quiz_row) {
-        $limit=$quiz_row['questions'];
         $quiz_name = $quiz_row['quiz_name'];
 
         // Fetch quiz questions
@@ -129,8 +128,8 @@ if (isset($_GET['quiz_id'])) {
                                 </select>
                             </div>
                         </div>
+                    </div>
                     ';
-                    
                     $question_no++;
                 }
                 ?>

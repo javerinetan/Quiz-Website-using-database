@@ -201,8 +201,9 @@ function getRandomImagePath() {
             echo '<div class="quizzes-container">';
             while ($quizRow = $quizResult->fetch_assoc()) {
                 // Display each quiz
-                $randomImagePath = getRandomImagePath();
                 echo '<div class="quiz-container" onclick="openQuizDetailsModal(' . $quizRow['quiz_id'] . ', \'' . $quizRow['quiz_name'] . '\', \'' . $quizRow['questions'] . '\')">';
+
+                $randomImagePath = getRandomImagePath();
                 echo '<img src="' . $randomImagePath . '" alt="Quiz Image">';
                 echo '<p>' . $quizRow['quiz_name'] . '</p>';
                 echo '</div>';
@@ -296,7 +297,7 @@ function getRandomImagePath() {
     numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
 
     // Set the href attribute for the "Start Quiz" button
-    startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
+    startQuizBtn.href = '../quiz/quiz.php?quiz_id=' + quizId;
     editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
 
     // Show the modal
