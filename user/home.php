@@ -114,7 +114,7 @@ function getRandomImagePath() {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h5>
+                    <h2 class="modal-title" id="quizDetailsModalLabel">Quiz Details</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -123,10 +123,10 @@ function getRandomImagePath() {
                         <img id="quizImage" src="" alt="Quiz Image" class="img-fluid">
                     </div>
                     <div class="col-md-6" id='quiz-info'>
-                        <h4 id="quizName"></h4>
+                        <h4 class="model-header" id="quizName"></h4>
                         <p id="numQuestions"></p>
                         <p id="creatorName"></p>
-                        <a id="startQuizBtn" class="btn btn-primary">Start Quiz</a>
+                        <a id="startQuizBtn" class="btn create">Start Quiz</a>
                     </div>
                     </div>
                 </div>
@@ -226,7 +226,7 @@ function getRandomImagePath() {
     editBtn.remove();
     }
     // Update other modal content
-    quizNameElement.innerText = quizName;
+        quizNameElement.innerText = "Topic: " + quizName;
     numQuestionsElement.innerText = "Number of Questions: " + numQuestions ;
     var editQuizBtn = document.createElement('a'); // Use document.createElement
 

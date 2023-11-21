@@ -318,6 +318,11 @@ height: 50vh; /* 100% of the viewport height */
     display: none;
 }
 
+/* ----- quiz model -----*/
+.model-header{
+    font-weight: 600;
+}
+
 /* Media query to show the "More" button on smaller screens */
 @media (max-width: 767px) {
     .quiz-container {
