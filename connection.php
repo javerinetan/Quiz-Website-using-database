@@ -39,6 +39,7 @@ class DatabaseConnection {
     function createQuizTable($quiz_no){
         $con=mysqli_connect('localhost','root','','webdb_project');
         $table_query="create table quiz_".$quiz_no."(
+            quiz_no INT PRIMARY KEY AUTO_INCREMENT,
             question VARCHAR(255) NOT NULL, 
             option_1 VARCHAR(255) NOT NULL, 
             option_2 VARCHAR(255) NOT NULL, 
