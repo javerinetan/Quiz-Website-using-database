@@ -73,7 +73,7 @@ if (isset($_GET['quiz_id'])) {
                 <?php
                 // Loop through existing questions and generate list items
                 for ($i = 1; $i <= $quiz_row['questions']; $i++) {
-                    echo '<div class="question-box"><a href="#question' . $i . '">' . $i . '</a></div>';
+                    echo '<div class="question-box"><a href="#question'  . $i . '">' . $i . '</a></div>';
                 }
                 ?>
 
@@ -228,10 +228,11 @@ if (isset($_POST['removeQuestion'])) {
         document.getElementById('quiz-form').insertAdjacentHTML('beforeend', newQuestionContainer);
 
         // Increment the question count in the sidebar
-        var questionList = document.getElementById('questionList');
-        var newQuestionListItem = document.createElement('li');
-        newQuestionListItem.innerHTML = `<a href="#question${questionCount}" onclick="showQuestion(${questionCount})">Question ${questionCount}</a>`;
-        questionList.appendChild(newQuestionListItem);
+        var questionBoxes = document.querySelector('.question-boxes');
+        var newQuestionBox = document.createElement('div');
+        newQuestionBox.className = 'question-box';
+        newQuestionBox.innerHTML = `<a href="#question${questionCount}" id="questionbar" onclick="showQuestion(${questionCount})"> ${questionCount}</a>`;
+        questionBoxes.appendChild(newQuestionBox);
 
         // Show the newly added question
         showQuestion(questionCount);
@@ -274,7 +275,6 @@ if (isset($_POST['removeQuestion'])) {
         // Remove the question container from the main content
         var questionContainerToRemove = document.getElementById(`question${questionNo}`);
         questionContainerToRemove.parentNode.removeChild(questionContainerToRemove);
-        alert('2')
 
         // Update quiz_no for remaining questions
         var questionContainers = document.querySelectorAll('.quiz-question');
@@ -282,7 +282,6 @@ if (isset($_POST['removeQuestion'])) {
             var currentQuestionNo = index + 1;
             container.id = `question${currentQuestionNo}`;
             container.querySelector('h3').innerText = `Question ${currentQuestionNo}`;
-            alert('3')
 
             // Update quiz_no for input fields
             container.querySelectorAll('input, select').forEach(function (input) {
@@ -290,7 +289,6 @@ if (isset($_POST['removeQuestion'])) {
                 input.name = oldName.replace(/\d+/, currentQuestionNo);
                 input.placeholder = input.placeholder.replace(/\d+/, currentQuestionNo);
             });
-            alert('4')
 
         });
 
@@ -298,6 +296,8 @@ if (isset($_POST['removeQuestion'])) {
         questionCount--;
 
         // Update the question list in the sidebar
+        var questionbar = document.getElementById('');
+        questionbar.remove();
         updateQuestionList();
 
         // Show the previous question (if any)
