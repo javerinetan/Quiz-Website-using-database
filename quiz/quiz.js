@@ -38,19 +38,22 @@ document.addEventListener('DOMContentLoaded', function () {
     nextQuestion.forEach(function (link) {
         link.addEventListener('click', function (event) {
             event.preventDefault();
-            var questionNumber2 = parseInt(this.textContent.match(/\d+/)[0], 10);
+            var questionNumber2 = parseInt(this.id);
             showQuestion(questionNumber2);
         });
     });
 
-    var attemptNextQn = document.querySelectorAll('.quiz-question .attempt_btn');
-    attemptNextQn.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            var questionNumber3 = parseInt(this.textContent.match(/\d+/)[0], 10);
-            showQuestion(questionNumber3);
-        });
-    });
+    // var attemptNextQn = document.querySelectorAll('.attempt_btn');
+    // attemptNextQn.forEach(function (link) {
+    //     link.addEventListener('click', function (event) {
+    //         alert('1');
+    //         event.preventDefault();
+    //         alert('2');
+    //         var questionNumber3 = parseInt(this.id.match(/\d+/)[0], 10);
+    //         alert('3');
+    //         showQuestion(questionNumber3);
+    //     });
+    // });
     // Show the first question by default
     showQuestion(1);
 });
