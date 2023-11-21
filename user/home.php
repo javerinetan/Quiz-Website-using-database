@@ -64,9 +64,23 @@ function getRandomImagePath() {
                 Ready to quiz? Let the fun begin!
             </h4>
             <br>
-            <button class="btn create btn-welcome" id="createQuizBtn" onclick="getQuiz()">
+            <?php 
+            $query_quiz = "SELECT quiz_id FROM quiz";
+            $quizResult2 = $con->query($query_quiz);
+            $IDPool = [];
+            if ($quizResult2 && $quizResult2->num_rows > 0) {
+                while ($row = $quizResult2->fetch_assoc()) {
+                    $IDPool[] = $row['quiz_id'];
+                }
+            }
+            
+            $randomID = $IDPool[array_rand($IDPool)];
+            // // print_r($IDPool);
+            // echo $randomID;
+            echo '<a class="btn create btn-welcome" id="createQuizBtn" href="../quiz/attempt_quiz.php?quiz_id='.$randomID.'">
                 Quizit Now
-            </button>
+    </a>'
+    ?>
         </div>
     </div>
 
@@ -219,20 +233,20 @@ function getRandomImagePath() {
 </script>
 
 <script>
-    
+    // fuck you
     function getQuiz() {
     // Assuming list is an array of quiz IDs, fetch it from PHP
     var list = [<?php
-        $query = "SELECT quiz_id FROM quiz";
-        $instance = new DatabaseConnection();
-        $result = $instance->retrieveData($query);
-        $quizIds = [];
+    $query = "SELECT quiz_id FROM quiz";
+    $instance = new DatabaseConnection();
+    $result = $instance->retrieveData($query);
+    $quizIds = [];
 
-        while ($row = $result->fetch_assoc()) {
-            $quizIds[] = $row['quiz_id'];
-        }
+    while ($row = $result->fetch_assoc()) {
+        $quizIds[] = $row['quiz_id'];
+    }
 
-        echo implode(',', $quizIds);
+    echo implode(',', $quizIds);
     ?>];
 
     // Get a random quiz ID
@@ -243,24 +257,6 @@ function getRandomImagePath() {
     window.location.href = '../quiz/attempt_quiz.php?quiz_id=' + randomQuizId;
 }
 
-    function getRandomQuiz() {
-        // Using AJAX to fetch a random quiz
-        $.ajax({
-            type: "GET",
-            url: "getRandomquiz.php", // Create a separate PHP file to handle this request
-            success: function(response) {
-                if (response.success) {
-                    var quizData = response.quizData;
-                    openQuizDetailsModal(quizData.quiz_id, quizData.quiz_name, quizData.questions);
-                } else {
-                    alert('No quizzes found.'); 
-                }
-            },
-            error: function() {
-                alert('Error fetching quiz.');
-            }
-        });
-    }
 </script>
 
 
