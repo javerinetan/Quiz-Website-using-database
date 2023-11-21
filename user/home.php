@@ -197,7 +197,28 @@ function getRandomImagePath() {
 
     <!-- I need to call all the quizzes using a query, then append it into a list, then randomise and call 1 of the query lines -->
 
-    <script>
+<script>
+    function openQuizDetailsModal(quizId, quizName, numQuestions) {
+        // Set the modal content dynamically
+        var quizNameElement = document.getElementById('quizName');
+        var numQuestionsElement = document.getElementById('numQuestions');
+        var startQuizBtn = document.getElementById('startQuizBtn');
+        var editQuizBtn = document.getElementById('editQuizBtn');
+
+        // Update other modal content
+        quizNameElement.innerText = quizName;
+        numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
+
+        // Set the href attribute for the "Start Quiz" button
+        startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
+        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+
+        // Show the modal
+        $('#quizDetailsModal').modal('show');
+    }
+</script>
+
+<script>
     
     function getQuiz() {
     // Assuming list is an array of quiz IDs, fetch it from PHP
@@ -241,29 +262,6 @@ function getRandomImagePath() {
         });
     }
 </script>
-
-<script>
-    function openQuizDetailsModal(quizId, quizName, numQuestions) {
-        // Set the modal content dynamically
-        var quizNameElement = document.getElementById('quizName');
-        var numQuestionsElement = document.getElementById('numQuestions');
-        var startQuizBtn = document.getElementById('startQuizBtn');
-        var editQuizBtn = document.getElementById('editQuizBtn');
-
-        // Update other modal content
-        quizNameElement.innerText = quizName;
-        numQuestionsElement.innerText = "Number of Questions: " + numQuestions;
-
-        // Set the href attribute for the "Start Quiz" button
-        startQuizBtn.href = '../quiz/attempt_quiz.php?quiz_id=' + quizId;
-        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
-
-        // Show the modal
-        $('#quizDetailsModal').modal('show');
-    }
-</script>
-
-
 
 
 </footer>
