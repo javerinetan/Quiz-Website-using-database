@@ -56,8 +56,8 @@ if (isset($_POST['updateQuestion'])) {
 
         // Update the database
         $update_query = "UPDATE quiz_$quiz_id SET question = '$question_text', 
-            option_1 = $option_1  , option_2 = $option_2, option_3 = $option_3, option_4 = $option_4,
-            answer = $correct WHERE quiz_no = $question_no";
+            option_1 = '$option_1'  , option_2 = '$option_2', option_3 = '$option_3', option_4 = '$option_4',
+            answer = '$correct' WHERE quiz_no = $question_no";
 
         mysqli_query($con, $update_query);
     
