@@ -84,7 +84,7 @@ if(!isset($_SESSION['User']))
             text-decoration: none;
             color: #fff;
         }
-        }
+
 
 </style>
 

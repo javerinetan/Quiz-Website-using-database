@@ -50,8 +50,20 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
     <title>Dashboard</title>
 
     <style>
+        h1 {
+            text-align: center;
+            color: #800880;
+            font-size: 3em;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25vh
+        }
+ 
         .dashboard{
-            text-align:center;
+            text-align: center;
+            padding-top: 2.5%;
         }
 
         #Chart1, #Chart2 {
@@ -59,7 +71,65 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
             margin: 20px auto; 
             border: 1px solid #ddd; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            padding-bottom: 2.5%;
         }
+
+        #error_msg {
+            text-align: center;
+            color: #800880;
+            font-size: 3em;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25vh
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #5d2057;
+        }
+
+        h6{
+            color: #800880;
+        }
+
+        #createQuizBtn {
+            align-items: center;
+        }
+
+        .btn-try-container{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-try{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* You can change the background color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .btn-try:hover{
+            background-color: #0a5cb4; /* You can change the hover background color */
+            text-decoration: none;
+            color: #fff;
+        }
+
+        p{
+            color: #f8f9fa;
+            padding: 0.6%;
+        }        
+
     </style>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -72,24 +142,48 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 
 <!-- Dashboard for no. of quiz created & Quiz taken over a session -->
 
-<div class="dashboard">
-    <h2>Welcome, <?php echo $row['name'] ; ?>!</h2>
-    <p>Number of quizzes created: <?php 
-    if($resultCreated==True){
-        echo $quizzesCreated;
-    }else{
-        echo "0";
-    }; 
-    ?></p>
-    <p>Number of quizzes taken: <?php 
-    if($resultTaken==TRUE){
-        $number = reset($quizzesTaken);
-        echo $number;
-    }else{
-        echo "0";
-    }; 
-    ?></p>
+
 </div>
+
+<?php
+    $query_check_attempts = "SELECT COUNT(*) as num_attempts FROM quiz_attempt_log WHERE attempt_by = {$_SESSION['User']}";
+    $result_check_attempts = $con->query($query_check_attempts);
+    $row_check_attempts = mysqli_fetch_assoc($result_check_attempts);
+
+    if ($row_check_attempts['num_attempts'] == 0) {
+        echo '<div class="container">';
+            echo "<h1 id=error_msg>No attempts made yet.</h1>";
+            echo '<div class="btn-try-container">';
+            echo '<a href="home.php" class="btn create btn-try" id="createQuizBtn">Get Started!</a>';
+            echo '</div>';
+            echo '</div>';
+    } else {
+
+        echo '<div class="dashboard">';
+        echo '    <h1>Welcome, ' . $row['name'] . '!</h1>';
+        echo '    <h6>Number of quizzes created: ';
+        if ($resultCreated == true) {
+            echo $quizzesCreated;
+        } else {
+            echo "0";
+        };
+        echo '</h6>';
+        echo '    <h6>Number of quizzes taken: ';
+        if ($resultTaken == true) {
+            $number = reset($quizzesTaken);
+            echo $number;
+        } else {
+            echo "0";
+        };
+        echo '</h6>';
+        echo '</div>';
+
+        echo '<div>';
+        echo '<canvas id="Chart1"></canvas>';
+        echo '<canvas id="Chart2"></canvas>';
+        echo '</div>';
+    }
+?>
 
 <?php 
     $queryforgraph1 = "SELECT YEAR(created_on) AS year, MONTH(created_on) AS month, dayofmonth(created_on) as day, COUNT(*) AS quizzes_created
@@ -132,10 +226,7 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 
 <!-- When i click on the quiz start, append +1 into a list so i have a counter -->
 
-<div>
-  <canvas id="Chart1"></canvas>
-  <canvas id="Chart2"></canvas>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -224,6 +315,8 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 });
 </script>
 
+<div id=padding_for_bottom></div>
+    <p>hi</p>
 </body>
 
 <footer>
