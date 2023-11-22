@@ -74,6 +74,25 @@
     padding-top: 40px
 }
 
+.btn-invert{
+    color: #5d2057 !important;
+    border: 2px solid #5d2057 !important;
+    font-weight: 500 !important;
+    margin-right: 10px;
+}
+.btn-invert:hover{
+    background-color: #5d2057 !important; /* Set the hover background color to the default text color */
+    color: #ffffff !important; /* Set the hover text color to the default Bootstrap primary color */
+}
+.btn-normal{
+    background-color:#5d2057 !important;
+    border: 1px solid #5d2057 !important;
+    color: #ffffff !important;
+}
+.btn-normal:hover{
+    background-color:#9e1c91 !important;
+    border: 1px solid #5d2057 !important;
+}
 /* Add additional styling as needed for input fields and buttons */
 
 

@@ -14,6 +14,7 @@ if(isset($_GET['attempt_id'])){
     $correct = $quiz_row10['correct'];
 
     $total_questions = "".intval($quiz_row10['wrong']) + intval($quiz_row10['correct']);
+    $quiz_id = $quiz_row10['quiz_id'];
 }else {
     echo "Quiz ID or user answers not provided!";
     exit;
@@ -70,8 +71,8 @@ if(isset($_GET['attempt_id'])){
         <p class="mt-3">You scored <?php echo $correct; ?> out of <?php echo $total_questions; ?> questions
             correctly.</p>
         <div class="mt-4">
-            <a href="retake_quiz.php" class="btn btn-success">Retake Quiz</a>
-            <a href="../user/home.php" class="btn btn-success">Go Back to Homepage</a>
+            <a href="attempt_quiz.php?quiz_id=<?php echo $quiz_id; ?>" class="btn btn-invert">Retake Quiz</a>
+            <a href="../user/home.php" class="btn btn-normal">Go Back to Homepage</a>
         </div>
     </div>
 </body>

@@ -217,10 +217,6 @@ if (isset($_POST['s_qn'])) {
             ?>
         <?php endforeach; ?>
         </form>
-        <!-- Navigation buttons -->
-        <div class="">
-        
-
         </div>
     </div>
 
