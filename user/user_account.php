@@ -54,9 +54,10 @@ $row=$instance->retrieveData($query);
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="uploadForm" enctype="multipart/form-data">
-                            <input type="file" name="avatar" id="avatarInput" accept="image/*" required>
-                            <button type="button" class="btn btn-primary" onclick="uploadAvatar()">Upload</button>
+                        <form id="uploadForm">
+                            <label for="avatarInput">Avatar URL:</label>
+                            <input type="text" id="avatarInput" name="avatar_url" required>
+                            <button type="button" class="btn btn-primary" onclick="uploadAvatar()">Save</button>
                         </form>
                     </div>
                 </div>
@@ -64,21 +65,23 @@ $row=$instance->retrieveData($query);
         </div>
         <script>
         function uploadAvatar() {
-            var formData = new FormData(document.getElementById('uploadForm'));
+            var avatarURL = document.getElementById('avatarInput').value;
 
             fetch('upload_avatar.php', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'avatar_url=' + encodeURIComponent(avatarURL),
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert("Avatar uploaded successfully");
-                    // Optionally, update the user interface to show the new avatar
-                    // You may reload the page or update the avatar image directly
+                    alert("Avatar URL updated successfully");
+                    // Redirect to accounts.php after successful update
                     window.location.href = 'user_account.php';
                 } else {
-                    alert("Failed to upload avatar. " + data.message);
+                    alert("Failed to update avatar URL. " + data.message);
                 }
             })
             .catch((error) => {
@@ -86,6 +89,7 @@ $row=$instance->retrieveData($query);
             });
         }
     </script>
+
 
         <button class="details has-chevron">
             <p class="main2">Username</p>
