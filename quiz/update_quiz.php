@@ -129,10 +129,10 @@ if (isset($_POST['updateQuestion'])) {
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_answer">Correct Answer</label>
                         <select name="q<?php echo $question['quiz_no']; ?>_answer" class="form-control" required>
-                            <option value="option_1" <?php echo ($question['answer'] == 'option_1') ? 'selected' : ''; ?>>Option 1</option>
-                            <option value="option_2" <?php echo ($question['answer'] == 'option_2') ? 'selected' : ''; ?>>Option 2</option>
-                            <option value="option_3" <?php echo ($question['answer'] == 'option_3') ? 'selected' : ''; ?>>Option 3</option>
-                            <option value="option_4" <?php echo ($question['answer'] == 'option_4') ? 'selected' : ''; ?>>Option 4</option>
+                            <option value="option_1" <?php echo ($question['answer'] == $question['option_1']) ? 'selected' : ''; ?>>Option 1</option>
+                            <option value="option_2" <?php echo ($question['answer'] == $question['option_2']) ? 'selected' : ''; ?>>Option 2</option>
+                            <option value="option_3" <?php echo ($question['answer'] == $question['option_3']) ? 'selected' : ''; ?>>Option 3</option>
+                            <option value="option_4" <?php echo ($question['answer'] == $question['option_4']) ? 'selected' : ''; ?>>Option 4</option>
                         </select>
                     </div>
                 </div>
