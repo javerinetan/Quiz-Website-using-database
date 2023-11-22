@@ -66,38 +66,8 @@ $result2 = $con->query($query2);
 ?>
 
 <body>
-    <section>
-        <h1>Attempts Log table</h1>
-        <table>
-            <tr>
-               
-                <th>Attmept ID</th>
-                <th>Quiz Name</th>
-                <th>Correct</th>
-                <th>Wrong</th>
-                <th>Score</th>
-                <th>Attempted On</th>
-            </tr>
-            <?php
-            if ($result) {
-                while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-                    <tr>
-                        <td><?php echo $row['attempt_id']; ?></td>
-                        <td><?php echo $row['quiz_name']; ?></td>
-                        <td><?php echo $row['correct']; ?></td>
-                        <td><?php echo $row['wrong']; ?></td>
-                        <td><?php echo $row['score']; ?></td>
-                        <td><?php echo $row['attempted_on']; ?></td>
-                    </tr>
-            <?php
-                }
-            } else {
-                echo "Error: " . mysqli_error($con);
-            }
-            ?>
-        </table>
-    </section>
+    <br>
+    <br>
 
     <section>
         <h1>Last 3 Attempts </h1>
@@ -125,6 +95,45 @@ $result2 = $con->query($query2);
             ?>
         </table>
     </section>
+
+    <br>
+    <br>
+    <br>
+
+    <section>
+        <h1>Attempts Log table</h1>
+        <table>
+            <tr>
+               
+                <th>Attempt ID</th>
+                <th>Quiz Name</th>
+                <th>Correct</th>
+                <th>Wrong</th>
+                <th>Score</th>
+                <th>Attempted On</th>
+            </tr>
+            <?php
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <tr>
+                        <td><?php echo $row['attempt_id']; ?></td>
+                        <td><?php echo $row['quiz_name']; ?></td>
+                        <td><?php echo $row['correct']; ?></td>
+                        <td><?php echo $row['wrong']; ?></td>
+                        <td><?php echo $row['score']; ?></td>
+                        <td><?php echo $row['attempted_on']; ?></td>
+                    </tr>
+            <?php
+                }
+            } else {
+                echo "Error: " . mysqli_error($con);
+            }
+            ?>
+        </table>
+    </section>
+
+
 </body>
 
 
