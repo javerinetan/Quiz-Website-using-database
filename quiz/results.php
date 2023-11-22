@@ -84,12 +84,13 @@ if (!isset($_SESSION['User'])) {
 //     }
 // }
 if(isset($_GET['attempt_id'])){
-    $attempt_id = isset($_GET['attempt_id']);
+    $attempt_id = $_GET['attempt_id'];
     $sql10="select * from quiz_attempt_log where attempt_id = ". $attempt_id;
     $quiz_results10 = mysqli_query($con,$sql10);
     $quiz_row10 = mysqli_fetch_assoc($quiz_results10);
     $percentage = $quiz_row10['score'];
     $correct = $quiz_row10['correct'];
+
     $total_questions = "".intval($quiz_row10['wrong']) + intval($quiz_row10['correct']);
 }
 
