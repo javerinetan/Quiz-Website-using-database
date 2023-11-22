@@ -128,7 +128,7 @@ $result2 = $con->query($query2);
                     echo '        <tr>';
                     echo '            <td>' . $row['quiz_name'] . '</td>';
                     echo '            <td>' . $row['score'] . '</td>';
-                    echo '            <td><a href="../quiz/attempt_quiz.php?quiz_id=' . $row['quiz_id'] . '">Retake Quiz</a></td>';
+                    echo '            <td><a href="../quiz/attempt_quiz.php?quiz_id=' . $row['quiz_id'] . '"><i class="fa fa-repeat fa-lg" style="color: red;" aria-hidden="true"></i></a></td>';
                     echo '        </tr>';
                 }
             } else {

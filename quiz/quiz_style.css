@@ -127,6 +127,23 @@
     color: #fff !important;
 
 }
+.home-btn-container{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5d2057;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.home-btn:hover{
+    color: #ffffff;
+    background-color: #9e1c91;
+}
 /* Add additional styling as needed for input fields and buttons */
 
 
