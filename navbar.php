@@ -46,8 +46,24 @@
                     <a class="nav-link" aria-current="page" href="../user/home.php">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../user/activity.php">Activity</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../user/dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
+                <?php
+                    $navbar_query="select * from account where id=".$_SESSION['User']."";
+                    $navbar_instance = new DatabaseConnection();
+                    $navbar_row=$navbar_instance->retrieveData($navbar_query);
+                    if($navbar_row['admin']){
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="../admin/retrieve_users.php" tabindex="-1" aria-disabled="true">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../admin/retrieve_quiz.php" tabindex="-1" aria-disabled="true">Quiz</a>
+                            </li>';
+                    }
+                ?>
             </ul>
         </div>
 
