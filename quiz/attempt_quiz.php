@@ -62,7 +62,7 @@ if (isset($_POST['s_qn'])) {
     $sql = "INSERT INTO quiz_attempt_log VALUES (NULL,'".$_SESSION['User']."',".$quiz_id.", ".$wrong.", ".$correct.", ".$percentage.", NULL)";
     $insertresults = mysqli_query($con,$sql);
     if ($insertresults) {
-        $sql100="SELECT * FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY attempted_on DESC) AS rn FROM quiz_attempt_log ) AS subquery WHERE rn = 1;";
+        $sql100="SELECT * FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY attempt_id DESC) AS rn FROM quiz_attempt_log ) AS subquery WHERE rn = 1;";
         $quiz_result100 = mysqli_query($con,$sql100);
         $quiz_row100 = mysqli_fetch_assoc($quiz_result100);    
         $attempt_id = $quiz_row100['attempt_id'];
