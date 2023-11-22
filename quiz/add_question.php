@@ -45,6 +45,7 @@ if (isset($_GET['quiz_id'])) {
         $insert_query = "INSERT INTO quiz_$quiz_id (quiz_no, question, option_1, option_2, option_3, option_4, answer) 
                          VALUES ($new_quiz_no, '$question_text', '$option_1', '$option_2', '$option_3', '$option_4', '$correct')";
         mysqli_query($con, $insert_query);
+        
         mysqli_query($con, "UPDATE quiz SET questions = questions + 1 WHERE quiz_id = $quiz_id");
 
 
