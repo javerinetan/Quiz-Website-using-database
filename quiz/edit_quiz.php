@@ -31,6 +31,60 @@ if (isset($_GET['quiz_id'])) {
         }
     }
 }
+
+if (isset($_POST['nextButton'])) {
+    $currentQuestion = getCurrentQuestion();
+    $nextQuestion = min($currentQuestion + 1, $quiz_row['questions']);
+    echo json_encode(['questionNo' => $nextQuestion]);
+    exit;
+}
+
+// Check if the "Back" button is clicked
+if (isset($_POST['backButton'])) {
+    $currentQuestion = getCurrentQuestion();
+    $backQuestion = max($currentQuestion - 1, 1);
+    echo json_encode(['questionNo' => $backQuestion]);
+    exit;
+}
+
+// Check if the "Submit" button is clicked
+if (isset($_POST['submitButton'])) {
+    // Process the submitted quiz data
+    // You can add your logic to save the quiz data to the database or perform any other actions.
+    // After processing, you might want to redirect the user or display a success message.
+    echo "Quiz Submitted!"; // Replace this with your actual logic
+    exit;
+}
+
+function updateQuizQuestions($con, $quiz_id)
+{
+    // Assuming you have a function to sanitize input data
+    function sanitizeInput($data)
+    {
+        return htmlspecialchars(stripslashes(trim($data)));
+    }
+
+    // Update each question in the quiz
+    for ($i = 1; $i <= $_POST['quiz_limit']; $i++) {
+        $question = sanitizeInput($_POST["q{$i}_qn"]);
+        $option_1 = sanitizeInput($_POST["q{$i}_op1"]);
+        $option_2 = sanitizeInput($_POST["q{$i}_op2"]);
+        $option_3 = sanitizeInput($_POST["q{$i}_op3"]);
+        $option_4 = sanitizeInput($_POST["q{$i}_op4"]);
+        $answer = sanitizeInput($_POST["q{$i}_answer"]);
+
+        // Update the question in the database
+        $update_query = "UPDATE quiz_$quiz_id
+                         SET question = '$question',
+                             option_1 = '$option_1',
+                             option_2 = '$option_2',
+                             option_3 = '$option_3',
+                             option_4 = '$option_4',
+                             answer = '$answer'
+                         WHERE quiz_no = $i";
+        mysqli_query($con, $update_query);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -384,4 +438,11 @@ if (isset($_POST['removeQuestion'])) {
 
     // Initial visibility update
     updateButtonVisibility(1);
+
+    $('#submitButton').click(function () {
+        // Set the quiz_limit field before submitting the form
+        $('input[name="quiz_limit"]').val(<?php echo $quiz_limit; ?>);
+        $('#quiz-form').submit();
+    });
+    
 </script>

@@ -81,6 +81,7 @@ $result = $con->query($query);
         <h1>quiz table</h1>
         <table>
             <tr>
+               
                 <th>No</th>
                 <th>Question</th>
                 <th>Option 1</th>
@@ -88,23 +89,27 @@ $result = $con->query($query);
                 <th>Option 3</th>
                 <th>Option 4</th>
                 <th>Answer</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
-            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php 
                 // LOOP TILL END OF DATA
-                while($rows=$result->fetch_assoc())
-                {
+                $counter = 0; // Initialize the counter
+                while($rows=$result->fetch_assoc()) {
+                    $counter += 1
             ?>
             <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                <td><?php echo $rows['quiz_no'];?></td>
+                
+                <td><?php echo $counter;?></td>
                 <td><?php echo $rows['question'];?></td>
                 <td><?php echo $rows['option_1'];?></td>
                 <td><?php echo $rows['option_2'];?></td>
                 <td><?php echo $rows['option_3'];?></td>
                 <td><?php echo $rows['option_4'];?></td>
                 <td><?php echo $rows['answer'];?></td>
+
+                <td><a href="update_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>">Update</a></td>
+                <td><a href="delete_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a></td>
 
             </tr>
             <?php
