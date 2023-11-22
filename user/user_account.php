@@ -139,9 +139,30 @@ $row=$instance->retrieveData($query);
         <a href="edit.php?password" class="main"><button class="details has-chevron">
             <p class="main2">Update Password</p>
         </button></a>
-        <button class="details has-chevron" onclick="confirmDelete()">
+        <button class="details has-chevron" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
             <p class="main">Delete Account</p>
-        </button></a>
+        </button>
+
+        <!-- Modal for confirmation -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="deleteInput">Please enter your username and password to confirm deletion:</label>
+                        <input type="text" id="deleteInput" class="form-control" placeholder="username/password" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Confirm Deletion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <a class="main" href="../account/logout.php?logout"><button class="details has-chevron">
             <p class="main2">Log Out</p>
         </button></a>
@@ -158,60 +179,29 @@ $row=$instance->retrieveData($query);
 
 <script>
     function confirmDelete() {
-        var expectedUsername = "<?php echo $row['name'] . $row['id'] . date('d', strtotime($row['birthdate'])); ?>";
-        var expectedPassword = "<?php echo $row['password'] ?>";
+    var expectedUsername = "<?php echo $row['name'] . $row['id'] . date('d', strtotime($row['birthdate'])); ?>";
+    var expectedPassword = "<?php echo $row['password'] ?>";
 
-        var userInput = prompt("Please enter your username and password to confirm deletion (e.g., username/password):");
-        if (userInput === null) {
-            // User clicked cancel, do nothing
-            return;
-        }
+    var userInput = document.getElementById('deleteInput').value.trim();
 
-        var inputParts = userInput.split('/');
-        if (inputParts.length !== 2) {
-            alert("Invalid input format. Please try again.");
-            return;
-        }
-
-        var enteredUsername = inputParts[0].trim();
-        var enteredPassword = inputParts[1].trim();
-
-        if (enteredUsername !== expectedUsername || enteredPassword !== "<?php echo $row['password']; ?>") {
-            alert("Incorrect username or password. Please try again." );
-            return;
-        }else{
-            window.location.replace('delete_user.php');
-        }
-
-        // // Send an AJAX request to the server to delete the account
-        // // You need to implement the server-side logic to delete the account securely
-
-        // // Example using fetch API
-        // fetch('delete_user.php', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         username: enteredUsername,
-        //         password: enteredPassword,
-        //     }),
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     if (data.success) {
-        //         // Account deletion successful, you can redirect or perform any other action
-        //         alert("Account deleted successfully");
-        //         window.location.href = '../index.php';
-        //     } else {
-        //         // Account deletion failed, show an error message
-        //         alert("Failed to delete account. Please try again later.");
-        //     }
-        // })
-        // .catch((error) => {
-        //     console.error('Error:', error);
-        // });
+    var inputParts = userInput.split('/');
+    if (inputParts.length !== 2) {
+        alert("Invalid input format. Please try again.");
+        return;
     }
+
+    var enteredUsername = inputParts[0].trim();
+    var enteredPassword = inputParts[1].trim();
+
+    if (enteredUsername !== expectedUsername || enteredPassword !== "<?php echo $row['password']; ?>") {
+        alert("Incorrect username or password. Please try again.");
+        return;
+    } else {
+        // Close the modal
+        $('#confirmDeleteModal').modal('hide');
+        window.location.replace('delete_user.php');
+    }
+}
 </script>
 
 
