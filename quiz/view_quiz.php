@@ -116,6 +116,7 @@ $result = $con->query($query);
                 }
             ?>
         </table>
+        <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>">Add Question</a>
     </section>
 </body>
 

@@ -26,8 +26,6 @@ if (isset($_GET['quiz_id']) && isset($_GET['quiz_no'])) {
         $questions_query = "SELECT * FROM quiz_$quiz_id where quiz_no=".$qn_no;
         $questions_result = mysqli_query($con, $questions_query);
         $question = mysqli_fetch_assoc($questions_result);
-        print_r($question);
-
     }
 }
 
