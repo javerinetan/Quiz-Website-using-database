@@ -203,14 +203,14 @@ if (isset($_POST['s_qn'])) {
             if ($question_no < $limit) {
                 if ($back >= 1) {
                     // $row=$instance->retrieveData($query);
-                    echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" id="' . $back . '" href="#q' . $back . '">Back</a>';
-                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
+                    echo '<a class="btn attempt-btn mt-3 mr-2 text-white" id="' . $back . '" href="#q' . $back . '">Back</a>';
+                    echo '<a class="btn attempt-btn mt-3 text-white" class="attempt-btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
                 } else {
-                    echo '<a class="btn btn-success mt-3 text-white" class="attempt_btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
+                    echo '<a class="btn attempt-btn mt-3 text-white" class="attempt-btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
                 }
             } else {
-                echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" id="' . $back . '" href="#q' . $back . '">Back</a>';
-                echo '<button class="btn btn-success mt-3" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
+                echo '<a class="btn mt-3 attempt-btn mr-2 text-white"id="' . $back . '" href="#q' . $back . '">Back</a>';
+                echo '<button class="btn mt-3 attempt-btn" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
             }
             // $question_no['quiz_no']++;
             $question_no++;

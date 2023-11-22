@@ -127,10 +127,12 @@ function getRandomImagePath() {
                         <h4 class="model-header" id="quizName"></h4>
                         <p id="numQuestions"></p>
                         <p id="creatorName"></p>
-                        <a id="startQuizBtn" class="btn create">Start Quiz</a>
-                        <a id="editQuizBtn" class="" style="padding-right: 5px; padding-left: 10px; padding-top:7px;"><i class="fa fa-pencil-square-o fa-fw fa-lg" style="color: #f5a60f;"></i></a>
-                        <a id="deleteQuizBtn" class="" style="padding-right: 5px; padding-left: 5px;" onclick="return confirm('Are you sure you want to delete this quiz?')"><i class="fa fa-trash fa-lg fa-fw" style="color: red;"></i></a>
+                        <span style="vertical-align: center; display: flex;;">
+                            <a id="startQuizBtn" class="btn create">Start Quiz</a>
+                            <a id="editQuizBtn" class="" style="padding-right: 5px; padding-left: 10px;"><i class="fa fa-pencil-square-o fa-2x fa-fw" style="color: #f5a60f; padding-top: 5px;"></i></a>
+                            <a id="deleteQuizBtn" class="" style="padding-right: 5px;" onclick="return confirm('Are you sure you want to delete this quiz?')"><i class="fa fa-trash fa-2x fa-fw" style="color: red; padding-top: 3px;"></i></a>
 
+                        </span>
                     </div>
                     </div>
                 </div>

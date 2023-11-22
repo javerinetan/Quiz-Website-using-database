@@ -120,6 +120,13 @@
     text-decoration: none;
     color: #fff;
 }
+
+/* --- attempt_quiz.php --- */
+.attempt-btn{
+    background-color: #5d2057 !important;
+    color: #fff !important;
+
+}
 /* Add additional styling as needed for input fields and buttons */
 
 
