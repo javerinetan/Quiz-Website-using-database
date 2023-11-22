@@ -30,7 +30,17 @@ if (isset($_GET['quiz_id']) && isset($_GET['quiz_no'])) {
     // Redirect to the quiz table page after deletion
     header("location:view_quiz.php?quiz_id=$quiz_id");
     exit();
-} else {
+} elseif(!isset($_GET['quiz_no']) && isset($_GET['quiz_id'])){
+        $quiz_id = $_GET['quiz_id'];
+        $delete_query = "DROP TABLE quiz_$quiz_id";
+        mysqli_query($con, $delete_query);
+
+        $delete_query2 = "DELETE FROM quiz WHERE quiz_id = $quiz_id";
+        mysqli_query($con, $delete_query2);
+    
+        header("location:../user/home.php");
+    }
+else {
     // Redirect to an error page or handle the case where quiz_id or quiz_no is not set
     header("location:error_page.php");
     exit();

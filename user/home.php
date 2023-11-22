@@ -224,10 +224,12 @@ function getRandomImagePath() {
     // reset the edit button
     var editBtn = document.getElementById('editQuizBtn');
     if (editBtn) {
-    editBtn.remove();
+        editBtn.remove();
+        var deleteBtn = document.getElementById('deleteQuizBtn');
+        deleteBtn.remove();
     }
     // Update other modal content
-        quizNameElement.innerText = "Topic: " + quizName;
+    quizNameElement.innerText = "Topic: " + quizName;
     numQuestionsElement.innerText = "Number of Questions: " + numQuestions ;
     var editQuizBtn = document.createElement('a'); // Use document.createElement
 
@@ -240,10 +242,21 @@ function getRandomImagePath() {
         editQuizBtn.id = 'editQuizBtn';
         editQuizBtn.className = 'btn btn-secondary';
         editQuizBtn.textContent = 'Edit';
-        editQuizBtn.href = '../quiz/edit_quiz.php?quiz_id=' + quizId;
+        editQuizBtn.href = '../quiz/view_quiz.php?quiz_id=' + quizId;
 
         // Append the element to the quizInfo element
         quizInfo.appendChild(editQuizBtn);
+
+        var DeleteQuizBtn = document.createElement('a'); // Use document.createElement
+        DeleteQuizBtn.id = 'deleteQuizBtn';
+        DeleteQuizBtn.className = 'btn btn-danger';
+        DeleteQuizBtn.textContent = 'Delete';
+        // DeleteQuizBtn.href = "#";
+        DeleteQuizBtn.href = '../quiz/delete_quiz.php?quiz_id=' + quizId;
+
+        // Append the element to the quizInfo element
+        quizInfo.appendChild(DeleteQuizBtn);
+
     }
 
     // Set the href attribute for the "Start Quiz" button
@@ -256,29 +269,29 @@ function getRandomImagePath() {
 
 <!-- this does not work -->
 <script>
-    // fuck you
-    function getQuiz() {
-    // Assuming list is an array of quiz IDs, fetch it from PHP
-    var list = [<?php
-    $query2 = "SELECT quiz_id FROM quiz";
-    $instance = new DatabaseConnection();
-    $result2 = $instance->retrieveData($query2);
-    $quizIds = [];
+    // // fuck you
+    // function getQuiz() {
+    // // Assuming list is an array of quiz IDs, fetch it from PHP
+    // var list = [<?php
+    // $query2 = "SELECT quiz_id FROM quiz";
+    // $instance = new DatabaseConnection();
+    // $result2 = $instance->retrieveData($query2);
+    // $quizIds = [];
 
-    while ($row = $result2->fetch_assoc()) {
-        $quizIds[] = $row['quiz_id'];
-    }
+    // while ($row = $result2->fetch_assoc()) {
+    //     $quizIds[] = $row['quiz_id'];
+    // }
 
-    echo implode(',', $quizIds);
-    ?>];
+    // echo implode(',', $quizIds);
+    // ?>];
 
-    // Get a random quiz ID
-    var randomIndex = Math.floor(Math.random() * list.length);
-    var randomQuizId = list[randomIndex];
+    // // Get a random quiz ID
+    // var randomIndex = Math.floor(Math.random() * list.length);
+    // var randomQuizId = list[randomIndex];
 
-    // Redirect to attempt_quiz.php with the random quiz ID
-    window.location.href = '../quiz/attempt_quiz.php?quiz_id=' + randomQuizId;
-}
+    // // Redirect to attempt_quiz.php with the random quiz ID
+    // window.location.href = '../quiz/attempt_quiz.php?quiz_id=' + randomQuizId;
+// }
 
 </script>
 
