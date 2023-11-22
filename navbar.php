@@ -77,12 +77,12 @@
             <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">
                 <?php  
-                    $query="select * from account where id=".$_SESSION['User']."";
-                    $results=mysqli_query($con,$query);
-                    $row=$results->fetch_assoc();
-                    echo $row['name'];
+                    $nav_query="select * from account where id=".$_SESSION['User']."";
+                    $nav_results=mysqli_query($con,$nav_query);
+                    $nav_row=$nav_results->fetch_assoc();
+                    echo $nav_row['name'];
                     echo '<br>';
-                    echo $row['email'];
+                    echo $nav_row['email'];
                 ?>
                 </li>
                 <li><hr class="dropdown-divider"></li>
