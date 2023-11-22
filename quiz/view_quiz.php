@@ -5,6 +5,10 @@ session_start();
 if(!isset($_SESSION['User']))
     {header("location:../account/login.php");} 
 
+$query="select * from account where id=".$_SESSION['User']."";
+$instance = new DatabaseConnection();
+$row=$instance->retrieveData($query);
+
 ?>
 
 <!DOCTYPE html>
