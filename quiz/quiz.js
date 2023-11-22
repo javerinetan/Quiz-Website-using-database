@@ -36,11 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // manually remove the last quiz-question container
         var lastthing=document.querySelector('.quiz-question:last-child');
-        var lastthingNo = parseInt(lastthing.id.match(/\d+/)[0], 10);
-        if(lastthingNo!==questionNumber){
-            lastthing.style.display='none'
+        if(lastthing){
+            var lastthingNo = parseInt(lastthing.id.match(/\d+/)[0], 10);
+            if(lastthingNo!==questionNumber){
+                lastthing.style.display='none'
+            }
         }
     }
+
+    var attemptQuiz = document.querySelectorAll('.sidebar div .a_quiz a');
+    attemptQuiz.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            alert('0');
+            event.preventDefault();
+            alert('1');
+            var questionNumber = parseInt(this.id.match(/\d+/)[0], 10);
+            alert(2);
+            showQuestion(questionNumber);
+        });
+    });
 
     var questionLinks = document.querySelectorAll('.sidebar div div a');
     questionLinks.forEach(function (link) {

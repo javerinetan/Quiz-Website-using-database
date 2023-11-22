@@ -29,6 +29,48 @@ if (isset($_GET['quiz_id'])) {
             shuffle($options);
             $question['options'] = $options;
         }
+        shuffle($questions);
+
+if (isset($_POST['s_qn'])) {
+    $quiz_id = $_POST['quiz_id'];
+    $question_order = $_POST['question_id'];
+    $quiz_count = count($question_order);
+
+    // print_r($_POST);
+    $wrong = 0;
+    $correct = 0;
+    $order = 1;
+    // print_r($user_answers);
+
+    foreach($question_order as $question){
+        $quiz_query = "SELECT * FROM quiz_$quiz_id WHERE quiz_no=$question";
+        $quiz_result = mysqli_query($con, $quiz_query);
+        $quiz_row = mysqli_fetch_assoc($quiz_result);    
+        $answer = $quiz_row['answer'];
+        $given_input = 'answer'.$order;
+        if($answer === $_POST[$given_input]){
+            $correct++;
+        }else{
+            $wrong++;
+        }
+        $order++;
+    }
+
+    $total_questions = $quiz_count;
+    $percentage = ($correct / $total_questions) * 100;
+
+    $sql = "INSERT INTO quiz_attempt_log VALUES (NULL,'".$_SESSION['User']."',".$quiz_id.", ".$wrong.", ".$correct.", ".$percentage.", NULL)";
+    $insertresults = mysqli_query($con,$sql);
+    if ($insertresults) {
+        $sql100="SELECT * FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY attempted_on DESC) AS rn FROM quiz_attempt_log ) AS subquery WHERE rn = 1;";
+        $quiz_result100 = mysqli_query($con,$sql100);
+        $quiz_row100 = mysqli_fetch_assoc($quiz_result100);    
+        $attempt_id = $quiz_row100['attempt_id'];
+        header("location:results.php?attempt_id=".$attempt_id);
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 ?>
 
 
@@ -85,7 +127,7 @@ if (isset($_GET['quiz_id'])) {
 
                 foreach ($questions as &$question) {
                     // echo '<div class="question-box"><a href="#question' . $question['question'] . '">' . $question['quiz_no'] . '</a></div>';
-                    echo '<div class="question-box"><a href="#q' . $question_no1 . '">' . $question['quiz_no'] . '</a></div>';
+                    echo '<div class="question-box a_quiz"><a href="#q' . $question_no1 . '" id="'.$question['quiz_no'].'">' .$question_no1. '</a></div>';
                 
                     $question_no1++;
 
@@ -127,6 +169,8 @@ if (isset($_GET['quiz_id'])) {
         ?>
     </div>  -->
     <div class="main-content">
+        <form method="post">
+        <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
         <?php 
         $question_no = 1;
         foreach ($questions as &$question): ?>
@@ -134,21 +178,20 @@ if (isset($_GET['quiz_id'])) {
                 <div class="question-container" id="question<?php echo $question['question']; ?> q<?php echo $question_no;?>">
                     <h3>Question <?php echo $question_no; ?></h3>
                     <p><?php echo $question['question']; ?></p>
-                    <form method="post" action="process_quiz.php">
-                        <input type="hidden" name="question_id" value="<?php echo $question['question']; ?>">
-                        <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
+                    
+                        <input type="hidden" name="question_id[]" value="<?php echo $question['quiz_no']; ?>">
                         <ul style="list-style-type: none; padding: 0;">
                             <?php foreach ($question['options'] as $option): ?>
                                 <li>
                                     <label>
-                                        <input type="radio" name="answer" value="<?php echo $option; ?>" required>
+                                        <input type="radio" name="answer<?php echo $question_no?>" value="<?php echo $option; ?>" required>
                                         <?php echo $option; ?>
                                     </label>
                                 </li>
                                 
                             <?php endforeach; ?>
                         </ul>
-                    </form>
+                    
                 </div>
             
             <?php
@@ -167,13 +210,13 @@ if (isset($_GET['quiz_id'])) {
                 }
             } else {
                 echo '<a class="btn btn-success mt-3 mr-2 text-white" class="attempt_btn" id="' . $back . '" href="#q' . $back . '">Back</a>';
-                echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button></div>';
+                echo '<button class="btn btn-success mt-3" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
             }
             // $question_no['quiz_no']++;
             $question_no++;
             ?>
         <?php endforeach; ?>
-
+        </form>
         <!-- Navigation buttons -->
         <div class="">
         
