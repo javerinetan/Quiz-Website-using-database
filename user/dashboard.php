@@ -168,7 +168,7 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
             echo json_encode($formattedDates);
         ?>,
         datasets: [{
-            label: '# of Quiz Created per Month',
+            label: '# of Quiz Created by day',
             data: <?php echo json_encode(array_column($dataGraph1, 'quizzes_created')); ?>,
             borderWidth: 1
         }]
@@ -207,7 +207,7 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
             echo json_encode($formattedDates2);
         ?>,
         datasets: [{
-        label: '# of Quiz taken per Month',
+        label: '# of Quiz taken by day',
         data: <?php echo json_encode(array_column($dataGraph2, 'quizzes_taken')); ?>,
         borderWidth: 1
     }]
