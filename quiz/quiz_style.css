@@ -93,6 +93,22 @@
     background-color:#9e1c91 !important;
     border: 1px solid #5d2057 !important;
 }
+
+/* --- View Quiz --- */
+.add-question-container {
+    text-align: right;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.add-question-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* You can change the background color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 /* Add additional styling as needed for input fields and buttons */
 
 

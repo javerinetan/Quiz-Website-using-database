@@ -81,47 +81,53 @@ $result = $con->query($query);
 ?>
 
 <body>
-    <section>
-        <h1>quiz table</h1>
-        <table>
-            <tr>
-               
-                <th>No</th>
-                <th>Question</th>
-                <th>Option 1</th>
-                <th>Option 2</th>
-                <th>Option 3</th>
-                <th>Option 4</th>
-                <th>Answer</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-            <?php 
-                // LOOP TILL END OF DATA
-                $counter = 0; // Initialize the counter
-                while($rows=$result->fetch_assoc()) {
-                    $counter += 1
-            ?>
-            <tr>
+    <div class="container">
+        <section>
+            <h1>quiz table</h1>
+            <table>
+                <tr>
                 
-                <td><?php echo $counter;?></td>
-                <td><?php echo $rows['question'];?></td>
-                <td><?php echo $rows['option_1'];?></td>
-                <td><?php echo $rows['option_2'];?></td>
-                <td><?php echo $rows['option_3'];?></td>
-                <td><?php echo $rows['option_4'];?></td>
-                <td><?php echo $rows['answer'];?></td>
+                    <th>No</th>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Answer</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                <?php 
+                    // LOOP TILL END OF DATA
+                    $counter = 0; // Initialize the counter
+                    while($rows=$result->fetch_assoc()) {
+                        $counter += 1
+                ?>
+                <tr>
+                    
+                    <td><?php echo $counter;?></td>
+                    <td><?php echo $rows['question'];?></td>
+                    <td><?php echo $rows['option_1'];?></td>
+                    <td><?php echo $rows['option_2'];?></td>
+                    <td><?php echo $rows['option_3'];?></td>
+                    <td><?php echo $rows['option_4'];?></td>
+                    <td><?php echo $rows['answer'];?></td>
 
-                <td><a href="update_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>">Update</a></td>
-                <td><a href="delete_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a></td>
+                    <td><a href="update_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>"><i class="fa fa-pencil-square-o fa-lg" style="color: #f5a60f;"></i></a></td>
+                    <td><a href="delete_quiz.php?quiz_id=<?php echo $_GET['quiz_id']; ?>&quiz_no=<?php echo $rows['quiz_no']; ?>" onclick="return confirm('Are you sure you want to delete this question?')"><i class="fa fa-trash fa-lg" style="color: red;"></i></a></td>
 
-            </tr>
-            <?php
-                }
-            ?>
-        </table>
-        <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>">Add Question</a>
-    </section>
+                </tr>
+                <?php
+                    }
+                ?>
+            </table>
+            <div class="add-question-container">
+                <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>" class="add-question-btn">Add Question</a>
+            </div>
+            
+        </section>
+    </div>
+
 </body>
 
 <footer>
