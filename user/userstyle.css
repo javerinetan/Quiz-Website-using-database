@@ -251,7 +251,7 @@ body{
 /* ----- Welcome message ----- */
 .welcome-box{
     position: absolute; 
-    height: 50%; 
+    height: 60%; 
     width: 100%; 
     background-image: url("https://www.shutterstock.com/image-vector/horizontal-banner-hands-people-solving-260nw-1049759054.jpg"); 
     background-size: cover; 
@@ -265,7 +265,7 @@ body{
 display: flex;
 align-items: center;
 justify-content: center;
-height: 50vh; /* 100% of the viewport height */
+height: 60vh; /* 100% of the viewport height */
 }
 
 .welcome {

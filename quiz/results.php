@@ -52,16 +52,26 @@ if(isset($_GET['attempt_id'])){
 
 <body>
     <div class="container text-center">
-        <h1 class="display-4">Quiz Results</h1>
-        <div class="progress" style="width: 200px; height: 200px;">
-            <div class="progress-bar" role="progressbar" style="width: <?php echo $percentage; ?>%;"
-                aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+        <h1 class="display-4" style="margin-top: 30px;">Quiz Results</h1>
+        <div class="progress-container" style="width: 300px; height: 80px; position: relative;">
+
+            <!-- The percentage bar -->
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $percentage; ?>%;"
+                    aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <!-- Display the percentage in the center of the circle -->
+            <div class="percentage-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #333;">
+                <?php echo $percentage; ?>%
+            </div>
+
         </div>
         <p class="mt-3">You scored <?php echo $correct; ?> out of <?php echo $total_questions; ?> questions
             correctly.</p>
         <div class="mt-4">
-            <a href="retake_quiz.php" class="btn btn-primary">Retake Quiz</a>
-            <a href="../homepage.php" class="btn btn-success">Go Back to Homepage</a>
+            <a href="retake_quiz.php" class="btn btn-success">Retake Quiz</a>
+            <a href="../user/home.php" class="btn btn-success">Go Back to Homepage</a>
         </div>
     </div>
 </body>
