@@ -54,6 +54,22 @@ if(!isset($_SESSION['User']))
          margin-left: auto;
          margin-right: auto;
         }
+
+        #error_msg {
+            text-align: center;
+            color: #800880;
+            font-size: xx-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh; 
+        }
+
+        #createQuizBtn {
+            align-items: center;
+        }
+
 </style>
 
 <?php
@@ -68,70 +84,76 @@ $result2 = $con->query($query2);
 <body>
     <br>
     <br>
+    <?php
+        $query_check_attempts = "SELECT COUNT(*) as num_attempts FROM quiz_attempt_log WHERE attempt_by = {$_SESSION['User']}";
+        $result_check_attempts = $con->query($query_check_attempts);
+        $row_check_attempts = mysqli_fetch_assoc($result_check_attempts);
+    
+        if ($row_check_attempts['num_attempts'] == 0) {
+            echo "<p id=error_msg>No attempts made yet.</p>";
+            echo '<a href="home.php" class="btn create btn-welcome" id="createQuizBtn">Click here for some quizzes to try</a>';
+            
 
-    <section>
-        <h1>Last 3 Attempts </h1>
-        <table>
-            <tr>
-                <th>Quiz Name</th>
-                <th>Score</th>
-                <th>Retake Quiz</th>
-            </tr>
-            <?php
+
+        } else {
+            echo '<section>';
+            echo '    <h1>Last 3 Attempts </h1>';
+            echo '    <table>';
+            echo '        <tr>';
+            echo '            <th>Quiz Name</th>';
+            echo '            <th>Score</th>';
+            echo '            <th>Retake Quiz</th>';
+            echo '        </tr>';
             if ($result2) {
                 while ($row = mysqli_fetch_assoc($result2)) {
-            ?>
-                    <tr>
-                        <td><?php echo $row['quiz_name']; ?></td>
-                        <td><?php echo $row['score']; ?></td>
-                        <td><a href="../quiz/attempt_quiz.php?quiz_id=<?php echo $row['quiz_id']; ?>">Retake Quiz</a></td>
-
-                    </tr>
-            <?php
+                    echo '        <tr>';
+                    echo '            <td>' . $row['quiz_name'] . '</td>';
+                    echo '            <td>' . $row['score'] . '</td>';
+                    echo '            <td><a href="../quiz/attempt_quiz.php?quiz_id=' . $row['quiz_id'] . '">Retake Quiz</a></td>';
+                    echo '        </tr>';
                 }
             } else {
-                echo "Error: " . mysqli_error($con);
+                echo 'Error: ' . mysqli_error($con);
             }
-            ?>
-        </table>
-    </section>
+            echo '    </table>';
+            echo '</section>';
 
-    <br>
-    <br>
-    <br>
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
 
-    <section>
-        <h1>Attempts Log table</h1>
-        <table>
-            <tr>
-               
-                <th>Attempt ID</th>
-                <th>Quiz Name</th>
-                <th>Correct</th>
-                <th>Wrong</th>
-                <th>Score</th>
-                <th>Attempted On</th>
-            </tr>
-            <?php
+            echo '<section>';
+            echo '    <h1>Attempts Log table</h1>';
+            echo '    <table>';
+            echo '        <tr>';
+            echo '            <th>Attempt ID</th>';
+            echo '            <th>Quiz Name</th>';
+            echo '            <th>Correct</th>';
+            echo '            <th>Wrong</th>';
+            echo '            <th>Score</th>';
+            echo '            <th>Attempted On</th>';
+            echo '        </tr>';
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-                    <tr>
-                        <td><?php echo $row['attempt_id']; ?></td>
-                        <td><?php echo $row['quiz_name']; ?></td>
-                        <td><?php echo $row['correct']; ?></td>
-                        <td><?php echo $row['wrong']; ?></td>
-                        <td><?php echo $row['score']; ?></td>
-                        <td><?php echo $row['attempted_on']; ?></td>
-                    </tr>
-            <?php
+                    echo '        <tr>';
+                    echo '            <td>' . $row['attempt_id'] . '</td>';
+                    echo '            <td>' . $row['quiz_name'] . '</td>';
+                    echo '            <td>' . $row['correct'] . '</td>';
+                    echo '            <td>' . $row['wrong'] . '</td>';
+                    echo '            <td>' . $row['score'] . '</td>';
+                    echo '            <td>' . $row['attempted_on'] . '</td>';
+                    echo '        </tr>';
                 }
             } else {
-                echo "Error: " . mysqli_error($con);
+                echo 'Error: ' . mysqli_error($con);
             }
-            ?>
-        </table>
-    </section>
+            echo '    </table>';
+            echo '</section>';
+        }
+
+    ?>
+
+    
 
 
 </body>
