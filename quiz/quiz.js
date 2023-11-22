@@ -47,11 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var attemptQuiz = document.querySelectorAll('.sidebar div .a_quiz a');
     attemptQuiz.forEach(function (link) {
         link.addEventListener('click', function (event) {
-            alert('0');
             event.preventDefault();
-            alert('1');
             var questionNumber = parseInt(this.id.match(/\d+/)[0], 10);
-            alert(2);
             showQuestion(questionNumber);
         });
     });

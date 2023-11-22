@@ -5,84 +5,6 @@ if (!isset($_SESSION['User'])) {
     header("location:../account/login.php");
 }
 
-// Assuming you have the quiz_id and user's answers in the session
-// if (isset($_SESSION['quiz_id']) && isset($_SESSION['user_answers'])) {
-//     $quiz_id = $_SESSION['quiz_id'];
-//     $user_answers = $_SESSION['user_answers'];
-
-//     // Fetch quiz details
-//     $quiz_query = "SELECT * FROM quiz WHERE quiz_id = $quiz_id";
-//     $quiz_result = mysqli_query($con, $quiz_query);
-//     $quiz_row = mysqli_fetch_assoc($quiz_result);
-
-//     if ($quiz_row) {
-//         $quiz_name = $quiz_row['quiz_name'];
-
-//         // Fetch quiz questions
-//         $questions_query = "SELECT * FROM quiz_$quiz_id";
-//         $questions_result = mysqli_query($con, $questions_query);
-//         $questions = mysqli_fetch_all($questions_result, MYSQLI_ASSOC);
-
-//         // Calculate the percentage of correct answers
-//         $correct_count = 0;
-//         foreach ($questions as $question) {
-//             $question_id = $question['question'];
-//             if (isset($user_answers[$question_id]) && $user_answers[$question_id] == $question['correct_option']) {
-//                 $correct_count++;
-//             }
-//         }
-
-//         $total_questions = count($questions);
-//         $percentage = ($correct_count / $total_questions) * 100;
-//     } else {
-//         echo "Quiz not found!";
-//         exit;
-//     }
-// } else {
-//     echo "Quiz ID or user answers not provided!";
-//     exit;
-// }
-
-// if (isset($_POST['quiz_id'])) {
-//     $quiz_id = $_POST['quiz_id'];
-//     $question_order = $_POST['question_id'];
-//     $quiz_count = count($question_order);
-
-//     // print_r($_POST);
-//     $wrong = 0;
-//     $correct = 0;
-//     $order = 1;
-//     // print_r($user_answers);
-
-//     foreach($question_order as $question){
-//         $quiz_query = "SELECT * FROM quiz_$quiz_id WHERE quiz_no=$question";
-//         $quiz_result = mysqli_query($con, $quiz_query);
-//         $quiz_row = mysqli_fetch_assoc($quiz_result);    
-//         $answer = $quiz_row['answer'];
-//         $given_input = 'answer'.$order;
-//         if($answer === $_POST[$given_input]){
-//             $correct++;
-//         }else{
-//             $wrong++;
-//         }
-//         $order++;
-//     }
-
-//     $total_questions = $quiz_count;
-//     $percentage = ($correct / $total_questions) * 100;
-
-//     $sql = "INSERT INTO quiz_attempt_log VALUES (NULL,'".$_SESSION['User']."',".$quiz_id.", ".$wrong.", ".$correct.", ".$percentage.", NULL)";
-//     $insertresults = mysqli_query($con,$sql);
-//     if ($insertresults) {
-//         $sql2="select *, ROW_NUMBER() as rn from quiz_attempt_log where rn = 1";
-//         $quiz_results2 = mysqli_query($con,$sql2);
-//         $quiz_row2 = mysqli_fetch_assoc($quiz_result2);    
-//         $attempt_id = $quiz_row2['attempt_id'];
-//         header("location:results.php?attempt_id=".$attempt_id);
-//     } else {
-//         echo "Error: " . $sql . "<br>" . $conn->error;
-//     }
-// }
 if(isset($_GET['attempt_id'])){
     $attempt_id = $_GET['attempt_id'];
     $sql10="select * from quiz_attempt_log where attempt_id = ". $attempt_id;
@@ -92,32 +14,7 @@ if(isset($_GET['attempt_id'])){
     $correct = $quiz_row10['correct'];
 
     $total_questions = "".intval($quiz_row10['wrong']) + intval($quiz_row10['correct']);
-}
-
-    // if ($quiz_row) {
-    //     $quiz_name = $quiz_row['quiz_name'];
-
-    //     // Fetch quiz questions
-    //     $questions_query = "SELECT * FROM quiz_$quiz_id";
-    //     $questions_result = mysqli_query($con, $questions_query);
-    //     $questions = mysqli_fetch_all($questions_result, MYSQLI_ASSOC);
-
-    //     // Calculate the percentage of correct answers
-    //     $correct_count = 0;
-    //     foreach ($questions as $question) {
-    //         $question_id = $question['question'];
-    //         if (isset($user_answers[$question_id]) && $user_answers[$question_id] == $question['correct_option']) {
-    //             $correct_count++;
-    //         }
-    //     }
-
-    //     $total_questions = count($questions);
-    //     $percentage = ($correct_count / $total_questions) * 100;
-    // } else {
-    //     echo "Quiz not found!";
-    //     exit;
-    // }
- else {
+}else {
     echo "Quiz ID or user answers not provided!";
     exit;
 }
