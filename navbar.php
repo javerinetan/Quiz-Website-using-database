@@ -75,7 +75,20 @@
 
             <!-- Profile dropdown with image -->
             <button class="btn profile dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../wf/assets/dd.jpg" alt="User Image" class="user-image">
+                <?php
+                // Fetch the image URL from the database
+                $image_url_query = "SELECT image_url FROM account WHERE id = ".$_SESSION['User']."";
+                $image_url_result = mysqli_query($con, $image_url_query);
+                
+                if ($image_url_result && $image_url_result->num_rows > 0) {
+                    $image_url_row = $image_url_result->fetch_assoc();
+                    $user_image_url = $image_url_row['image_url'];
+                    echo '<img src="' . $user_image_url . '" alt="Users Image" class="user-image">';
+                } else {
+                    // If no image URL is found, use a default image
+                    echo '<img src="../wf/assets/dd.jpg" alt="Users Image" class="user-image">';
+                }
+                ?>
             </button>
             <ul class="profile_drop dropdown-menu" aria-labelledby="profileDropdown">
                 <li class="details_user">

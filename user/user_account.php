@@ -39,10 +39,54 @@ $row=$instance->retrieveData($query);
             <i class="fa-regular fa-user" style="color: #86197d;"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Profile</h2>
         </div>
-        <button class="details has-chevron">
+        <!-- Inside your HTML body section -->
+        <button class="details has-chevron" id="uploadAvatarBtn" data-bs-toggle="modal" data-bs-target="#uploadModal">
             <p class="main">Avatar</p>
             <p class="text">Change your avatar</p>
         </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uploadModalLabel">Upload Avatar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <input type="file" name="avatar" id="avatarInput" accept="image/*" required>
+                            <button type="button" class="btn btn-primary" onclick="uploadAvatar()">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        function uploadAvatar() {
+            var formData = new FormData(document.getElementById('uploadForm'));
+
+            fetch('upload_avatar.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Avatar uploaded successfully");
+                    // Optionally, update the user interface to show the new avatar
+                    // You may reload the page or update the avatar image directly
+                    window.location.href = 'user_account.php';
+                } else {
+                    alert("Failed to upload avatar. " + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
         <button class="details has-chevron">
             <p class="main2">Username</p>
             <p class="text">
@@ -165,6 +209,8 @@ $row=$instance->retrieveData($query);
         // });
     }
 </script>
+
+
 
 
 
