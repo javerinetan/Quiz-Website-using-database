@@ -18,7 +18,6 @@ $resultCreated = mysqli_query($con, $queryCreated);
 if ($resultCreated == TRUE) {
     $rowCreated = mysqli_fetch_assoc($resultCreated);
     $quizzesCreated = $rowCreated['quizzes_created'];
-    // $quizzesCreated = mysqli_num_rows($resultCreated);
 
 } else {
     // created = 0 
@@ -27,19 +26,18 @@ if ($resultCreated == TRUE) {
 }
 
 // Count quizzes taken by the user
-$queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz WHERE user_id = $userid";
-$resultTaken = FALSE; // temporary until the table for it has been set
-// $resultTaken = mysqli_query($con, $queryTaken);
-// $rowTaken = mysqli_fetch_assoc($resultTaken);
-// $quizzesTaken = $rowTaken['quizzes_taken'];
-// if ($resultTaken == TRUE) {
-//     $rowTaken = mysqli_fetch_assoc($resultTaken);
-//     $quizzesTaken = $rowTaken['quizzes_taken'];
-// } else {
-//     // taken = 0
-//     // echo "Error: " . $queryCreated . "<br>" . $con->error;
-// }
-// $quizzesTaken = $instance->retrieveData($queryTaken)
+$queryTaken = "SELECT COUNT(*) as quizzes_taken FROM quiz_attempt_log WHERE attempt_by = $userid";
+$resultTaken = mysqli_query($con, $queryTaken);
+if ($resultTaken == TRUE) {
+    $rowTaken = mysqli_fetch_assoc($resultTaken);
+    $quizzesTaken = $rowTaken['quizzes_taken'];
+} else {
+    // taken = 0
+    // echo "Error: " . $queryTaken . "<br>" . $con->error;
+}
+
+
+$quizzesTaken = $instance->retrieveData($queryTaken)
 
 ?>
 
@@ -56,7 +54,7 @@ $resultTaken = FALSE; // temporary until the table for it has been set
             text-align:center;
         }
 
-        #Chart1 {
+        #Chart1, #Chart2 {
             width: 80%; 
             margin: 20px auto; 
             border: 1px solid #ddd; 
@@ -85,7 +83,8 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     ?></p>
     <p>Number of quizzes taken: <?php 
     if($resultTaken==TRUE){
-        echo $quizzesTaken;
+        $number = reset($quizzesTaken);
+        echo $number;
     }else{
         echo "0";
     }; 
@@ -109,13 +108,31 @@ $resultTaken = FALSE; // temporary until the table for it has been set
             'quizzes_created' => $rowGraph1['quizzes_created'],
         ];
     }
+
+    $queryforgraph2 = "SELECT YEAR(attempted_on) AS year2, MONTH(attempted_on) AS month2, COUNT(*) AS quizzes_taken
+                       FROM quiz_attempt_log
+                       WHERE attempt_by = $userid
+                       GROUP BY year2, month2";
+
+    // Fetch data for graph2
+    $resultGraph2 = mysqli_query($con, $queryforgraph2);
+    $dataGraph2 = [];
+
+    while ($rowGraph2 = mysqli_fetch_assoc($resultGraph2)) {
+        $dataGraph2[] = [
+            'year2' => $rowGraph2['year2'],
+            'month2' => $rowGraph2['month2'],
+            'quizzes_taken' => $rowGraph2['quizzes_taken'],
+        ];
+    }
+
 ?>
 
 <!-- When i click on the quiz start, append +1 into a list so i have a counter -->
 
 <div>
   <canvas id="Chart1"></canvas>
-  <!-- <canvas id="Chart2"></canvas> -->
+  <canvas id="Chart2"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -164,7 +181,7 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     }
 });
 </script>
-<!-- 
+
 <script>
   const ctx1 = document.getElementById('Chart2');
 
@@ -172,24 +189,24 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     type: 'line',
     data: {
         labels: <?php
-            $formattedDates = [];
+            $formattedDates2 = [];
 
             foreach ($dataGraph2 as $date) {
 
-                $month = $date['month2'];
-                $year = $date['year2'];
+                $month2 = $date['month2'];
+                $year2 = $date['year2'];
 
-                $timestamp = mktime(0, 0, 0, $month, 1, $year);
+                $timestamp = mktime(0, 0, 0, $month2, 1, $year2);
 
-                $formattedDates[] = date("M Y", $timestamp);
+                $formattedDates2[] = date("M Y", $timestamp);
             }
-            echo json_encode($formattedDates);
+            echo json_encode($formattedDates2);
         ?>,
         datasets: [{
-            label: '# of Quiz taken per Month',
-            data: <?php echo json_encode(array_column($dataGraph2, 'quizzes_created')); ?>,
-            borderWidth: 1
-        }]
+        label: '# of Quiz taken per Month',
+        data: <?php echo json_encode(array_column($dataGraph2, 'quizzes_taken')); ?>,
+        borderWidth: 1
+    }]
     },
     options: {
         scales: {
@@ -202,7 +219,7 @@ $resultTaken = FALSE; // temporary until the table for it has been set
     }
 });
 </script>
--->
+
 </body>
 
 <footer>
