@@ -5,40 +5,16 @@ if (!isset($_SESSION['User'])) {
     header("location:../account/login.php");
 }
 
-// Assuming you have the quiz_id and user's answers in the session
-if (isset($_SESSION['quiz_id']) && isset($_SESSION['user_answers'])) {
-    $quiz_id = $_SESSION['quiz_id'];
-    $user_answers = $_SESSION['user_answers'];
+if(isset($_GET['attempt_id'])){
+    $attempt_id = $_GET['attempt_id'];
+    $sql10="select * from quiz_attempt_log where attempt_id = ". $attempt_id;
+    $quiz_results10 = mysqli_query($con,$sql10);
+    $quiz_row10 = mysqli_fetch_assoc($quiz_results10);
+    $percentage = $quiz_row10['score'];
+    $correct = $quiz_row10['correct'];
 
-    // Fetch quiz details
-    $quiz_query = "SELECT * FROM quiz WHERE quiz_id = $quiz_id";
-    $quiz_result = mysqli_query($con, $quiz_query);
-    $quiz_row = mysqli_fetch_assoc($quiz_result);
-
-    if ($quiz_row) {
-        $quiz_name = $quiz_row['quiz_name'];
-
-        // Fetch quiz questions
-        $questions_query = "SELECT * FROM quiz_$quiz_id";
-        $questions_result = mysqli_query($con, $questions_query);
-        $questions = mysqli_fetch_all($questions_result, MYSQLI_ASSOC);
-
-        // Calculate the percentage of correct answers
-        $correct_count = 0;
-        foreach ($questions as $question) {
-            $question_id = $question['question'];
-            if (isset($user_answers[$question_id]) && $user_answers[$question_id] == $question['correct_option']) {
-                $correct_count++;
-            }
-        }
-
-        $total_questions = count($questions);
-        $percentage = ($correct_count / $total_questions) * 100;
-    } else {
-        echo "Quiz not found!";
-        exit;
-    }
-} else {
+    $total_questions = "".intval($quiz_row10['wrong']) + intval($quiz_row10['correct']);
+}else {
     echo "Quiz ID or user answers not provided!";
     exit;
 }
@@ -72,19 +48,30 @@ if (isset($_SESSION['quiz_id']) && isset($_SESSION['user_answers'])) {
     <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
 
 </head>
+<?php require '../navbar.php' ?>
 
 <body>
     <div class="container text-center">
-        <h1 class="display-4">Quiz Results</h1>
-        <div class="progress" style="width: 200px; height: 200px;">
-            <div class="progress-bar" role="progressbar" style="width: <?php echo $percentage; ?>%;"
-                aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+        <h1 class="display-4" style="margin-top: 30px;">Quiz Results</h1>
+        <div class="progress-container" style="width: 300px; height: 80px; position: relative;">
+
+            <!-- The percentage bar -->
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $percentage; ?>%;"
+                    aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <!-- Display the percentage in the center of the circle -->
+            <div class="percentage-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #333;">
+                <?php echo $percentage; ?>%
+            </div>
+
         </div>
-        <p class="mt-3">You scored <?php echo $correct_count; ?> out of <?php echo $total_questions; ?> questions
+        <p class="mt-3">You scored <?php echo $correct; ?> out of <?php echo $total_questions; ?> questions
             correctly.</p>
         <div class="mt-4">
-            <a href="retake_quiz.php" class="btn btn-primary">Retake Quiz</a>
-            <a href="../homepage.php" class="btn btn-success">Go Back to Homepage</a>
+            <a href="retake_quiz.php" class="btn btn-success">Retake Quiz</a>
+            <a href="../user/home.php" class="btn btn-success">Go Back to Homepage</a>
         </div>
     </div>
 </body>

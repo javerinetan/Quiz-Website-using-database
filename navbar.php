@@ -1,6 +1,6 @@
 <head>
     <!-- bootstraps -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../user/userstyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,7 +17,6 @@
 
     <link href="../wf/assets/QuizITLogo.png" rel="shortcut icon" type="image/x-icon" />
     <link href="../wf/assets/QuizITLogo.png" rel="apple-touch-icon" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -46,8 +45,24 @@
                     <a class="nav-link" aria-current="page" href="../user/home.php">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../user/activity.php">Activity</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../user/dashboard.php" tabindex="-1" aria-disabled="true">Dashboard</a>
                 </li>
+                <?php
+                    $navbar_query="select * from account where id=".$_SESSION['User']."";
+                    $navbar_instance = new DatabaseConnection();
+                    $navbar_row=$navbar_instance->retrieveData($navbar_query);
+                    if($navbar_row['admin']){
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="../admin/retrieve_users.php" tabindex="-1" aria-disabled="true">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../admin/retrieve_quiz.php" tabindex="-1" aria-disabled="true">Quiz</a>
+                            </li>';
+                    }
+                ?>
             </ul>
         </div>
 

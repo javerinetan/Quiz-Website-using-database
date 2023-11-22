@@ -57,6 +57,22 @@
     margin-bottom: 20px;
 }
 
+/* ---- Results.php ---- */
+.progress-container {
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    border-radius: 8px; /* Adjust border-radius for rounded corners */
+}
+
+.percentage-text {
+    font-size: 18px; /* Adjust font size */
+    font-weight: bold;
+    padding-top: 40px
+}
 
 /* Add additional styling as needed for input fields and buttons */
 
