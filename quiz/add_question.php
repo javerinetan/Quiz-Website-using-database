@@ -11,6 +11,8 @@ if (isset($_GET['quiz_id'])) {
     $quiz_id = $_GET['quiz_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addQuestion'])) {
+
+        
         // Process the form submission to add a new question
         $question_text = mysqli_real_escape_string($con, $_POST['question']);
         $option_1 = mysqli_real_escape_string($con, $_POST['option_1']);
@@ -30,11 +32,19 @@ if (isset($_GET['quiz_id'])) {
             $correct=$option_4;
         }
 
-        // Add the new question to the database
-        $insert_query = "INSERT INTO quiz_$quiz_id (question, option_1, option_2, option_3, option_4, answer) 
-                         VALUES ('$question_text', '$option_1', '$option_2', '$option_3', '$option_4', '$correct')";
-        mysqli_query($con, $insert_query);
+        // Get the last quiz_no
+        $last_quiz_no_query = "SELECT MAX(quiz_no) AS last_quiz_no FROM quiz_$quiz_id";
+        $result = mysqli_query($con, $last_quiz_no_query);
+        $row = mysqli_fetch_assoc($result);
+        $last_quiz_no = $row['last_quiz_no'];
 
+        // Increment the last quiz_no by one
+        $new_quiz_no = $last_quiz_no + 1;
+
+        // Add the new question to the database with the new quiz_no
+        $insert_query = "INSERT INTO quiz_$quiz_id (quiz_no, question, option_1, option_2, option_3, option_4, answer) 
+                         VALUES ($new_quiz_no, '$question_text', '$option_1', '$option_2', '$option_3', '$option_4', '$correct')";
+        mysqli_query($con, $insert_query);
         mysqli_query($con, "UPDATE quiz SET questions = questions + 1 WHERE quiz_id = $quiz_id");
 
 
