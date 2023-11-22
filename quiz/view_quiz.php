@@ -67,12 +67,31 @@ $row=$instance->retrieveData($query);
         td {
             font-weight: lighter;
         }
-        #container-central{
-         width: 70%;
-         height: 30%;   
-         margin-left: auto;
-         margin-right: auto;
+        .add-qn-container {
+            text-align: right;
+            margin-top: 20px; /* Adjust the margin as needed */
+            width: 92.4%;
         }
+
+        .add-qn-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* You can change the background color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .add-qn-btn:hover {
+            background-color: #0a5cb4; /* You can change the hover background color */
+            text-decoration: none;
+            color: #fff;
+        }
+
 </style>
 
 <?php
@@ -120,11 +139,11 @@ $result = $con->query($query);
                 <?php
                     }
                 ?>
+
             </table>
-            <div class="add-question-container">
-                <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>" class="add-question-btn">Add Question</a>
+            <div class="add-qn-container">
+                <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>" class="add-qn-btn">Add Question</a>
             </div>
-            
         </section>
     </div>
 

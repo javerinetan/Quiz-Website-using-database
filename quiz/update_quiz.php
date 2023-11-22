@@ -97,48 +97,50 @@ if (isset($_POST['updateQuestion'])) {
 </head>
 
 <body>
+    <div class="container">
     <h2>Update Quiz Question</h2>
-    <div class="main-content">
-        <form method="post" class="row g-2" id="quiz-form">
-                <div class="quiz-question" id="question<?php echo $qn_no; ?>">
-            
-                <div class="question-container">
-                    <h3>Question <?php echo $qn_no; ?></h3>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_qn">Question</label>
-                        <input type="text" name="q<?php echo $qn_no; ?>_qn" value="<?php echo htmlspecialchars($question['question']); ?>" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_op1">Option 1</label>
-                        <input type="text" name="q<?php echo $qn_no; ?>_op1" value="<?php echo htmlspecialchars($question['option_1']); ?>" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_op2">Option 2</label>
-                        <input type="text" name="q<?php echo $qn_no; ?>_op2" value="<?php echo htmlspecialchars($question['option_2']); ?>" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_op3">Option 3</label>
-                        <input type="text" name="q<?php echo $qn_no; ?>_op3" value="<?php echo htmlspecialchars($question['option_3']); ?>" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_op4">Option 4</label>
-                        <input type="text" name="q<?php echo $qn_no; ?>_op4" value="<?php echo htmlspecialchars($question['option_4']); ?>" class="form-control mb-3" required>
-                    </div>
-                    <div class="col-md-23">
-                        <label for="q<?php echo $question['quiz_no']; ?>_answer">Correct Answer</label>
-                        <select name="q<?php echo $question['quiz_no']; ?>_answer" class="form-control" required>
-                            <option value="option_1" <?php echo ($question['answer'] == $question['option_1']) ? 'selected' : ''; ?>>Option 1</option>
-                            <option value="option_2" <?php echo ($question['answer'] == $question['option_2']) ? 'selected' : ''; ?>>Option 2</option>
-                            <option value="option_3" <?php echo ($question['answer'] == $question['option_3']) ? 'selected' : ''; ?>>Option 3</option>
-                            <option value="option_4" <?php echo ($question['answer'] == $question['option_4']) ? 'selected' : ''; ?>>Option 4</option>
-                        </select>
+        <div class="main-content">
+            <form method="post" class="row g-2" id="quiz-form" style="width: 100%;">
+                    <div class="quiz-question" id="question<?php echo $qn_no; ?>">
+                
+                    <div class="question-container">
+                        <h3>Question <?php echo $qn_no; ?></h3>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_qn">Question</label>
+                            <input type="text" name="q<?php echo $qn_no; ?>_qn" value="<?php echo htmlspecialchars($question['question']); ?>" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_op1">Option 1</label>
+                            <input type="text" name="q<?php echo $qn_no; ?>_op1" value="<?php echo htmlspecialchars($question['option_1']); ?>" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_op2">Option 2</label>
+                            <input type="text" name="q<?php echo $qn_no; ?>_op2" value="<?php echo htmlspecialchars($question['option_2']); ?>" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_op3">Option 3</label>
+                            <input type="text" name="q<?php echo $qn_no; ?>_op3" value="<?php echo htmlspecialchars($question['option_3']); ?>" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_op4">Option 4</label>
+                            <input type="text" name="q<?php echo $qn_no; ?>_op4" value="<?php echo htmlspecialchars($question['option_4']); ?>" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-23">
+                            <label for="q<?php echo $question['quiz_no']; ?>_answer">Correct Answer</label>
+                            <select name="q<?php echo $question['quiz_no']; ?>_answer" class="form-control" required>
+                                <option value="option_1" <?php echo ($question['answer'] == $question['option_1']) ? 'selected' : ''; ?>>Option 1</option>
+                                <option value="option_2" <?php echo ($question['answer'] == $question['option_2']) ? 'selected' : ''; ?>>Option 2</option>
+                                <option value="option_3" <?php echo ($question['answer'] == $question['option_3']) ? 'selected' : ''; ?>>Option 3</option>
+                                <option value="option_4" <?php echo ($question['answer'] == $question['option_4']) ? 'selected' : ''; ?>>Option 4</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <button type="submit" name="updateQuestion">Update Question</button>
-        </form>
+                <button type="submit" name="updateQuestion" class="add-qn-btn" style="font-size: 16px;">Update Question</button>
+            </form>
+        </div>
     </div>
 </body>
 

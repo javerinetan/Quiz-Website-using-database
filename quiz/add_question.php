@@ -83,48 +83,49 @@ if (isset($_GET['quiz_id'])) {
 </head>
 
 <body>
+   <div class="container">
     <h2>Add Question</h2>
-    <form method="post" class="row g-2" id="quiz-form">
-    <div class="quiz-question">
-        <div class="question-container">
-            <h3>Add New Question</h3>
-            <div class="col-md-23">
-                <label for="question">Question</label>
-                <input type="text" name="question" class="form-control mb-3" required>
+        <form method="post" class="row g-2" id="quiz-form" style="width: 100%;">
+            <div class="quiz-question">
+                <div class="question-container">
+                    <h3>Add New Question</h3>
+                    <div class="col-md-23">
+                        <label for="question">Question</label>
+                        <input type="text" name="question" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="option_1">Option 1</label>
+                        <input type="text" name="option_1" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="option_2">Option 2</label>
+                        <input type="text" name="option_2" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="option_3">Option 3</label>
+                        <input type="text" name="option_3" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="option_4">Option 4</label>
+                        <input type="text" name="option_4" class="form-control mb-3" required>
+                    </div>
+                    <div class="col-md-23">
+                        <label for="correct_option">Correct Answer</label>
+                        <select name="correct_option" class="form-control" required>
+                            <option value="option_1">Option 1</option>
+                            <option value="option_2">Option 2</option>
+                            <option value="option_3">Option 3</option>
+                            <option value="option_4">Option 4</option>
+                        </select>
+                        <!-- Hidden input field to store the selected option's value -->
+                        <input type="hidden" name="correct_answer" value="">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-23">
-                <label for="option_1">Option 1</label>
-                <input type="text" name="option_1" class="form-control mb-3" required>
-            </div>
-            <div class="col-md-23">
-                <label for="option_2">Option 2</label>
-                <input type="text" name="option_2" class="form-control mb-3" required>
-            </div>
-            <div class="col-md-23">
-                <label for="option_3">Option 3</label>
-                <input type="text" name="option_3" class="form-control mb-3" required>
-            </div>
-            <div class="col-md-23">
-                <label for="option_4">Option 4</label>
-                <input type="text" name="option_4" class="form-control mb-3" required>
-            </div>
-            <div class="col-md-23">
-                <label for="correct_option">Correct Answer</label>
-                <select name="correct_option" class="form-control" required>
-                    <option value="option_1">Option 1</option>
-                    <option value="option_2">Option 2</option>
-                    <option value="option_3">Option 3</option>
-                    <option value="option_4">Option 4</option>
-                </select>
-                <!-- Hidden input field to store the selected option's value -->
-                <input type="hidden" name="correct_answer" value="">
-            </div>
-        </div>
-    </div>
 
-    <button type="submit" name="addQuestion">Add Question</button>
-</form>
-
+            <button type="submit" name="addQuestion" class="add-qn-btn" style="font-size: 16px;">Add Question</button>
+        </form>
+   </div>
 </body>
 
 <footer>
