@@ -48,26 +48,42 @@ if(!isset($_SESSION['User']))
         td {
             font-weight: lighter;
         }
-        #container-central{
-         width: 70%;
-         height: 30%;   
-         margin-left: auto;
-         margin-right: auto;
-        }
-
         #error_msg {
             text-align: center;
             color: #800880;
-            font-size: xx-large;
+            font-size: 3em;
             font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 50vh; 
+            margin-top: 25vh
         }
 
         #createQuizBtn {
             align-items: center;
+        }
+        .btn-try-container{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-try{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* You can change the background color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .btn-try:hover{
+            background-color: #0a5cb4; /* You can change the hover background color */
+            text-decoration: none;
+            color: #fff;
+        }
         }
 
 </style>
@@ -90,9 +106,12 @@ $result2 = $con->query($query2);
         $row_check_attempts = mysqli_fetch_assoc($result_check_attempts);
     
         if ($row_check_attempts['num_attempts'] == 0) {
-            echo "<p id=error_msg>No attempts made yet.</p>";
-            echo '<a href="home.php" class="btn create btn-welcome" id="createQuizBtn">Click here for some quizzes to try</a>';
-            
+            echo '<div class="container">';
+            echo "<h1 id=error_msg>No attempts made yet.</h1>";
+            echo '<div class="btn-try-container">';
+            echo '<a href="home.php" class="btn create btn-try" id="createQuizBtn">Get Started!</a>';
+            echo '</div>';
+            echo '</div>';
 
 
         } else {
