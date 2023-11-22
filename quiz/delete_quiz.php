@@ -15,6 +15,9 @@ if (isset($_GET['quiz_id']) && isset($_GET['quiz_no'])) {
     $delete_query = "DELETE FROM quiz_$quiz_id WHERE quiz_no = $quiz_no";
     mysqli_query($con, $delete_query);
 
+    mysqli_query($con, "UPDATE quiz SET questions = questions - 1 WHERE quiz_id = $quiz_id");
+
+
     // Redirect to the quiz table page after deletion
     header("location:view_quiz.php?quiz_id=$quiz_id");
     exit();
