@@ -128,8 +128,8 @@ function getRandomImagePath() {
                         <p id="numQuestions"></p>
                         <p id="creatorName"></p>
                         <a id="startQuizBtn" class="btn create">Start Quiz</a>
-                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
-                        <a id="deleteQuizBtn" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
+                        <a id="editQuizBtn" class="" style="padding-right: 5px; padding-left: 10px; padding-top:7px;"><i class="fa fa-pencil-square-o fa-fw fa-lg" style="color: #f5a60f;"></i></a>
+                        <a id="deleteQuizBtn" class="" style="padding-right: 5px; padding-left: 5px;" onclick="return confirm('Are you sure you want to delete this quiz?')"><i class="fa fa-trash fa-lg fa-fw" style="color: red;"></i></a>
 
                     </div>
                     </div>
