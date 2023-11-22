@@ -128,6 +128,9 @@ function getRandomImagePath() {
                         <p id="numQuestions"></p>
                         <p id="creatorName"></p>
                         <a id="startQuizBtn" class="btn create">Start Quiz</a>
+                        <a id="editQuizBtn" class="btn btn-secondary">Edit</a>
+                        <a id="deleteQuizBtn" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
+
                     </div>
                     </div>
                 </div>
@@ -223,11 +226,10 @@ function getRandomImagePath() {
 
     // reset the edit button
     var editBtn = document.getElementById('editQuizBtn');
-    if (editBtn) {
-        editBtn.remove();
-        var deleteBtn = document.getElementById('deleteQuizBtn');
-        deleteBtn.remove();
-    }
+    var deleteBtn = document.getElementById('deleteQuizBtn');
+    editBtn.style.display='none';
+    deleteBtn.style.display='none';
+
     // Update other modal content
     quizNameElement.innerText = "Topic: " + quizName;
     numQuestionsElement.innerText = "Number of Questions: " + numQuestions ;
@@ -238,25 +240,13 @@ function getRandomImagePath() {
         creatorNameElement.innerText = "Creator: " + community;
         numQuestionsElement.style.marginBottom = "0px";
     }else{
-        var editQuizBtn = document.createElement('a'); // Use document.createElement
-        editQuizBtn.id = 'editQuizBtn';
-        editQuizBtn.className = 'btn btn-secondary';
-        editQuizBtn.textContent = 'Edit';
-        editQuizBtn.href = '../quiz/view_quiz.php?quiz_id=' + quizId;
+        // edit button 
+        editBtn.style.display='inline';
+        editBtn.href = '../quiz/view_quiz.php?quiz_id=' + quizId;
 
-        // Append the element to the quizInfo element
-        quizInfo.appendChild(editQuizBtn);
-
-        var DeleteQuizBtn = document.createElement('a'); // Use document.createElement
-        DeleteQuizBtn.id = 'deleteQuizBtn';
-        DeleteQuizBtn.className = 'btn btn-danger';
-        DeleteQuizBtn.textContent = 'Delete';
-        // DeleteQuizBtn.href = "#";
-        DeleteQuizBtn.href = '../quiz/delete_quiz.php?quiz_id=' + quizId;
-
-        // Append the element to the quizInfo element
-        quizInfo.appendChild(DeleteQuizBtn);
-
+        // delete button
+        deleteBtn.style.display='inline';
+        deleteBtn.href =  '../quiz/delete_quiz.php?quiz_id=' + quizId;
     }
 
     // Set the href attribute for the "Start Quiz" button
@@ -265,6 +255,7 @@ function getRandomImagePath() {
 
     $('#quizDetailsModal').modal('show');
   }
+
 </script>
 
 <!-- this does not work -->
