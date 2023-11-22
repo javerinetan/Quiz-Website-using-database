@@ -1,31 +1,38 @@
-<?php 
+<?php
 require_once('../connection.php');
-    if(isset($_POST['Signup']))
-    {
-       if(empty($_POST['Name']) || empty($_POST['Birthdate']) || empty($_POST['Email']) || empty($_POST['Password']))
-       {
-            header("location:signup.php?Empty= Please Fill in the Blanks");
-       }
-       else
-       {
-            $query="select * from account where email='". strtolower($_POST['Email'])."'";
-            $result=mysqli_query($con,$query);
-            if (mysqli_fetch_assoc($result)){
-                header('location:signup.php?Invalid= This email has been registered already<br>Login instead: <a href="login.php">Login Page</a>');
 
+if (isset($_POST['Signup'])) {
+    if (empty($_POST['Name']) || empty($_POST['Birthdate']) || empty($_POST['Email']) || empty($_POST['Password'])) {
+        header("location:signup.php?Empty= Please Fill in the Blanks");
+    } else {
+        $email = strtolower($_POST['Email']);
+        $query = "SELECT * FROM account WHERE email='$email'";
+        $result = mysqli_query($con, $query);
+
+        if (mysqli_fetch_assoc($result)) {
+            header('location:signup.php?Invalid= This email has been registered already<br>Login instead: <a href="login.php">Login Page</a>');
+        } else {
+            $name = $_POST['Name'];
+            $birthdate = $_POST['Birthdate'];
+            $password = $_POST['Password'];
+            
+            // Set the default image URL
+            $defaultImageUrl = 'https://www.kedglobal.com/data/ked/image/2023/11/20/ked202311200029.600x.0.jpg';
+
+            $sql = "INSERT INTO account (name, birthdate, email, password, image_url) VALUES ('$name', '$birthdate', '$email', '$password', '$defaultImageUrl')";
+            
+            $insertResult = mysqli_query($con, $sql);
+
+            if ($insertResult) {
+                header("location:login.php");
+            } else {
+                echo "Error: " . $sql . "<br>" . $con->error;
             }
-            else{
-                $sql = "INSERT INTO account VALUES (NULL,'".$_POST['Name']."', '".$_POST['Birthdate']."', '".strtolower($_POST['Email'])."', '".$_POST['Password']."', NULL, DEFAULT)";
-                $insertresults = mysqli_query($con,$sql);
-                if ($insertresults) {
-                    header("location:login.php");
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-       }
+        }
     }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
