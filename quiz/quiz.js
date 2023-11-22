@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    var attemptQuiz = document.querySelectorAll('.sidebar div .a_quiz a');
-    attemptQuiz.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            var questionNumber = parseInt(this.id.match(/\d+/)[0], 10);
-            showQuestion(questionNumber);
-        });
-    });
+    // var attemptQuiz = document.querySelectorAll('.sidebar div .a_quiz a');
+    // attemptQuiz.forEach(function (link) {
+    //     link.addEventListener('click', function (event) {
+    //         event.preventDefault();
+    //         var questionNumber = parseInt(this.id.match(/\d+/)[0], 10);
+    //         showQuestion(questionNumber);
+    //     });
+    // });
 
     var questionLinks = document.querySelectorAll('.sidebar div div a');
     questionLinks.forEach(function (link) {
@@ -71,18 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
             showQuestion(questionNumber2);
         });
     });
-
-    // var attemptNextQn = document.querySelectorAll('.attempt_btn');
-    // attemptNextQn.forEach(function (link) {
-    //     link.addEventListener('click', function (event) {
-    //         alert('1');
-    //         event.preventDefault();
-    //         alert('2');
-    //         var questionNumber3 = parseInt(this.id.match(/\d+/)[0], 10);
-    //         alert('3');
-    //         showQuestion(questionNumber3);
-    //     });
-    // });
     // Show the first question by default
     showQuestion(1);
 });
