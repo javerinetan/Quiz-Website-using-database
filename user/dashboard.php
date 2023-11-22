@@ -92,10 +92,10 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 </div>
 
 <?php 
-    $queryforgraph1 = "SELECT YEAR(created_on) AS year, MONTH(created_on) AS month, COUNT(*) AS quizzes_created
+    $queryforgraph1 = "SELECT YEAR(created_on) AS year, MONTH(created_on) AS month, dayofmonth(created_on) as day, COUNT(*) AS quizzes_created
                        FROM quiz
                        WHERE creator_id = $userid
-                       GROUP BY year, month";
+                       GROUP BY year, month, day";
 
     // Fetch data for graph1
     $resultGraph1 = mysqli_query($con, $queryforgraph1);
@@ -105,14 +105,15 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
         $dataGraph1[] = [
             'year' => $rowGraph1['year'],
             'month' => $rowGraph1['month'],
+            'day' => $rowGraph1['day'],
             'quizzes_created' => $rowGraph1['quizzes_created'],
         ];
     }
 
-    $queryforgraph2 = "SELECT YEAR(attempted_on) AS year2, MONTH(attempted_on) AS month2, COUNT(*) AS quizzes_taken
+    $queryforgraph2 = "SELECT YEAR(attempted_on) AS year2, MONTH(attempted_on) AS month2, dayofmonth(attempted_on) as day2, COUNT(*) AS quizzes_taken
                        FROM quiz_attempt_log
                        WHERE attempt_by = $userid
-                       GROUP BY year2, month2";
+                       GROUP BY year2, month2, day2";
 
     // Fetch data for graph2
     $resultGraph2 = mysqli_query($con, $queryforgraph2);
@@ -122,6 +123,7 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
         $dataGraph2[] = [
             'year2' => $rowGraph2['year2'],
             'month2' => $rowGraph2['month2'],
+            'day2' => $rowGraph2['day2'],
             'quizzes_taken' => $rowGraph2['quizzes_taken'],
         ];
     }
@@ -152,13 +154,14 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
                 // Extract month and year from the current entry
                 $month = $date['month'];
                 $year = $date['year'];
+                $day = $date['day'];
 
                 // Convert the corresponding value for the dates
                 // mktime = (hour, minute, second, month, day, year, is_dst)
-                $timestamp = mktime(0, 0, 0, $month, 1, $year);
+                $timestamp = mktime(0, 0, 0, $month, $day, $year);
 
-                // Format the timestamp as "M Y" and add it to the $formattedDates array
-                $formattedDates[] = date("M Y", $timestamp);
+                // Format the timestamp as "D M Y" and add it to the $formattedDates array
+                $formattedDates[] = date("d M Y", $timestamp);
             }
 
             // change the $formattedDates into a json-encoding format then print/echo the array
@@ -195,10 +198,11 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 
                 $month2 = $date['month2'];
                 $year2 = $date['year2'];
+                $day2 = $date['day2'];
 
-                $timestamp = mktime(0, 0, 0, $month2, 1, $year2);
+                $timestamp = mktime(0, 0, 0, $month2, $day2, $year2);
 
-                $formattedDates2[] = date("M Y", $timestamp);
+                $formattedDates2[] = date("d M Y", $timestamp);
             }
             echo json_encode($formattedDates2);
         ?>,
