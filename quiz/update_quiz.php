@@ -9,8 +9,9 @@ if (!isset($_SESSION['User'])) {
     exit();
 }
 
-if (isset($_GET['quiz_id'])) {
-    $quiz_id = $_GET['quiz_id'];
+if (isset($_GET['quiz_id']) && isset($_GET['quiz_no'])) {
+    $quiz_id = intval($_GET['quiz_id']);
+    $qn_no = intval($_GET['quiz_no']);
 
     // Fetch quiz details
     $quiz_query = "SELECT * FROM quiz WHERE quiz_id = $quiz_id";
@@ -22,47 +23,50 @@ if (isset($_GET['quiz_id'])) {
         $quiz_limit = $quiz_row['questions'];
 
         // Fetch quiz questions
-        $questions_query = "SELECT * FROM quiz_$quiz_id";
+        $questions_query = "SELECT * FROM quiz_$quiz_id where quiz_no=".$qn_no;
         $questions_result = mysqli_query($con, $questions_query);
-        $questions = mysqli_fetch_all($questions_result, MYSQLI_ASSOC);
+        $question = mysqli_fetch_assoc($questions_result);
+        print_r($question);
 
-        // Check if the form is submitted
-        if (isset($_POST['updateQuestion'])) {
-            // Iterate through submitted data and update the database
-            foreach ($questions as $question) {
-                $question_no = $question['quiz_no'];
-                $question_text = mysqli_real_escape_string($con, $_POST["q{$question_no}_qn"]);
-                $option_1 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op1"]);
-                $option_2 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op2"]);
-                $option_3 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op3"]);
-                $option_4 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op4"]);
-                $correct_option = mysqli_real_escape_string($con, $_POST["q{$question_no}_answer"]);
-
-                $correct = $_POST["q{$question_no}_answer"];
-                if($correct=="option_1"){
-                    $correct=$option_1;
-                }elseif($correct=="option_2"){
-                    $correct=$option_2;
-                }elseif($correct=="option_3"){
-                    $correct=$option_3;
-                }elseif($correct=="option_4"){
-                    $correct=$option_4;
-                }
-
-                // Update the database
-                $update_query = "UPDATE quiz_$quiz_id SET question = '$question_text', 
-                    option_1 = $option_1  , option_2 = $option_2, option_3 = $option_3, option_4 = $option_4,
-                    answer = $correct WHERE quiz_no = $question_no";
-
-                mysqli_query($con, $update_query);
-            }
-
-            // Redirect to the view_quiz.php page after the update
-            header("location:view_quiz.php?quiz_id=$quiz_id");
-            exit();
-        }
     }
 }
+
+// Check if the form is submitted
+
+if (isset($_POST['updateQuestion'])) {
+    // Iterate through submitted data and update the database
+        $question_no = $qn_no;
+        $question_text = mysqli_real_escape_string($con, $_POST["q{$question_no}_qn"]);
+        $option_1 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op1"]);
+        $option_2 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op2"]);
+        $option_3 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op3"]);
+        $option_4 = mysqli_real_escape_string($con, $_POST["q{$question_no}_op4"]);
+        $correct_option = mysqli_real_escape_string($con, $_POST["q{$question_no}_answer"]);
+
+        $correct = $_POST["q{$question_no}_answer"];
+        if($correct=="option_1"){
+            $correct=$option_1;
+        }elseif($correct=="option_2"){
+            $correct=$option_2;
+        }elseif($correct=="option_3"){
+            $correct=$option_3;
+        }elseif($correct=="option_4"){
+            $correct=$option_4;
+        }
+
+        // Update the database
+        $update_query = "UPDATE quiz_$quiz_id SET question = '$question_text', 
+            option_1 = $option_1  , option_2 = $option_2, option_3 = $option_3, option_4 = $option_4,
+            answer = $correct WHERE quiz_no = $question_no";
+
+        mysqli_query($con, $update_query);
+    
+
+    // Redirect to the view_quiz.php page after the update
+    header("location:view_quiz.php?quiz_id=$quiz_id");
+    exit();
+}
+
 ?>
 
 
@@ -98,30 +102,29 @@ if (isset($_GET['quiz_id'])) {
     <h2>Update Quiz Question</h2>
     <div class="main-content">
         <form method="post" class="row g-2" id="quiz-form">
-            <?php foreach ($questions as $question) : ?>
-                <div class="quiz-question" id="question<?php echo $question['quiz_no']; ?>">
+                <div class="quiz-question" id="question<?php echo $qn_no; ?>">
             
                 <div class="question-container">
-                    <h3>Question <?php echo $question['quiz_no']; ?></h3>
+                    <h3>Question <?php echo $qn_no; ?></h3>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_qn">Question</label>
-                        <input type="text" name="q<?php echo $question['quiz_no']; ?>_qn" value="<?php echo htmlspecialchars($question['question']); ?>" class="form-control mb-3" required>
+                        <input type="text" name="q<?php echo $qn_no; ?>_qn" value="<?php echo htmlspecialchars($question['question']); ?>" class="form-control mb-3" required>
                     </div>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_op1">Option 1</label>
-                        <input type="text" name="q<?php echo $question['quiz_no']; ?>_op1" value="<?php echo htmlspecialchars($question['option_1']); ?>" class="form-control mb-3" required>
+                        <input type="text" name="q<?php echo $qn_no; ?>_op1" value="<?php echo htmlspecialchars($question['option_1']); ?>" class="form-control mb-3" required>
                     </div>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_op2">Option 2</label>
-                        <input type="text" name="q<?php echo $question['quiz_no']; ?>_op2" value="<?php echo htmlspecialchars($question['option_2']); ?>" class="form-control mb-3" required>
+                        <input type="text" name="q<?php echo $qn_no; ?>_op2" value="<?php echo htmlspecialchars($question['option_2']); ?>" class="form-control mb-3" required>
                     </div>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_op3">Option 3</label>
-                        <input type="text" name="q<?php echo $question['quiz_no']; ?>_op3" value="<?php echo htmlspecialchars($question['option_3']); ?>" class="form-control mb-3" required>
+                        <input type="text" name="q<?php echo $qn_no; ?>_op3" value="<?php echo htmlspecialchars($question['option_3']); ?>" class="form-control mb-3" required>
                     </div>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_op4">Option 4</label>
-                        <input type="text" name="q<?php echo $question['quiz_no']; ?>_op4" value="<?php echo htmlspecialchars($question['option_4']); ?>" class="form-control mb-3" required>
+                        <input type="text" name="q<?php echo $qn_no; ?>_op4" value="<?php echo htmlspecialchars($question['option_4']); ?>" class="form-control mb-3" required>
                     </div>
                     <div class="col-md-23">
                         <label for="q<?php echo $question['quiz_no']; ?>_answer">Correct Answer</label>
@@ -135,7 +138,6 @@ if (isset($_GET['quiz_id'])) {
                 </div>
             </div>
 
-            <?php endforeach; ?>
 
             <button type="submit" name="updateQuestion">Update Question</button>
         </form>
