@@ -167,7 +167,7 @@ $result2 = $con->query($query2);
                 echo 'Error: ' . mysqli_error($con);
             }
             echo '    </table>';
-            echo '</section>';
+            echo '</section><br><br><br>';
         }
 
     ?>

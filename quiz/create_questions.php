@@ -199,7 +199,7 @@ if(!isset($_SESSION['User']))
                         }
 
                     }else if ($question_no == 1 ){
-                        echo '<button class="btn mt-3 attempt-btn" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
+                        echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button> </div>';
                     }else{
                         echo '<a class="btn btn-success mt-3 mr-2 text-white" name="c_back" id="'.$back.'">Back</a>';
                         echo '<button class="btn btn-success mt-3" name="c_qn" onclick="submitForm()">Create Quiz</button> </div>';
