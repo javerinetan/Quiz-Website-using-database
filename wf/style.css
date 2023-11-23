@@ -57758,33 +57758,7 @@ figcaption {
     .features-image {
         margin-bottom: 10px;
     }
-    .quizizz-purple-button {
-        max-height: 45px;
-        max-width: 400px;
-        margin: 24px 32px;
-        padding: 20px;
-    }
-    .quizizz-purple-button.tablet {
-        width: 60px;
-        height: 55px;
-        max-height: 55px;
-        max-width: 200px;
-        min-width: 100px;
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
-        object-fit: contain;
-        flex-flow: column;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        margin-left: 20px;
-        margin-right: 20px;
-        padding-left: 0;
-        padding-right: 0;
-        display: flex;
-        position: relative;
-        overflow: visible;
-    }
+
     .container-169 {
         max-width: none;
     }
@@ -57833,30 +57807,7 @@ figcaption {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .au_purpleh2-copy,
-    .au_black_h2 {
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        align-items: center;
-        margin-top: 10px;
-        margin-bottom: 0;
-        margin-left: 0;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 18px;
-        line-height: 26px;
-        display: block;
-    }
-    .au_para_black {
-        text-align: justify;
-        padding-top: 0;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 14px;
-        line-height: 22px;
-    } 
+    
     
 }
 
