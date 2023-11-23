@@ -206,10 +206,16 @@ if (isset($_POST['s_qn'])) {
                     // $row=$instance->retrieveData($query);
                     echo '<a class="btn attempt-btn mt-3 mr-2 text-white" id="' . $back . '" href="#q' . $back . '">Back</a>';
                     echo '<a class="btn attempt-btn mt-3 text-white" class="attempt-btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
-                } else {
+                } 
+                else {
                     echo '<a class="btn attempt-btn mt-3 text-white" class="attempt-btn" id="' . $next . '" href="#q' . $next . '">Next</a></div>';
                 }
-            } else {
+            
+            } 
+            else if ($question_no == 1 ){
+                echo '<button class="btn mt-3 attempt-btn" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
+            }
+            else {
                 echo '<a class="btn mt-3 attempt-btn mr-2 text-white"id="' . $back . '" href="#q' . $back . '">Back</a>';
                 echo '<button class="btn mt-3 attempt-btn" name="s_qn" onclick="submitForm()">Submit Quiz</button></div>';
             }

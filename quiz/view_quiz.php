@@ -38,59 +38,60 @@ $row=$instance->retrieveData($query);
 
 <style>
     table {
-            margin: 0 auto;
-            font-size: large;
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
- 
-        h1 {
-            text-align: center;
-            color: #006600;
-            font-size: xx-large;
-            font-family: 'Gill Sans', 'Gill Sans MT',
-            ' Calibri', 'Trebuchet MS', 'sans-serif';
-        }
- 
-        td {
-            border: 1px solid black;
-        }
- 
-        th,
-        td {
-            font-weight: bold;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
- 
-        td {
-            font-weight: lighter;
-        }
-        .add-qn-container {
-            text-align: right;
-            margin-top: 20px; /* Adjust the margin as needed */
-            width: 92.4%;
-        }
+        margin: 0 auto;
+        font-size: large;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
 
-        .add-qn-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff; /* You can change the background color */
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
+    h1 {
+        text-align: center;
+        color: #006600;
+        font-size: xx-large;
+        font-family: 'Gill Sans', 'Gill Sans MT', ' Calibri', 'Trebuchet MS', 'sans-serif';
+    }
 
-        .add-qn-btn:hover {
-            background-color: #0a5cb4; /* You can change the hover background color */
-            text-decoration: none;
-            color: #fff;
-        }
+    td,
+    th {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        font-weight: lighter;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .add-qn-container {
+        position: absolute;
+        top: 100%; /* Place the container below the table */
+        right: 0; /* Align the container to the right */
+        margin-top: 20px; /* Adjust the margin as needed */
+    }
+
+    .add-qn-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #5d2057;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-weight: 350;
+    }
+
+    .add-qn-btn:hover {
+        background-color: #9e1c91;
+        text-decoration: none;
+        color: #fff;
+    }
 
 </style>
 
@@ -101,8 +102,10 @@ $result = $con->query($query);
 
 <body>
     <div class="container">
+        <br>
         <section>
             <h1>quiz table</h1>
+            <br>
             <table>
                 <tr>
                 
@@ -139,11 +142,12 @@ $result = $con->query($query);
                 <?php
                     }
                 ?>
-
+                <tr style="border: 1px solid transparent;">
+                    <td colspan="9" style="text-align: right; border-bottom: 0; border-left: 0; border-right: 0;">
+                        <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>" class="add-qn-btn">Add Question</a>
+                    </td>
+                </tr>
             </table>
-            <div class="add-qn-container">
-                <a href="add_question.php?quiz_id=<?php echo $_GET['quiz_id']; ?>" class="add-qn-btn">Add Question</a>
-            </div>
         </section>
     </div>
 
