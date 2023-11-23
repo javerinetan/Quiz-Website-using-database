@@ -57449,19 +57449,7 @@ figcaption {
     .image-267 {
         max-width: 140px;
     }
-    .purple-arrow-button-funding {
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        flex-flow: column;
-        align-items: center;
-        padding: 20px;
-    }
-    .purple-arrow-button-funding.pricing {
-        grid-column-gap: 10px;
-        text-align: center;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+
     .c_list_imb2 {
         max-height: 150px;
         max-width: 250px;
@@ -57516,14 +57504,6 @@ figcaption {
         max-width: 300px;
         align-items: stretch;
         margin-top: 20px;
-    }
-    .purple-button-au {
-        min-width: 200px;
-        flex: 1;
-        align-self: center;
-        padding-left: 20px;
-        padding-right: 20px;
-        display: block;
     }
     .logos-rows-au,
     .logos-rows-copy {
