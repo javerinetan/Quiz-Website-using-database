@@ -314,8 +314,8 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 });
 </script>
 
-<div id=padding_for_bottom></div>
-    <p>hi</p>
+<br>
+<br>
 </body>
 
 <footer>
