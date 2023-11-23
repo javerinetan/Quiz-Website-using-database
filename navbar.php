@@ -31,15 +31,6 @@
         <!-- Logo and Search Bar on the left -->
         <img class="navbar-brand" src="../wf/assets/QuizITLogoname.png" href="home.php">
 
-        <!-- Toggler Button for small screens -->
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="toggler-icon top-bar"></span>
-            <span class="toggler-icon middle-bar"></span>
-            <span class="toggler-icon bottom-bar"></span>
-        </button>
-        <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-        </form>
 
         <!-- Navbar items at the center -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -71,6 +62,12 @@
 
         <!-- Profile button and dropdown on the left -->
         <div class="dropdown">
+        <!-- Toggler Button for small screens -->
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon middle-bar"></span>
+                <span class="toggler-icon bottom-bar"></span>
+            </button>
         <a href="../quiz/create_quiz.php"><button class="btn create " type="submit">Create a Quiz</button></a>
 
             <!-- Profile dropdown with image -->
