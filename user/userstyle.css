@@ -234,6 +234,20 @@ body{
     right: 0px;
 }
 
+.text2{
+    text-align: left;
+    color: #9d9da4;
+    font-size: 14px;
+}
+
+.text2::after{
+    color: white;
+    font-family: Quizizz-Iconset;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+}
+
 .main2{
     color: #292a3a;
     font-size: 16px;

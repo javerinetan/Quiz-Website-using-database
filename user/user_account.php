@@ -93,7 +93,7 @@ $row=$instance->retrieveData($query);
 
         <button class="details has-chevron">
             <p class="main2">Username</p>
-            <p class="text">
+            <p class="text2">
             <?php  
                 
                 $u_query = "SELECT CONCAT(name, id, LPAD(DAY(birthdate), 2, '0')) AS username FROM account WHERE id=" . $_SESSION['User'] . "";
