@@ -57856,47 +57856,7 @@ figcaption {
         padding-right: 10px;
         font-size: 14px;
         line-height: 22px;
-    }
-    .au_para_black.ip_para_black2 {
-        padding-bottom: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 14px;
-        line-height: 26px;
-        display: block;
-    }
-    .ip_para_black-copy {
-        text-align: justify;
-        padding-top: 0;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 14px;
-        line-height: 22px;
-    }
-    .ip_para_black-copy.ip_para_black2 {
-        padding-bottom: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 14px;
-        line-height: 26px;
-        display: block;
-    }
-    .au_purpleh3 {
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        align-items: center;
-        margin-top: 10px;
-        margin-bottom: 0;
-        margin-left: 0;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 18px;
-        line-height: 26px;
-        display: block;
-    }
-
+    } 
     
 }
 
