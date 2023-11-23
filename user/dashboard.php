@@ -63,7 +63,7 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
  
         .dashboard{
             text-align: center;
-            padding-top: 2.5%;
+
         }
 
         #Chart1, #Chart2 {
@@ -100,14 +100,6 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 
         #createQuizBtn {
             align-items: center;
-        }
-
-        .btn-try-container{
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn-try{
             display: inline-block;
             padding: 10px 20px;
             background-color: #007bff; /* You can change the background color */
@@ -117,8 +109,14 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
             text-align: center;
             cursor: pointer;
             border: none;
-            outline: none;
+            outline: none;  
         }
+
+        .btn-try-container{
+            text-align: center;
+            margin-top: 20px;
+        }
+
         .btn-try:hover{
             background-color: #0a5cb4; /* You can change the hover background color */
             text-decoration: none;
