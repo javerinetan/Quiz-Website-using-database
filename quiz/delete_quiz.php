@@ -35,6 +35,17 @@ if (isset($_GET['quiz_id']) && isset($_GET['quiz_no'])) {
         $delete_query = "DROP TABLE quiz_$quiz_id";
         mysqli_query($con, $delete_query);
 
+        // $delete_log = "select * from quiz_attempt_log where quiz_id=$quiz_id";
+        // $log_result = $con->query($query);
+
+        // while($log_rows=$log_result->fetch_assoc()){
+        //     $log_id=$log_rows['attempt_id'];
+
+        // }              
+        $delete_log="delete from quiz_attempt_log where quiz_id=$quiz_id";
+        mysqli_query($con, $delete_log);
+
+
         $delete_query2 = "DELETE FROM quiz WHERE quiz_id = $quiz_id";
         mysqli_query($con, $delete_query2);
     
