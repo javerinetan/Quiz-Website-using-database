@@ -61464,34 +61464,7 @@ figcaption {
         align-self: center;
         justify-self: center;
     }
-    #w-node-fa0b35ae-d9c9-60ec-3a35-28bb3bd1a7ae-98f03918,
-    #w-node-fa0b35ae-d9c9-60ec-3a35-28bb3bd1a7bb-98f03918,
-    #w-node-fa0b35ae-d9c9-60ec-3a35-28bb3bd1a7c8-98f03918,
-    #w-node-fd08e955-1f29-4b7d-4b13-7004143cccfc-98f03918,
-    #w-node-dfd57d99-806c-88c2-b1b5-f63128d35ea8-98f03918,
-    #w-node-dfd57d99-806c-88c2-b1b5-f63128d35eb5-98f03918,
-    #w-node-dfd57d99-806c-88c2-b1b5-f63128d35ec2-98f03918 {
-        grid-area: span 1 / span 1 / span 1 / span 1;
-    }
-    #w-node-_027c71c5-6246-6d50-ba8f-306012e328af-98f0392f {
-        justify-self: center;
-    }
-    #w-node-_027c71c5-6246-6d50-ba8f-306012e328bb-98f0392f {
-        grid-area: span 1 / span 1 / span 1 / span 1;
-        justify-self: center;
-    }
-    #w-node-_19a0624e-449c-26cd-b6c7-371bb03165af-98f0392f,
-    #w-node-_19a0624e-449c-26cd-b6c7-371bb03165bc-98f0392f,
-    #w-node-_1329d7a3-32cd-cdd6-096b-6d7f2bf15e41-98f0392f {
-        grid-area: span 1 / span 1 / span 1 / span 1;
-    }
-    #w-node-_8e9ff633-11ab-2af2-1039-8f04cb330233-98f03960,
-    #w-node-_8e9ff633-11ab-2af2-1039-8f04cb330236-98f03960,
-    #w-node-_8e9ff633-11ab-2af2-1039-8f04cb330239-98f03960 {
-        grid-area: span 1 / span 2 / span 1 / span 2;
-        align-self: center;
-        justify-self: center;
-    }
+
     
     
     
