@@ -204,13 +204,17 @@ session_start();
                 <div class="mask-2 w-slider-mask">
                     <div class="testimonial-card-1 w-slide">
                         <div class="div-block-231">
-                            <img src="./wf/assets/64f98a5134cd09847c7b3d2e_63340b96b33bb55480b15023_Yvette.webp" loading="eager" alt="" class="image-271" />
+                            <img style="max-height: 200px !important; max-width: 500px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                             <div class="div-block-232">
-                                <div class="testimonial-title-home">Yvette Switzer</div>
-                                <div class="testimonial-title-occupation">4th Grade Teacher</div>
+                                <!-- <div class="testimonial-title-home">Nicholas Tan</div>
+                                <div class="testimonial-title-occupation">The "Leader"</div> -->
                             </div>
                         </div>
-                        <div class="testimonial-copy">“I use QuizIT to reinforce and check understanding after we&#x27;ve covered a concept pretty thoroughly. I use it in stations. I use it for tutoring. <span>I also use it to review and prepare my students for benchmark and state tests.</span>                                        <span class="text-span-95">They love it every time.</span>”</div>
+                        <div class="testimonial-copy">
+                            Name: Nicholas Tan (The "Leader")
+                            <br>
+                            Hello I am Nicholas, your leader on this QuizIT project
+                        </div>
                             </div>
                             <div class="testimonial-card-2 w-slide">
                                 <div class="div-block-231">
