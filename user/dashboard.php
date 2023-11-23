@@ -144,7 +144,8 @@ $quizzesTaken = $instance->retrieveData($queryTaken)
 
 
 </div>
-
+<br>
+<br>
 <?php
     $query_check_attempts = "SELECT COUNT(*) as num_attempts FROM quiz_attempt_log WHERE attempt_by = {$_SESSION['User']}";
     $result_check_attempts = $con->query($query_check_attempts);
