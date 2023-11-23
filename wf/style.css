@@ -58065,38 +58065,7 @@ figcaption {
         grid-row-gap: 0px;
         align-items: center;
     }
-    .au_whiteh3_small {
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-top: 10px;
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .au_link {
-        grid-column-gap: 8px;
-        grid-row-gap: 8px;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
-    .au_3ql_button_text {
-        font-size: 14px;
-        line-height: 120%;
-    }
-    .au_3ql_button_text.pricing {
-        font-size: 14px;
-    }
-    .au_3ql_button_text.faq-funding-small-text,
-    .au_3ql_button_text._16px-156 {
-        font-size: 16px;
-    }
-    .au_3ql_icon {
-        max-height: 10px;
-        padding-top: 2px;
-    }
+    
 }
 
 @media screen and (min-width: 1440px) {
