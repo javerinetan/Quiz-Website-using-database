@@ -80,7 +80,7 @@ if (isset($_POST['s_qn'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title><?php echo $quiz_name; ?> Quiz</title>
 
     <!-- bootstraps -->
     <link rel="stylesheet" href="css/bootstrap.css">
