@@ -61591,14 +61591,7 @@ figcaption {
     #w-node-_39f861be-b3bf-1034-b25e-84b85eb8c824-98f039d5 {
         grid-area: span 1 / span 1 / span 1 / span 1;
     }
-    #w-node-_00556248-bbcf-4a26-1c71-6ead9888d63d-98f03a1b {
-        grid-area: span 1 / span 1 / span 1 / span 1;
-        align-self: center;
-        justify-self: center;
-    }
-    #w-node-fa098b19-1be6-7857-b333-903558e88c53-98f03a1b {
-        grid-area: span 1 / span 1 / span 1 / span 1;
-    }
+    
 }
 
 @font-face {

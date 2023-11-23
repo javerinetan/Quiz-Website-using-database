@@ -260,34 +260,6 @@ function getRandomImagePath() {
 
 </script>
 
-<!-- this does not work -->
-<script>
-    // // fuck you
-    // function getQuiz() {
-    // // Assuming list is an array of quiz IDs, fetch it from PHP
-    // var list = [<?php
-    // $query2 = "SELECT quiz_id FROM quiz";
-    // $instance = new DatabaseConnection();
-    // $result2 = $instance->retrieveData($query2);
-    // $quizIds = [];
-
-    // while ($row = $result2->fetch_assoc()) {
-    //     $quizIds[] = $row['quiz_id'];
-    // }
-
-    // echo implode(',', $quizIds);
-    // ?>];
-
-    // // Get a random quiz ID
-    // var randomIndex = Math.floor(Math.random() * list.length);
-    // var randomQuizId = list[randomIndex];
-
-    // // Redirect to attempt_quiz.php with the random quiz ID
-    // window.location.href = '../quiz/attempt_quiz.php?quiz_id=' + randomQuizId;
-// }
-
-</script>
-
 
 </footer>
 
