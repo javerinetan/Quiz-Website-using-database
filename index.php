@@ -55,7 +55,7 @@ session_start();
         <div id="mobile-nav" class="mobile-navigation">
             <div class="wrapper-mobile-nav">
                 <a href="" class="nav-mobile-logo-container w-inline-block">
-                    <img src="/wf/assets/QuizITLogoname.png" loading="lazy" alt="Quizizz Logo" class="logo-image" />
+                    <img src="./wf/assets/QuizITLogoname.png" loading="lazy" alt="Quizizz Logo" class="logo-image" />
                 </a>
                 <div class="navigation-buttons-container">
                     <a href="" target="_blank" class="button-sign-up sign-in top w-button">Log in</a>
