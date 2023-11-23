@@ -36,7 +36,7 @@ $row=$instance->retrieveData($query);
     </div>
     <div class="settings_profile">
         <div class="topbar">
-            <i class="fa-regular fa-user" style="color: #86197d;"></i>
+            <i class="fa fa-user" style="color: #86197d; padding-left: 10px"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Profile</h2>
         </div>
         <!-- Inside your HTML body section -->
@@ -132,7 +132,7 @@ $row=$instance->retrieveData($query);
 
     <div class="settings_update">
         <div class="topbar">
-        <i class="fa-regular fa-user" style="color: blue;"></i>
+        <i class="fa fa-user" style="color: blue; padding-left: 10px;"></i>
                 <h2 data-v-186fa257="" class="settings-group-profile-title">Reset</h2>
         </div>
         <!-- <a href="change_password.php" class="main"><button class="details has-chevron"> -->
