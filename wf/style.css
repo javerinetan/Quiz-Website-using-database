@@ -58,18 +58,7 @@ body {
 
 
 
-audio,
-canvas,
-progress,
-video {
-    vertical-align: baseline;
-    display: inline-block;
-}
 
-audio:not([controls]) {
-    height: 0;
-    display: none;
-}
 
 [hidden],
 template {
