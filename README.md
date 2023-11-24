@@ -2,7 +2,9 @@
 Gachon OSEP 2023 Web database Programming Assignment 
 
 
-# Topic: 
+# Description: 
+•	Develop an online quiz platform for user registration, quiz creation, and participation.
+•	Leverage modern web development frameworks for scalability and responsiveness.
 
 
 # Task: 
