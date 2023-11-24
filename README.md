@@ -1,12 +1,12 @@
 # Webdatabase_Programming
 Gachon OSEP 2023 Web Database Programming Assignment 
 
+![image](https://github.com/javerinetan/Webdatabase_Programming/assets/90853880/fa525aa6-acd5-4a91-bbf9-2151b962db7f)
+
 
 # Description: 
 - Develop an online quiz platform for user registration, quiz creation, and participation.
 - Leverage modern web development frameworks for scalability and responsiveness.
-
-
 
 # Memebers:
 - Amber: Account Management + Quiz Section + Database
@@ -17,7 +17,7 @@ Gachon OSEP 2023 Web Database Programming Assignment
 
 # What was in the project?
 - We scraped the homepage of an existing quiz website (quizizz.com) into our Index.php
-- Rest of the pages were coded from scratch.
+- The rest of the pages were coded from scratch.
 
 # Why did we choose this project?
 - Showcase CRUD Functions and use of PHP and database
@@ -36,5 +36,7 @@ Gachon OSEP 2023 Web Database Programming Assignment
 -	JavaScript for client-side interactivity.
 -	PHP for server-side scripting.
 -	MySQL or another database for data storage.
+
+
 
 
