@@ -15,3 +15,26 @@ Gachon OSEP 2023 Web Database Programming Assignment
 - Nicholas: Dashboard section
 - Overall: Everyone helped each other wherever we could help
 
+# What was in the project?
+- We scraped the homepage of an existing quiz website (quizizz.com) into our Index.php
+- Rest of the pages were coded from scratch.
+
+# Why did we choose this project?
+- Showcase CRUD Functions and use of PHP and database
+
+# What we developed [Overview]
+- Account management (CRUD)
+- Quiz creation (CRUD)
+
+
+# Platforms Used 
+- XAMPP
+- MySQL
+
+# Tools and Technologies Used 
+-	HTML/CSS for front-end design.
+-	JavaScript for client-side interactivity.
+-	PHP for server-side scripting.
+-	MySQL or another database for data storage.
+
+
