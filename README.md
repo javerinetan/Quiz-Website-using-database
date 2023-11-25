@@ -8,8 +8,8 @@ Gachon OSEP 2023 Web Database Programming Assignment
 - Develop an online quiz platform for user registration, quiz creation, and participation.
 - Leverage modern web development frameworks for scalability and responsiveness.
 
-# Memebers:
-- Amber: Account Management + Quiz Section + Database
+# Members:
+- Amber: Account Management + Quiz Section + Database Designer
 - Javerine: Quiz Section + Most JavaScript + Navbar + Account Page + Database
 - Jeren: Home + Activity Section + Majority of the CSS
 - Nicholas: Dashboard section
@@ -25,7 +25,7 @@ Gachon OSEP 2023 Web Database Programming Assignment
 # What we developed [Overview]
 - Account management (CRUD)
 - Quiz creation (CRUD)
-
+- Quiz Attempt
 
 # Platforms Used 
 - XAMPP
@@ -36,7 +36,6 @@ Gachon OSEP 2023 Web Database Programming Assignment
 -	JavaScript for client-side interactivity.
 -	PHP for server-side scripting.
 -	MySQL or another database for data storage.
-
 
 # Database Code Creation 
 - Table Name: Account 
@@ -79,7 +78,6 @@ CREATE table quiz_attempt_log(
     FOREIGN KEY (quiz_id) REFERENCES quiz(quiz_id)
 )
 ```
-
 
 # Credits 
 Please remember to credit us when using this file. All copyrights @QuizIT team 
