@@ -204,7 +204,7 @@ session_start();
                 <div class="mask-2 w-slider-mask">
                     <div class="testimonial-card-1 w-slide">
                         <div class="div-block-231">
-                            <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                            <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                         </div>
                         <div class="testimonial-copy">
                             Nicholas Tan (The "Leader")
@@ -214,7 +214,7 @@ session_start();
                             </div>
                             <div class="testimonial-card-2 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Amber Yeo ("Real Leader")
@@ -224,7 +224,7 @@ session_start();
                             </div>
                             <div class="testimonial-card-3 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Javerine (Tan)
@@ -234,7 +234,7 @@ session_start();
                                 </div>
                             <div class="testimonial-card-4 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Jeren Goh (Meng) 
