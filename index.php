@@ -204,48 +204,43 @@ session_start();
                 <div class="mask-2 w-slider-mask">
                     <div class="testimonial-card-1 w-slide">
                         <div class="div-block-231">
-                            <img style="max-height: 200px !important; max-width: 500px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
-                            <div class="div-block-232">
-                                <!-- <div class="testimonial-title-home">Nicholas Tan</div>
-                                <div class="testimonial-title-occupation">The "Leader"</div> -->
-                            </div>
+                            <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                         </div>
                         <div class="testimonial-copy">
-                            Name: Nicholas Tan (The "Leader")
+                            Nicholas Tan (The "Leader")
                             <br>
-                            Hello I am Nicholas, your leader on this QuizIT project
+                            Hello I am Nicholas, your leader on this QuizIT project.
                         </div>
                             </div>
                             <div class="testimonial-card-2 w-slide">
                                 <div class="div-block-231">
-                                    <img src="./wf/assets/64f98d33abf0f547876789ef_63340a6a73f5762f968c2c99_James_(1).webp" loading="eager" alt="" class="image-271" />
-                                    <div class="div-block-232">
-                                        <div class="testimonial-title-home">James Newman</div>
-                                        <div class="testimonial-title-occupation">Sr. Manager of Academic Instructional Technology</div>
-                                    </div>
+                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
-                                <div class="testimonial-copy">“<span class="text-span-73">QuizIT motivates [students]</span>, increases confidence, and can help to establish a culture of learning and growing from mistakes.”</div>
+                                <div class="testimonial-copy">
+                                    Amber Yeo ("Real Leader")
+                                    <br>
+                                    Hii, I am Amber, I am in-charge of the Database, Account Management Functions.
+                                </div>
                             </div>
                             <div class="testimonial-card-3 w-slide">
                                 <div class="div-block-231">
-                                    <img src="./wf/assets/64f98db8c8931dba57972cba_63340b548cb9c75ac2928425_Shallamar_(1).webp" loading="eager" alt="" class="image-271" />
-                                    <div class="div-block-232">
-                                        <div class="testimonial-title-home">Shallamar Goodwin-Richards</div>
-                                        <div class="testimonial-title-occupation">High School <br />Math Teacher</div>
-                                    </div>
+                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
-                                <div class="testimonial-copy">“I have students with IEPs, <span class="text-span-74">I am able to find lessons catering to their abilities and accommodation</span> while being able to assign the other students with more rigorous assessments.”</div>
-                            </div>
+                                <div class="testimonial-copy">
+                                    Javerine (Tan)
+                                    <br>
+                                    Hii, I am Javerine, I am in-charge of the Quiz Creation Functions and UI/UX.
+                                </div>
+                                </div>
                             <div class="testimonial-card-4 w-slide">
                                 <div class="div-block-231">
-                                    <img src="./wf/assets/64f98e300068f4ab01dd9240_63340b85968fd3dc4eba293e_Shelby.webp" loading="eager" alt="" class="image-271" />
-                                    <div class="div-block-232">
-                                        <div class="testimonial-title-home">Shelby Cameron</div>
-                                        <div class="testimonial-title-occupation">High School Teacher</div>
-                                    </div>
+                                    <img style="max-height: 200px !important; max-width: 200px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
                                 </div>
-                                <div class="testimonial-copy">“<span class="text-span-75">Students are motivated by the power-ups, points, and sense of competition</span> with their classmates. Students cheer when a classmate uses a power-up that helps everyone, and it encourages
-                                    the community some students desperately need.”</div>
+                                <div class="testimonial-copy">
+                                    Jeren Goh (Meng) 
+                                    <br>
+                                    Hii, I am Jeren, I am in-charge of the UI/UX of this website.
+                                </div>                            
                             </div>
                             
                         </div>
