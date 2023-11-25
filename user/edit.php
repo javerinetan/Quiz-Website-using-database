@@ -18,7 +18,7 @@ if(!isset($_SESSION['User']))
         }elseif(!empty($_POST['c_email'])){
             $query="select * from account where email='". $_POST['c_email']."'";
             $result=mysqli_query($con,$query);
-            if ($result){
+            if (mysqli_fetch_assoc($result)){
                 header('location:edit.php?email&Invalid=Email has been registered before! Choose another email');
             }else{
                 $sql = "UPDATE account SET email = '" . strtolower($_POST['c_email']) . "' WHERE id=". $_SESSION['User']."";
