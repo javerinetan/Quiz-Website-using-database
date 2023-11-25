@@ -98,10 +98,6 @@ $row=$instance->retrieveData($query);
 </style>
 
 <?php
-$query = "SELECT * FROM quiz_".$_GET['quiz_id']." ;";
-$result = $con->query($query);
-
-// Assuming $con is your database connection
 
 // Sanitize the input (you should validate and sanitize user input)
 $quiz_id = mysqli_real_escape_string($con, $_GET['quiz_id']);
