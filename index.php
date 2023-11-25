@@ -84,35 +84,7 @@ session_start();
                                 <div>For Schools</div>
                             </div>
                             <nav class="dropdown-list w-dropdown-list">
-                                <div class="dropdown-list-wrapper">
-                                    <a href="" class="dropdown-link-contain w-inline-block">
-                                        <img src="./wf/assets/632b579034dcb77743b131fb_School.svg" loading="eager" alt="" class="dropdown-icon" />
-                                        <div>Overview</div>
-                                    </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-link-contain w-inline-block">
-                                <img src="./wf/assets/632b57a19843187e5697ea32_screen-users_2.svg" loading="eager" alt="" class="dropdown-icon" />
-                                <div>Impact</div>
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-link-contain w-inline-block">
-                                <img src="./wf/assets/632b57e283d43912e086909f_chalkboard-user_10.svg" loading="eager" alt="" class="dropdown-icon" />
-                                <div>Product</div>
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-link-contain w-inline-block">
-                                <img src="./wf/assets/632b57b39ab52921fc1d933b_hand-holding-dollar_2.svg" loading="eager" alt="" class="dropdown-icon" />
-                                <div>Funding</div>
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-link-contain w-inline-block">
-                                <img src="./wf/assets/64abd09d032d0b717c014b1d_whats_new_icon.svg" loading="eager" alt="" class="dropdown-icon" />
-                                <div>What&#x27;s New</div>
-                            </a>
-                        </div>
+                                
                     </nav>
                 </div>
             <a href="" class="nav-link hide w-nav-link">For Teachers</a>
@@ -148,7 +120,7 @@ session_start();
     </div>
     </header>
     <div class="navbar-shadow"></div>
-</div>
+</div> 
 <div class="home-hero-wrapper">
     <div class="hero-center-wrapper">
         <div class="hero-heading-contain">
