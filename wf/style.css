@@ -34113,15 +34113,15 @@ figcaption {
 
 .mask-2 {
     width: 1270px;
-    height: 349px;
+    height: 355px;
     margin-right: 0;
     padding-left: 8px;
     overflow: hidden;
 }
 
 .testimonial-wrapper-new {
-    height: 348px;
-    max-height: 348px;
+    height: 355px;
+    max-height: 370px;
     flex-direction: column;
     margin-bottom: 80px;
     padding-left: 0;

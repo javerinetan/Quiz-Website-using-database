@@ -66,7 +66,9 @@ $result = $con->query($query);
 
 <body>
     <section>
-        <h1>User table</h1>
+        <br>
+        <h1 style="color: #5d2057">User table</h1>
+        <br>
         <table>
             <tr>
                 <th>ID</th>
