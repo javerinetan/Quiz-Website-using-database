@@ -98,6 +98,9 @@ if (isset($_POST['Signup'])) {
                 <div class="col-md-23" >
                     <input type="password" name="Password" placeholder=" Password" class="form-control mb-3">
                 </div>
+                <div class="col-md-23" >
+                    Already have an account? Login <a href="login.php" style="font-size: 14px;">here</a> instead!
+                </div>
                 <button class="btn btn-success mt-3" name="Signup">Sign up</button>
                 <!-- class="btn btn-primary text-center mb-4" -->
             </form>
