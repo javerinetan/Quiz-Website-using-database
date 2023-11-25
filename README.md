@@ -48,6 +48,7 @@ CREATE TABLE account (
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     joined_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    admin BOOLEAN NOT NULL DEFAULT 0,
     image_url varchar(255) NOT NULL DEFAULT 'https://www.kedglobal.com/data/ked/image/2023/11/20/ked202311200029.600x.0.jpg'; 
 );
 ```
