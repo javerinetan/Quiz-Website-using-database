@@ -31914,17 +31914,7 @@ figcaption {
 
 
 
-.button-text-7 {
-    text-align: left;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 100%;
-}
 
-.button-text-7._156 {
-    line-height: 156%;
-    display: block;
-}
 
 .educator-resources-subtext-2 {
     margin-bottom: 20px;
@@ -36075,7 +36065,6 @@ figcaption {
         padding: 4vw;
     }
 
-    .button-text-7,
     .italic-text-13 {
         font-size: 18px;
     }
@@ -41829,9 +41818,6 @@ figcaption {
         padding-right: 4vw;
     }
 
-    .button-text-7 {
-        font-size: 16px;
-    }
     .educator-resources-hero-heading-3 {
         font-size: 36px;
     }
