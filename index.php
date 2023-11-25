@@ -249,30 +249,9 @@ session_start();
                                 <div class="testimonial-copy">“<span class="text-span-75">Students are motivated by the power-ups, points, and sense of competition</span> with their classmates. Students cheer when a classmate uses a power-up that helps everyone, and it encourages
                                     the community some students desperately need.”</div>
                             </div>
-                            <div class="testimonial-card-8 w-slide">
-                                <div class="div-block-231">
-                                    <img src="./wf/assets/64f9924a0068f4ab01e245ec_63340b24c54f124dda378881_Melissa.webp" loading="eager" alt="" class="image-271" />
-                                    <div class="div-block-232">
-                                        <div class="testimonial-title-home">Melissa Oberembt</div>
-                                        <div class="testimonial-title-occupation">High School Special Education Teacher</div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-copy">“One of my students who has an IEP in the area of behavior often refuses to practice or participate in class. However, anytime we play Quizizz ... he engages 100% and is reaching proficiency on those math standards.”</div>
-                            </div>
-                            <div class="testimonial-card-5 w-slide">
-                                <div class="div-block-231">
-                                    <img src="./wf/assets/64f98ee083d5fe55063d3a4a_63340b3d75515b4697efabae_Scott.webp" loading="eager" alt="" class="image-271" />
-                                    <div class="div-block-232">
-                                        <div class="testimonial-title-home">Scott Staub</div>
-                                        <div class="testimonial-title-occupation">K-12 Instructional Technology Coach</div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-copy">“<span class="text-span-76">QuizIT was the obvious choice</span> ... because teachers asked for it. [It] was fully aligned with district initiatives around student engagement and formative assessment, was compliant
-                                    with NYS EdLaw 2-d, and came packaged with</div>
-                            </div>
                             
                         </div>
-                        <div class="left-arrow-2 w-slider-arrow-left">
+                        <!-- <div class="left-arrow-2 w-slider-arrow-left">
                             <div class="icon-3 w-icon-slider-left"></div>
                             <div class="arrow-button-left"><img src="./wf/assets/64f9cd40f8ce955ef7125b11_Chevron_left_(1).webp" loading="lazy" alt="" class="image-274" /></div>
                         </div>
@@ -280,7 +259,7 @@ session_start();
                             <div class="icon-4 w-icon-slider-right"></div>
                             <div class="arrow-button-right"><img src="./wf/assets/64f9cd5353daa34b59cdaf39_Chevron_right.webp" loading="lazy" alt="" class="image-275" /></div>
                         </div>
-                        <div class="slide-nav-5 w-slider-nav w-round"></div>
+                        <div class="slide-nav-5 w-slider-nav w-round"></div> -->
                     </div>
                 </div>
             </div>
