@@ -382,7 +382,7 @@ session_start();
                 <div class="mask-2 w-slider-mask">
                     <div class="testimonial-card-1 w-slide">
                         <div class="div-block-231">
-                            <img style="max-height: 200px !important; max-width: 220px !important;" src="./wf/assets/nic.png" loading="eager" alt="" class="image-271" />
+                            <img src="./wf/assets/nick.png" loading="eager" alt="" class="image-271" />
                         </div>
                         <div class="testimonial-copy">
                             Nicholas Tan (The "Leader")
@@ -392,7 +392,7 @@ session_start();
                             </div>
                             <div class="testimonial-card-2 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img src="wf/assets/amber.jpg" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Amber Yeo ("Real Leader")
@@ -402,7 +402,7 @@ session_start();
                             </div>
                             <div class="testimonial-card-3 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="../wf/assets/jae.jpg" loading="eager" alt="" class="image-271" />
+                                    <img src="./wf/assets/jae.jpg" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Javerine (Tan)
@@ -412,7 +412,7 @@ session_start();
                                 </div>
                             <div class="testimonial-card-4 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img src="wf/assets/jeren.jpg" loading="eager" alt="" class="image-271" />
                                 </div>
                                 <div class="testimonial-copy">
                                     Jeren Goh (Meng) 
@@ -422,15 +422,6 @@ session_start();
                             </div>
                             
                         </div>
-                        <!-- <div class="left-arrow-2 w-slider-arrow-left">
-                            <div class="icon-3 w-icon-slider-left"></div>
-                            <div class="arrow-button-left"><img src="./wf/assets/64f9cd40f8ce955ef7125b11_Chevron_left_(1).webp" loading="lazy" alt="" class="image-274" /></div>
-                        </div>
-                        <div class="right-arrow-2 w-slider-arrow-right">
-                            <div class="icon-4 w-icon-slider-right"></div>
-                            <div class="arrow-button-right"><img src="./wf/assets/64f9cd5353daa34b59cdaf39_Chevron_right.webp" loading="lazy" alt="" class="image-275" /></div>
-                        </div>
-                        <div class="slide-nav-5 w-slider-nav w-round"></div> -->
                     </div>
                 </div>
             </div>
