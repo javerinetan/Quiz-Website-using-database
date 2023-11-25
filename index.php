@@ -377,6 +377,7 @@ session_start();
 <div class="hero-section">
     <div class="home-hero-btf">
         <h1 style="text-align: center;"> Meet the Team </h1>
+        <br>
         <div class="testimonial-wrapper-new">
             <div data-delay="4000" data-animation="slide" class="testimonial-collection-new w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="8" data-duration="500" data-infinite="true">
                 <div class="mask-2 w-slider-mask">
