@@ -80,4 +80,5 @@ CREATE table quiz_attempt_log(
 ```
 
 
-
+# Credits 
+Please remember to credit us when using this file. All copyrights @QuizIT team 
