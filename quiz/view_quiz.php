@@ -101,17 +101,33 @@ $row=$instance->retrieveData($query);
 $query = "SELECT * FROM quiz_".$_GET['quiz_id']." ;";
 $result = $con->query($query);
 
-$queryQuiz = "SELECT * FROM quiz WHERE quiz_id = " . $_GET['quiz_id'];
-$resultQuiz = $instance->retrieveData($queryQuiz);
+// Assuming $con is your database connection
 
-$rowQuiz = $resultQuiz->fetch_assoc();
+// Sanitize the input (you should validate and sanitize user input)
+$quiz_id = mysqli_real_escape_string($con, $_GET['quiz_id']);
+
+// Prepare and execute the main query
+$query = "SELECT * FROM quiz_" . $quiz_id;
+$result = $con->query($query);
+
+// Prepare and execute the quiz info query
+$quiz_query = "SELECT * FROM quiz WHERE quiz_id = ?";
+$quiz_statement = $con->prepare($quiz_query);
+$quiz_statement->bind_param("s", $quiz_id);
+$quiz_statement->execute();
+$quiz_result = $quiz_statement->get_result();
+$quiz_row = $quiz_result->fetch_assoc();
+$quiz_statement->close();
+
+$quiz_name = $quiz_row['quiz_name'];
+
 ?>
 
 <body>
     <div class="container">
         <br>
         <section>
-            <h1 style="color: #5d2057 !important";> <?php echo $rowQuiz['quiz_name']; ?>quiz table</h1>
+            <h1 style="color: #5d2057 !important";> <?php echo $quiz_name; ?> quiz table</h1>
             <br>
             <table>
                 <tr>
