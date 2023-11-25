@@ -197,66 +197,7 @@ session_start();
     <br><br><br><br>
 </div>
 </div>
-<div class="hero-section">
-    <div class="home-hero-btf">
-        <div class="testimonial-wrapper-new">
-            <div data-delay="4000" data-animation="slide" class="testimonial-collection-new w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="8" data-duration="500" data-infinite="true">
-                <div class="mask-2 w-slider-mask">
-                    <div class="testimonial-card-1 w-slide">
-                        <div class="div-block-231">
-                            <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
-                        </div>
-                        <div class="testimonial-copy">
-                            Nicholas Tan (The "Leader")
-                            <br>
-                            Hello I am Nicholas, your leader on this QuizIT project.
-                        </div>
-                            </div>
-                            <div class="testimonial-card-2 w-slide">
-                                <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
-                                </div>
-                                <div class="testimonial-copy">
-                                    Amber Yeo ("Real Leader")
-                                    <br>
-                                    Hii, I am Amber, I am in-charge of the Database, Account Management Functions.
-                                </div>
-                            </div>
-                            <div class="testimonial-card-3 w-slide">
-                                <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="../wf/assets/jae.jpg" loading="eager" alt="" class="image-271" />
-                                </div>
-                                <div class="testimonial-copy">
-                                    Javerine (Tan)
-                                    <br>
-                                    Hii, I am Javerine, I am in-charge of the Quiz Creation Functions and UI/UX.
-                                </div>
-                                </div>
-                            <div class="testimonial-card-4 w-slide">
-                                <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
-                                </div>
-                                <div class="testimonial-copy">
-                                    Jeren Goh (Meng) 
-                                    <br>
-                                    Hii, I am Jeren, I am in-charge of the UI/UX of this website.
-                                </div>                            
-                            </div>
-                            
-                        </div>
-                        <!-- <div class="left-arrow-2 w-slider-arrow-left">
-                            <div class="icon-3 w-icon-slider-left"></div>
-                            <div class="arrow-button-left"><img src="./wf/assets/64f9cd40f8ce955ef7125b11_Chevron_left_(1).webp" loading="lazy" alt="" class="image-274" /></div>
-                        </div>
-                        <div class="right-arrow-2 w-slider-arrow-right">
-                            <div class="icon-4 w-icon-slider-right"></div>
-                            <div class="arrow-button-right"><img src="./wf/assets/64f9cd5353daa34b59cdaf39_Chevron_right.webp" loading="lazy" alt="" class="image-275" /></div>
-                        </div>
-                        <div class="slide-nav-5 w-slider-nav w-round"></div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <div class="sticky-tabs-section">
             <div data-w-id="7b2a0029-6bc8-d394-144e-7bf1119606f8" class="sticky-tabs-wrapper">
@@ -429,6 +370,67 @@ session_start();
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="hero-section">
+    <div class="home-hero-btf">
+        <h1 style="text-align: center;"> Meet the Team </h1>
+        <div class="testimonial-wrapper-new">
+            <div data-delay="4000" data-animation="slide" class="testimonial-collection-new w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="8" data-duration="500" data-infinite="true">
+                <div class="mask-2 w-slider-mask">
+                    <div class="testimonial-card-1 w-slide">
+                        <div class="div-block-231">
+                            <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                        </div>
+                        <div class="testimonial-copy">
+                            Nicholas Tan (The "Leader")
+                            <br>
+                            Hello I am Nicholas, your leader on this QuizIT project.
+                        </div>
+                            </div>
+                            <div class="testimonial-card-2 w-slide">
+                                <div class="div-block-231">
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                </div>
+                                <div class="testimonial-copy">
+                                    Amber Yeo ("Real Leader")
+                                    <br>
+                                    Hii, I am Amber, I am in-charge of the Database, Account Management Functions.
+                                </div>
+                            </div>
+                            <div class="testimonial-card-3 w-slide">
+                                <div class="div-block-231">
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="../wf/assets/jae.jpg" loading="eager" alt="" class="image-271" />
+                                </div>
+                                <div class="testimonial-copy">
+                                    Javerine (Tan)
+                                    <br>
+                                    Hii, I am Javerine, I am in-charge of the Quiz Creation Functions and UI/UX.
+                                </div>
+                                </div>
+                            <div class="testimonial-card-4 w-slide">
+                                <div class="div-block-231">
+                                    <img style="max-height: 200px !important; max-width: 220px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                </div>
+                                <div class="testimonial-copy">
+                                    Jeren Goh (Meng) 
+                                    <br>
+                                    Hii, I am Jeren, I am in-charge of the UI/UX of this website.
+                                </div>                            
+                            </div>
+                            
+                        </div>
+                        <!-- <div class="left-arrow-2 w-slider-arrow-left">
+                            <div class="icon-3 w-icon-slider-left"></div>
+                            <div class="arrow-button-left"><img src="./wf/assets/64f9cd40f8ce955ef7125b11_Chevron_left_(1).webp" loading="lazy" alt="" class="image-274" /></div>
+                        </div>
+                        <div class="right-arrow-2 w-slider-arrow-right">
+                            <div class="icon-4 w-icon-slider-right"></div>
+                            <div class="arrow-button-right"><img src="./wf/assets/64f9cd5353daa34b59cdaf39_Chevron_right.webp" loading="lazy" alt="" class="image-275" /></div>
+                        </div>
+                        <div class="slide-nav-5 w-slider-nav w-round"></div> -->
                     </div>
                 </div>
             </div>
