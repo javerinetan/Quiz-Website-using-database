@@ -28,9 +28,6 @@ Gachon OSEP 2023 Web Database Programming Assignment
 - Quiz creation (CRUD)
 - Quiz Attempt
 
-# Platforms Used 
-- XAMPP
-- MySQL
 
 # Tools and Technologies Used 
 -	HTML/CSS for front-end design.
