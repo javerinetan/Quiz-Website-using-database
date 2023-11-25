@@ -16,7 +16,7 @@ if(!isset($_SESSION['User']))
             $insertresults = mysqli_query($con,$sql);
             header("location:user_account.php?EditSuccess=Name");
         }elseif(!empty($_POST['c_email'])){
-            $query="select * from account where id=". $_POST['c_email']."";
+            $query="select * from account where email='". $_POST['c_email']."'";
             $result=mysqli_query($con,$query);
             if ($result){
                 header('location:edit.php?email&Invalid=Email has been registered before! Choose another email');
