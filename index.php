@@ -382,7 +382,7 @@ session_start();
                 <div class="mask-2 w-slider-mask">
                     <div class="testimonial-card-1 w-slide">
                         <div class="div-block-231">
-                            <img src="./wf/assets/nick.png" loading="eager" alt="" class="image-271" />
+                            <img src="./wf/assets/nick.jpg" loading="eager" alt="" class="image-271" />
                         </div>
                         <div class="testimonial-copy">
                             Nicholas Tan (The "Leader")
