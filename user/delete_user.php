@@ -7,8 +7,17 @@ if (!isset($_SESSION['User'])) {
     exit;
 } else {
     // Use prepared statement to prevent SQL injection
+    $user_id=$_SESSION['User'];
+
+    $delete_log="DELETE FROM quiz_attempt_log where attempt_by = $user_id";
+    mysqli_query($con, $delete_log);
+
+    $delete_quiz="DELETE FROM quiz where creator_id = $user_id";
+    mysqli_query($con, $delete_quiz);
+
     $query = "DELETE FROM account WHERE id=?";
     $stmt = $con->prepare($query);
+
 
     // Check if the prepared statement was successful
     if (!$stmt) {
