@@ -1,7 +1,8 @@
 # Webdatabase_Programming
 Gachon OSEP 2023 Web Database Programming Assignment 
 
-![image](https://github.com/javerinetan/Webdatabase_Programming/assets/90853880/fa525aa6-acd5-4a91-bbf9-2151b962db7f)
+<img width="959" alt="image" src="https://github.com/javerinetan/Quiz-Website-using-database/assets/90853880/e2e6e694-2d26-418a-9e54-9236de353ff2">
+
 
 
 # Description: 
