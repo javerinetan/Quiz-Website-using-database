@@ -146,10 +146,10 @@ session_start();
                 <img src="./wf/assets/62fa641a161d3a38c7681d0e_Right_Arrow_Button.svg" loading="lazy" alt="Arrow pointing right" class="button-arrow" />
             </div>
         </a>
-        <a id="admin-hero-home" href="" class="grey-button">
-            <div class="button-subtext">Admins</div>
+        <a id="admin-hero-home" href="./account/login.php" class="grey-button">
+            <div class="button-subtext">Users</div>
             <div class="button-bottom-contain">
-                <div class="button-text">Learn more</div>
+                <div class="button-text">Login now</div>
                 <img src="./wf/assets/62fa6419161d3ac288681cdc_Purple_Arrow_Button.svg" loading="lazy" alt="Purple Right Arrow" class="button-arrow" />
             </div>
         </a>
