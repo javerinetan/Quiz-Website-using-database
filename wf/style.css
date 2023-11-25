@@ -31912,17 +31912,7 @@ figcaption {
     display: flex;
 }
 
-.image-263 {
-    max-width: 80%;
-}
 
-.text-block-150 {
-    padding-top: 0;
-    font-family: Poppins, sans-serif;
-    font-size: 2vw;
-    font-weight: 500;
-    line-height: 3vw;
-}
 
 .button-text-7 {
     text-align: left;
@@ -35868,21 +35858,7 @@ figcaption {
     .image-135 {
         display: block;
     }
-    .container-139 {
-        grid-column-gap: 16px;
-        grid-row-gap: 16px;
-        -webkit-text-fill-color: inherit;
-        background-clip: border-box;
-        grid-template-rows: auto auto;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-columns: 1fr;
-        grid-auto-flow: column;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 80px;
-        padding-left: 0;
-        display: block;
-    }
+
     .div-block-121 {
         width: 1280px;
         max-width: 1280px;
@@ -35890,15 +35866,7 @@ figcaption {
     .section-with-button-copy {
         margin-top: 46px;
     }
-    .div-block-129 {
-        margin-left: 198px;
-        padding-left: 0;
-    }
-    .div-block-131 {
-        flex: 1;
-        justify-content: flex-start;
-        margin-left: 0;
-    }
+
     .eduprotocol {
         display: none;
     }
@@ -36106,17 +36074,7 @@ figcaption {
         margin-right: 0;
         padding: 4vw;
     }
-    .image-263 {
-        max-width: 120%;
-        -webkit-text-fill-color: inherit;
-        background-clip: border-box;
-    }
-    .text-block-150 {
-        text-align: left;
-        padding-top: 0;
-        font-size: 2vw;
-        line-height: 3vw;
-    }
+
     .button-text-7,
     .italic-text-13 {
         font-size: 18px;
@@ -41870,9 +41828,7 @@ figcaption {
         padding-left: 4vw;
         padding-right: 4vw;
     }
-    .text-block-150 {
-        font-size: 2.5vw;
-    }
+
     .button-text-7 {
         font-size: 16px;
     }
