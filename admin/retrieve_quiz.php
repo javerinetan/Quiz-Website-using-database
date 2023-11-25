@@ -66,7 +66,9 @@ $result = $con->query($query);
 
 <body>
     <section>
-        <h1>Quiz table</h1>
+        <br>
+        <h1 style="color: #5d2057">Quiz table</h1>
+        <br>
         <table>
             <tr>
                 <th>Quiz ID</th>

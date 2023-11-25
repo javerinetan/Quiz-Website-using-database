@@ -104,7 +104,7 @@
 .add-qn-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* You can change the background color */
+    background-color: #5d2057; /* You can change the background color */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -116,7 +116,7 @@
 
 /* Hover effect */
 .add-qn-btn:hover {
-    background-color: #0a5cb4; /* You can change the hover background color */
+    background-color: #9e1c91; /* You can change the hover background color */
     text-decoration: none;
     color: #fff;
 }
