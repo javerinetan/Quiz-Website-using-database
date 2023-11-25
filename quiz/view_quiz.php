@@ -100,13 +100,18 @@ $row=$instance->retrieveData($query);
 <?php
 $query = "SELECT * FROM quiz_".$_GET['quiz_id']." ;";
 $result = $con->query($query);
+
+$queryQuiz = "SELECT * FROM quiz WHERE quiz_id = " . $_GET['quiz_id'];
+$resultQuiz = $instance->retrieveData($queryQuiz);
+
+$rowQuiz = $resultQuiz->fetch_assoc();
 ?>
 
 <body>
     <div class="container">
         <br>
         <section>
-            <h1>quiz table</h1>
+            <h1 style="color: #5d2057 !important";> <?php echo $rowQuiz['quiz_name']; ?>quiz table</h1>
             <br>
             <table>
                 <tr>
