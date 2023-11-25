@@ -226,11 +226,13 @@ function getRandomImagePath() {
     // Update the image source
     quizImage.src = imagePath;
 
-    // reset the edit button
+    // reset the edit, delete button and creator text
     var editBtn = document.getElementById('editQuizBtn');
     var deleteBtn = document.getElementById('deleteQuizBtn');
+    var creatorNameElement = document.getElementById('creatorName');
     editBtn.style.display='none';
     deleteBtn.style.display='none';
+    creatorNameElement.innerText = "";
 
     // Update other modal content
     quizNameElement.innerText = "Topic: " + quizName;
@@ -238,7 +240,6 @@ function getRandomImagePath() {
     var editQuizBtn = document.createElement('a'); // Use document.createElement
 
     if(community !== 'undefined'){
-        var creatorNameElement = document.getElementById('creatorName');
         creatorNameElement.innerText = "Creator: " + community;
         numQuestionsElement.style.marginBottom = "0px";
     }else{
