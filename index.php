@@ -218,15 +218,13 @@ session_start();
                             </div>
                             <div class="testimonial-card-2 w-slide">
                                 <div class="div-block-231">
-                                    <img style="max-height: 200px !important; max-width: 500px !important;" src="https://lh3.googleusercontent.com/pw/ADCreHfBzx34AJVes3hH6LfYkGjagGIm30Und1OokwUL-hTjiFwpZaRlagLiXomTh9w5QAn6rFtFliols6S5QAg0oXByEPfM12Vk-eyBS1PNQqCFiC3_SeX2zIZ8J3oyKCfz-snrUdzSWuUvVKobl7gC6Dhf=w951-h713-s-no-gm?authuser=0" loading="eager" alt="" class="image-271" />
+                                    <img src="./wf/assets/64f98d33abf0f547876789ef_63340a6a73f5762f968c2c99_James_(1).webp" loading="eager" alt="" class="image-271" />
                                     <div class="div-block-232">
+                                        <div class="testimonial-title-home">James Newman</div>
+                                        <div class="testimonial-title-occupation">Sr. Manager of Academic Instructional Technology</div>
                                     </div>
                                 </div>
-                                <div class="testimonial-copy">
-                                    Name: Amber Yeo En 
-                                    <br>
-                                    Hello I am Amber, the database creator on this QuizIT project
-                                </div>
+                                <div class="testimonial-copy">“<span class="text-span-73">QuizIT motivates [students]</span>, increases confidence, and can help to establish a culture of learning and growing from mistakes.”</div>
                             </div>
                             <div class="testimonial-card-3 w-slide">
                                 <div class="div-block-231">
