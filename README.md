@@ -5,6 +5,15 @@ Gachon OSEP 2023 Web Database Programming Assignment
 
 Click on the image above to view the demo
 
+# Grade Received 
+
+🏆A+
+
+## Feedback Received from the Professor 
+- Well done, especially because we created a lot of features within such a short time
+- Presentation was well done and impressed the class
+- Our work is also selected to be showcased 
+
 # Description: 
 - Develop an online quiz platform for user registration, quiz creation, and participation.
 - Leverage modern web development frameworks for scalability and responsiveness.
